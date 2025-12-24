@@ -1,0 +1,13 @@
+# Python
+venv/
+selenium_explorer/venv/
+__pycache__/
+*.pyc
+
+# Node / Cypress
+node_modules/
+selenium_explorer/cypress/node_modules/
+
+# Environment
+.env
+
