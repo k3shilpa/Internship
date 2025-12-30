@@ -1,0 +1,120 @@
+{
+  "editor": "FixThePhoto Online GIMP",
+  "image_loaded": true,
+  "tools": [
+    {
+      "index": 0,
+      "title": "Move Tool (V)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 1,
+      "title": "Rectangle Select (M)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 2,
+      "title": "Lasso Select (L)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 3,
+      "title": "Magic Wand (W)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 4,
+      "title": "Crop Tool (C)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 5,
+      "title": "Eyedropper (I)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 6,
+      "title": "Spot Healing Brush Tool (J)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 7,
+      "title": "Brush Tool (B)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 8,
+      "title": "Clone Tool (S)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 9,
+      "title": "Eraser Tool (E)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 10,
+      "title": "Gradient Tool (G)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 11,
+      "title": "Blur Tool",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 12,
+      "title": "Dodge Tool (O)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 13,
+      "title": "Type Tool (T)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 14,
+      "title": "Pen (P)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 15,
+      "title": "Path Select (A)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 16,
+      "title": "Rectangle (U)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 17,
+      "title": "Hand Tool (H)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    },
+    {
+      "index": 18,
+      "title": "Zoom Tool (Z)",
+      "activated": true,
+      "activation_indicator": "class=active"
+    }
+  ]
+}

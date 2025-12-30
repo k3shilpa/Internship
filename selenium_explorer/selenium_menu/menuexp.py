@@ -11,23 +11,21 @@ from selenium.common.exceptions import (
 )
 import time
 
-# -----------------------------
-# Setup browser
-# -----------------------------
+
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.maximize_window()
 wait = WebDriverWait(driver, 10)
 
-BASE_URL = "https://www.w3schools.com"
+#BASE_URL = "https://www.w3schools.com"
+#BASE_URL = "https://demo.opencart.com"
+BASE_URL = "https://seleniumbase.io/demo_page_with_menu_items/"
 driver.get(BASE_URL)
-time.sleep(2)
+time.sleep(0.5)
 
 MAIN_WINDOW = driver.current_window_handle
 print("Opened website")
 
-# -----------------------------
-# Safe link collector
-# -----------------------------
+
 def get_clickable_links():
     valid_links = []
 
@@ -47,9 +45,7 @@ def get_clickable_links():
     return list(set(valid_links))
 
 
-# -----------------------------
-# MAIN EXPLORATION LOOP
-# -----------------------------
+
 visited = set()
 all_links = get_clickable_links()
 
@@ -64,7 +60,7 @@ for link in all_links:
 
     try:
         driver.get(link)
-        time.sleep(2)
+        time.sleep(0.5)
 
         # Handle new tabs/windows
         for window in driver.window_handles:
@@ -84,7 +80,7 @@ for link in all_links:
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
             driver.get(BASE_URL)
             MAIN_WINDOW = driver.current_window_handle
-            time.sleep(2)
+            time.sleep(0.5)
 
     # Re-collect links (DOM changes!)
     all_links = get_clickable_links()
