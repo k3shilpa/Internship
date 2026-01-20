@@ -7,7 +7,7 @@ from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # =====================================================
-# 1. Load configuration (NO hardcoding)
+# 1. Load configuration
 # =====================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -41,7 +41,7 @@ documents = loader.load()
 print(f"Loaded file: {file_name}")
 
 # =====================================================
-# 4. Chunking (speech-friendly)
+# 4. Chunking
 # =====================================================
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=CHUNK_SIZE,
