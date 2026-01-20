@@ -5,7 +5,7 @@ from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 
 # =====================================================
-# 1. Configuration (NO hardcoding)
+# 1. Configuration
 # =====================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -28,7 +28,7 @@ vectorstore = FAISS.load_local(
 retriever = vectorstore.as_retriever(search_kwargs={"k": TOP_K})
 
 # =====================================================
-# 3. STRICT Prompt (NO hallucination)
+# 3. Prompt
 # =====================================================
 PROMPT_TEMPLATE = """
 You are an assistant answering questions strictly based on the provided stand-up meeting context.
@@ -60,16 +60,16 @@ prompt = PromptTemplate(
 llm = Ollama(model=LLM_MODEL)
 
 # =====================================================
-# 5. RAG QA Function (FIXED)
+# 5. RAG QA Function
 # =====================================================
 def ask(question: str) -> str:
-    # Use invoke() instead of deprecated method
+    
     docs = retriever.invoke(question)
 
     if not docs:
         return "Not mentioned in the meeting."
 
-    # IMPORTANT: Do NOT expose chunk IDs
+    
     context = "\n\n".join(d.page_content for d in docs)
 
     final_prompt = prompt.format(
@@ -79,7 +79,7 @@ def ask(question: str) -> str:
 
     response = llm.invoke(final_prompt)
 
-    # Safety net (force exact fallback)
+   
     if not response or response.strip().lower() in {
         "not mentioned",
         "not mentioned.",
