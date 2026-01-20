@@ -27,9 +27,6 @@ vectorstore = FAISS.load_local(
 
 retriever = vectorstore.as_retriever(search_kwargs={"k": TOP_K})
 
-# =====================================================
-# 3. Prompt
-# =====================================================
 PROMPT_TEMPLATE = """
 You are an assistant answering questions strictly based on the provided stand-up meeting context.
 
@@ -69,7 +66,6 @@ def ask(question: str) -> str:
     if not docs:
         return "Not mentioned in the meeting."
 
-    
     context = "\n\n".join(d.page_content for d in docs)
 
     final_prompt = prompt.format(
@@ -79,7 +75,6 @@ def ask(question: str) -> str:
 
     response = llm.invoke(final_prompt)
 
-   
     if not response or response.strip().lower() in {
         "not mentioned",
         "not mentioned.",
