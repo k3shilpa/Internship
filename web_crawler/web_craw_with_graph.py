@@ -106,7 +106,7 @@ def crawl_and_collect(start_url):
     results = []
     graph = nx.DiGraph()
 
-    print("🚀 Selenium crawl started")
+    print("Selenium crawl started")
 
     while queue:
         current_url, depth = queue.popleft()
@@ -114,7 +114,7 @@ def crawl_and_collect(start_url):
         if current_url in visited or depth > MAX_DEPTH or len(visited) >= MAX_PAGES:
             continue
 
-        print(f"🌐 Visiting: {current_url} (Depth {depth})")
+        print(f"Visiting: {current_url} (Depth {depth})")
         visited.add(current_url)
 
         try:
@@ -142,7 +142,7 @@ def crawl_and_collect(start_url):
                         queue.append((next_url, depth + 1))
 
         except Exception as e:
-            print(f"⚠️ Error visiting {current_url}: {e}")
+            print(f"Error visiting {current_url}: {e}")
 
     driver.quit()
     return results, graph
