@@ -1,0 +1,14 @@
+{
+	"Args": [
+		"run"
+	],
+	"FailedItems": [
+		"specs\\auto.spec:8",
+		"specs\\auto.spec:20",
+		"specs\\auto.spec:31",
+		"specs\\auto.spec:72",
+		"specs\\auto.spec:95",
+		"specs\\auto.spec:121",
+		"specs\\auto.spec:139"
+	]
+}

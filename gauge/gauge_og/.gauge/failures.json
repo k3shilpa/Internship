@@ -1,0 +1,13 @@
+{
+	"Args": [
+		"run"
+	],
+	"FailedItems": [
+		"specs\\ai_generated.spec:484",
+		"specs\\ai_generated.spec:488",
+		"specs\\ai_generated.spec:492",
+		"specs\\ai_generated.spec:8",
+		"specs\\ai_generated.spec:12",
+		"specs\\ai_generated.spec:16"
+	]
+}
