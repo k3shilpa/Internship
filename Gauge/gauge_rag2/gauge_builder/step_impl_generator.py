@@ -1,0 +1,285 @@
+# gauge_builder/step_impl_generator.py
+#
+# Reads generated .spec file and creates step_impl/step_impl.py
+# Production-safe version (Gauge + Python parser safe)
+
+import os
+import re
+import sys
+import logging
+from datetime import datetime
+from pathlib import Path
+
+# Add project root
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+import config
+
+STEP_IMPL_PATH = os.path.join(config.BASE_DIR, "step_impl", "step_impl.py")
+SPEC_PATH = config.GENERATED_SPEC_PATH
+
+logger = logging.getLogger(__name__)
+
+
+# ==============================================================================
+# KNOWN STEPS
+# ==============================================================================
+
+KNOWN_STEPS = {
+    'Navigate to "<url>"': (
+        "navigate_to", ["url"],
+        "    driver = get_driver()\n"
+        "    driver.get(url)"
+    ),
+
+    'Verify the page contains "<text>"': (
+        "verify_page_contains", ["text"],
+        "    driver = get_driver()\n"
+        "    assert text.lower() in driver.page_source.lower(), \\\n"
+        "        f\"Expected page to contain: {text}\""
+    ),
+}
+
+
+# ==============================================================================
+# SPEC PARSER
+# ==============================================================================
+
+def _normalize_pattern(step_text: str) -> str:
+    """
+    Convert any concrete step into stable Gauge parameterized pattern.
+    Works for quoted and unquoted values.
+    """
+
+    step_text = step_text.strip()
+
+    # Navigate
+    if step_text.startswith("Navigate to"):
+        return 'Navigate to "<url>"'
+
+    # Enter X
+    m = re.match(r'^Enter (.+?) ', step_text)
+    if m:
+        field = m.group(1)
+        return f'Enter {field} "<value>"'
+
+    # Select X
+    m = re.match(r'^Select (.+?) ', step_text)
+    if m:
+        field = m.group(1)
+        return f'Select {field} "<value>"'
+
+    # Verify contains
+    if step_text.startswith("Verify the page contains"):
+        return 'Verify the page contains "<text>"'
+
+    # Click link
+    if step_text.startswith("Click the") and "link" in step_text:
+        return 'Click the "<text>" link'
+
+    # Click button
+    if step_text.startswith("Click the"):
+        return step_text  # no params
+
+    # Fallback: replace quoted OR unquoted trailing value
+    return re.sub(r'(".*?"|\S+)$', '"<value>"', step_text)
+
+
+def extract_steps(spec_path):
+    if not os.path.exists(spec_path):
+        raise FileNotFoundError(f"Spec not found: {spec_path}")
+
+    seen = set()
+    ordered = []
+
+    with open(spec_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line.startswith("* "):
+                continue
+
+            raw = line[2:].strip()
+            pattern = _normalize_pattern(raw)
+
+            if pattern not in seen:
+                seen.add(pattern)
+                ordered.append(pattern)
+
+    return ordered
+
+
+# ==============================================================================
+# CODE GENERATOR
+# ==============================================================================
+
+def _safe_name(pattern):
+    name = re.sub(r'"<[^>]+>"', "param", pattern).lower()
+    name = re.sub(r'[^a-z0-9]+', '_', name).strip('_')
+    return name[:60]
+
+
+def _escape_for_decorator(pattern: str) -> str:
+    """
+    Safely escape pattern for @step decorator.
+    We wrap with single quotes, so escape single quotes inside.
+    """
+    return pattern.replace("'", "\\'")
+
+
+def _build_function(pattern):
+    params = re.findall(r'<([^>]+)>', pattern)
+    known = KNOWN_STEPS.get(pattern)
+
+    if known:
+        func_name, param_names, body = known
+        if len(param_names) != len(params):
+            param_names = params
+        tag = "# implemented"
+    else:
+        func_name = _safe_name(pattern)
+        param_names = params
+        body = (
+            "    raise NotImplementedError(\n"
+            f"        'Step not implemented: {pattern}'\n"
+            "    )"
+        )
+        tag = "# STUB"
+
+    signature = f"def {func_name}({', '.join(param_names)}):"
+
+    safe_pattern = _escape_for_decorator(pattern)
+
+    return (
+        f"\n@step('{safe_pattern}') {tag}\n"
+        f"{signature}\n"
+        f"{body}\n"
+    )
+
+
+# ==============================================================================
+# MAIN GENERATOR
+# ==============================================================================
+
+def generate_step_impl(spec_path=None, output_path=None):
+    spec_path = spec_path or SPEC_PATH
+    output_path = output_path or STEP_IMPL_PATH
+
+    logger.info(f"Reading spec: {spec_path}")
+
+    patterns = extract_steps(spec_path)
+    logger.info(f"Found {len(patterns)} unique step patterns")
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    header = f"""# step_impl/step_impl.py
+# AUTO-GENERATED by step_impl_generator.py
+# Generated: {timestamp}
+# DO NOT EDIT MANUALLY
+
+import os
+import sys
+import logging
+
+sys.path.insert(0, os.getcwd())
+import config
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait, Select
+from selenium.webdriver.support import expected_conditions as EC
+from getgauge.python import step, before_suite, after_suite, after_scenario, data_store
+
+from execution.webdriver_initializer import get_driver, quit_driver
+
+logger = logging.getLogger(__name__)
+WAIT = getattr(config, "IMPLICIT_WAIT", 10)
+
+
+# ==============================================================================
+# Hooks
+# ==============================================================================
+
+@before_suite
+def before_suite_hook():
+    get_driver()
+    logger.info("Browser started")
+
+
+@after_suite
+def after_suite_hook():
+    quit_driver()
+    logger.info("Browser closed")
+
+
+@after_scenario
+def after_scenario_hook():
+    if not getattr(config, "SCREENSHOT_ON_FAILURE", False):
+        return
+
+    status = data_store.scenario.get("executionStatus")
+    if status and status.lower() == "failed":
+        driver = get_driver()
+        os.makedirs(config.REPORTS_DIR, exist_ok=True)
+        name = data_store.scenario.get("scenarioName", "failed")
+        name = name.replace(" ", "_")[:50]
+        driver.save_screenshot(os.path.join(config.REPORTS_DIR, name + ".png"))
+
+
+# ==============================================================================
+# Step Implementations
+# ==============================================================================
+"""
+
+    footer = """
+
+# ==============================================================================
+# Helpers
+# ==============================================================================
+
+def _type_into(driver, css, value):
+    el = WebDriverWait(driver, WAIT).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, css))
+    )
+    el.clear()
+    el.send_keys(value)
+
+
+def _select_from(driver, css, value):
+    el = WebDriverWait(driver, WAIT).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, css))
+    )
+    sel = Select(el)
+    try:
+        sel.select_by_visible_text(value)
+    except Exception:
+        sel.select_by_value(value)
+"""
+
+    content = header
+
+    for pattern in patterns:
+        content += _build_function(pattern)
+
+    content += footer
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    logger.info(f"Step implementation written to: {output_path}")
+    return content
+
+
+# ==============================================================================
+# ENTRY POINT
+# ==============================================================================
+
+def main():
+    logging.basicConfig(level=logging.INFO)
+    generate_step_impl()
+    print("✓ step_impl.py generated successfully")
+
+
+if __name__ == "__main__":
+    main()

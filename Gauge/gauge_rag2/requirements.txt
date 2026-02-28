@@ -1,0 +1,9 @@
+# Core
+selenium>=4.18.0
+requests>=2.31.0
+getgauge>=0.4.4
+
+# Utilities
+python-dotenv>=1.0.0
+
+openai>=1.40.0  

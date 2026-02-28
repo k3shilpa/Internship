@@ -1,0 +1,741 @@
+[
+  {
+    "url": "https://www.calculator.net/",
+    "page_type": "landing",
+    "priority": "medium",
+    "module_name": "CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Search for a calculator",
+        "category": "happy_path",
+        "tags": [
+          "happy_path",
+          "calculator"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/'",
+          "Enter search term 'loan calculator'",
+          "Click the search button"
+        ],
+        "expected_result": "The loan calculator page is displayed"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Invalid search term",
+        "category": "negative",
+        "tags": [
+          "negative",
+          "calculator"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/'",
+          "Enter search term 'xss-attack-string'",
+          "Click the search button"
+        ],
+        "expected_result": "An error message is displayed"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Search term with maximum length",
+        "category": "boundary",
+        "tags": [
+          "boundary",
+          "calculator"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/'",
+          "Enter search term 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'",
+          "Click the search button"
+        ],
+        "expected_result": "The search term is accepted"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "e2e: Search for a calculator and verify results",
+        "category": "e2e",
+        "tags": [
+          "e2e",
+          "calculator"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/'",
+          "Enter search term 'loan calculator'",
+          "Click the search button",
+          "Verify the page contains 'Loan Calculator'"
+        ],
+        "expected_result": "The loan calculator page is displayed with correct results"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/my-account/sign-in.php",
+    "page_type": "login",
+    "priority": "high",
+    "module_name": "LOGIN",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path - Valid Credentials",
+        "category": "happy_path",
+        "tags": [
+          "happy_path",
+          "login"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/my-account/sign-in.php",
+          "Enter email \"test@example.com\"",
+          "Enter password \"password123\"",
+          "Click the login button"
+        ],
+        "expected_result": "User is signed in successfully"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative - Invalid Email",
+        "category": "negative",
+        "tags": [
+          "negative",
+          "login"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/my-account/sign-in.php",
+          "Enter email \"invalid\"",
+          "Enter password \"password123\"",
+          "Click the login button"
+        ],
+        "expected_result": "Error message is displayed"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary - Empty Email",
+        "category": "boundary",
+        "tags": [
+          "boundary",
+          "login"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/my-account/sign-in.php",
+          "Enter email \"\"",
+          "Enter password \"password123\"",
+          "Click the login button"
+        ],
+        "expected_result": "Error message is displayed"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E - User is Logged In",
+        "category": "e2e",
+        "tags": [
+          "e2e",
+          "login"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/my-account/sign-in.php",
+          "Enter email \"test@example.com\"",
+          "Enter password \"password123\"",
+          "Click the login button",
+          "Verify the user is logged in"
+        ],
+        "expected_result": "User is logged in"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/financial-calculator.html",
+    "page_type": "product_listing",
+    "priority": "medium",
+    "module_name": "FINANCIAL_CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Search for a financial calculator",
+        "category": "happy_path",
+        "tags": [
+          "financial_calculator",
+          "happy_path"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/financial-calculator.html",
+          "Enter search term 'mortgage'",
+          "Click the search button",
+          "Verify the page contains 'Mortgage Calculator'"
+        ],
+        "expected_result": "Display a list of relevant financial calculators"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Search with an empty input",
+        "category": "negative",
+        "tags": [
+          "financial_calculator",
+          "negative"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/financial-calculator.html",
+          "Enter search term ''",
+          "Click the search button",
+          "Verify the page contains 'All Calculators'"
+        ],
+        "expected_result": "Display a list of all financial calculators"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Search with a very long search term",
+        "category": "boundary",
+        "tags": [
+          "financial_calculator",
+          "boundary"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/financial-calculator.html",
+          "Enter search term 'a very long search term that exceeds max length'",
+          "Click the search button",
+          "Verify the page contains 'Error: Search term too long'"
+        ],
+        "expected_result": "Display an error message for long search term"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E: Select a financial calculator and use it",
+        "category": "e2e",
+        "tags": [
+          "financial_calculator",
+          "e2e"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/financial-calculator.html",
+          "Enter search term 'mortgage'",
+          "Click the search button",
+          "Click the 'Mortgage Calculator' link",
+          "Enter loan amount '100000'",
+          "Enter interest rate '5'",
+          "Enter loan term '30'",
+          "Click the calculate button",
+          "Verify monthly payment is displayed"
+        ],
+        "expected_result": "Display the mortgage calculator results"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/mortgage-calculator.html",
+    "page_type": "product_detail",
+    "priority": "medium",
+    "module_name": "MORTGAGE_CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Calculate Mortgage Payments",
+        "category": "happy_path",
+        "tags": [
+          "happy_path",
+          "mortgage_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/mortgage-calculator.html\"",
+          "Enter loan amount \"100000\"",
+          "Enter interest rate \"4\"",
+          "Enter loan term \"30\"",
+          "Click the calculate button",
+          "Verify the page contains \"Monthly Payment: $\"",
+          "Verify monthly payment is displayed"
+        ],
+        "expected_result": "The monthly payment is displayed correctly"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Invalid Input",
+        "category": "negative",
+        "tags": [
+          "negative",
+          "mortgage_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/mortgage-calculator.html\"",
+          "Enter loan amount \"abc\"",
+          "Enter interest rate \"4\"",
+          "Enter loan term \"30\"",
+          "Click the calculate button",
+          "Verify the page contains \"Error: Invalid input\""
+        ],
+        "expected_result": "An error message is displayed for invalid input"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Maximum Loan Amount",
+        "category": "boundary",
+        "tags": [
+          "boundary",
+          "mortgage_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/mortgage-calculator.html\"",
+          "Enter loan amount \"1000000\"",
+          "Enter interest rate \"4\"",
+          "Enter loan term \"30\"",
+          "Click the calculate button",
+          "Verify the page contains \"Maximum loan amount reached\""
+        ],
+        "expected_result": "A message is displayed indicating the maximum loan amount has been reached"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E: Calculate Mortgage Payments and View Amortization Schedule",
+        "category": "e2e",
+        "tags": [
+          "e2e",
+          "mortgage_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/mortgage-calculator.html\"",
+          "Enter loan amount \"100000\"",
+          "Enter interest rate \"4\"",
+          "Enter loan term \"30\"",
+          "Click the calculate button",
+          "Verify monthly payment is displayed",
+          "Click the view amortization schedule button",
+          "Verify amortization schedule is displayed"
+        ],
+        "expected_result": "The amortization schedule is displayed correctly"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/loan-calculator.html",
+    "page_type": "product_detail",
+    "priority": "high",
+    "module_name": "LOAN_CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Valid Loan Repayment Calculation",
+        "category": "happy_path",
+        "tags": [
+          "loan_calculation",
+          "happy_path"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/loan-calculator.html",
+          "Enter loan amount 100000",
+          "Enter interest rate 6",
+          "Enter loan term 10",
+          "Select compounding frequency monthly",
+          "Click the calculate button"
+        ],
+        "expected_result": "Successful calculation"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Invalid Loan Amount",
+        "category": "negative",
+        "tags": [
+          "loan_calculation",
+          "negative"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/loan-calculator.html",
+          "Enter loan amount abc",
+          "Enter interest rate 6",
+          "Enter loan term 10",
+          "Select compounding frequency monthly",
+          "Click the calculate button"
+        ],
+        "expected_result": "Error message"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Loan Term at Maximum",
+        "category": "boundary",
+        "tags": [
+          "loan_calculation",
+          "boundary"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/loan-calculator.html",
+          "Enter loan amount 100000",
+          "Enter interest rate 6",
+          "Enter loan term 100",
+          "Select compounding frequency monthly",
+          "Click the calculate button"
+        ],
+        "expected_result": "Successful calculation"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E: Loan Repayment Calculation with Different Compounding Frequency",
+        "category": "e2e",
+        "tags": [
+          "loan_calculation",
+          "e2e"
+        ],
+        "steps": [
+          "Navigate to https://www.calculator.net/loan-calculator.html",
+          "Enter loan amount 100000",
+          "Enter interest rate 6",
+          "Enter loan term 10",
+          "Select compounding frequency annually",
+          "Click the calculate button"
+        ],
+        "expected_result": "Successful calculation"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/auto-loan-calculator.html",
+    "page_type": "form",
+    "priority": "medium",
+    "module_name": "AUTO_LOAN_CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Valid Auto Loan Calculation",
+        "category": "happy_path",
+        "tags": [
+          "happy_path",
+          "auto_loan"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/auto-loan-calculator.html'",
+          "Enter sale price '50000'",
+          "Enter loan term '60'",
+          "Enter interest rate '5'",
+          "Enter incentive '0'",
+          "Enter down payment '10000'",
+          "Enter trade in value '0'",
+          "Enter trade in owned '0'",
+          "Select down payment unit 'percent'",
+          "Select down payment unit 'percent'",
+          "Select state 'CA'",
+          "Enter sale tax '5'",
+          "Enter title and registration '2000'",
+          "Click the calculate button"
+        ],
+        "expected_result": "The auto loan calculation results are displayed"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Invalid Form Submission",
+        "category": "negative",
+        "tags": [
+          "negative",
+          "auto_loan"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/auto-loan-calculator.html'",
+          "Enter sale price 'abc'",
+          "Click the calculate button"
+        ],
+        "expected_result": "An error message is displayed indicating invalid input"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Maximum Sale Price",
+        "category": "boundary",
+        "tags": [
+          "boundary",
+          "auto_loan"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/auto-loan-calculator.html'",
+          "Enter sale price '1000000'",
+          "Click the calculate button"
+        ],
+        "expected_result": "The auto loan calculation results are displayed"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E: Auto Loan Calculation and Results",
+        "category": "e2e",
+        "tags": [
+          "e2e",
+          "auto_loan"
+        ],
+        "steps": [
+          "Navigate to 'https://www.calculator.net/auto-loan-calculator.html'",
+          "Enter sale price '50000'",
+          "Enter loan term '60'",
+          "Enter interest rate '5'",
+          "Enter incentive '0'",
+          "Enter down payment '10000'",
+          "Enter trade in value '0'",
+          "Enter trade in owned '0'",
+          "Select down payment unit 'percent'",
+          "Select down payment unit 'percent'",
+          "Select state 'CA'",
+          "Enter sale tax '5'",
+          "Enter title and registration '2000'",
+          "Click the calculate button",
+          "Verify the page contains 'Auto Loan Calculator Results'"
+        ],
+        "expected_result": "The auto loan calculation results are displayed"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/interest-calculator.html",
+    "page_type": "form",
+    "priority": "medium",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Verify form page loads successfully",
+        "category": "functional",
+        "priority": "high",
+        "preconditions": [
+          "Browser is open"
+        ],
+        "steps": [
+          {
+            "action": "navigate",
+            "target": "https://www.calculator.net/interest-calculator.html",
+            "value": "",
+            "description": "Navigate to https://www.calculator.net/interest-calculator.html"
+          },
+          {
+            "action": "verify",
+            "target": "body",
+            "value": "page loaded",
+            "description": "Verify page loads"
+          }
+        ],
+        "expected_result": "Page loads without errors",
+        "tags": [
+          "smoke",
+          "functional"
+        ]
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Submit Calculate interest on investments and loans with valid data",
+        "category": "functional",
+        "priority": "high",
+        "preconditions": [
+          "User is on the correct page"
+        ],
+        "steps": [
+          {
+            "action": "navigate",
+            "target": "https://www.calculator.net/interest-calculator.html",
+            "value": "",
+            "description": "Navigate to page"
+          },
+          {
+            "action": "verify",
+            "target": "form",
+            "value": "form visible",
+            "description": "Form is visible"
+          }
+        ],
+        "expected_result": "Form submits successfully",
+        "tags": [
+          "functional",
+          "form"
+        ]
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Submit Search for a calculator with valid data",
+        "category": "functional",
+        "priority": "high",
+        "preconditions": [
+          "User is on the correct page"
+        ],
+        "steps": [
+          {
+            "action": "navigate",
+            "target": "https://www.calculator.net/interest-calculator.html",
+            "value": "",
+            "description": "Navigate to page"
+          },
+          {
+            "action": "verify",
+            "target": "form",
+            "value": "form visible",
+            "description": "Form is visible"
+          }
+        ],
+        "expected_result": "Form submits successfully",
+        "tags": [
+          "functional",
+          "form"
+        ]
+      }
+    ],
+    "test_data_table": {
+      "description": "",
+      "headers": [],
+      "rows": []
+    }
+  },
+  {
+    "url": "https://www.calculator.net/payment-calculator.html",
+    "page_type": "form",
+    "priority": "medium",
+    "module_name": "PAYMENT_CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Valid Loan Details",
+        "category": "happy_path",
+        "tags": [
+          "happy_path",
+          "payment_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/payment-calculator.html\"",
+          "Enter loan amount \"100000\"",
+          "Enter interest rate \"5\"",
+          "Enter loan term \"5\"",
+          "Click the calculate button",
+          "Verify the page contains \"Monthly Payment: $\"",
+          "Verify monthly payment is displayed"
+        ],
+        "expected_result": "Correct calculation"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Invalid Loan Amount",
+        "category": "negative",
+        "tags": [
+          "negative",
+          "payment_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/payment-calculator.html\"",
+          "Enter loan amount \"abc\"",
+          "Enter interest rate \"5\"",
+          "Enter loan term \"5\"",
+          "Click the calculate button",
+          "Verify the page contains \"Error: Invalid loan amount\""
+        ],
+        "expected_result": "Error message"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Maximum Loan Amount",
+        "category": "boundary",
+        "tags": [
+          "boundary",
+          "payment_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/payment-calculator.html\"",
+          "Enter loan amount \"999999999\"",
+          "Enter interest rate \"5\"",
+          "Enter loan term \"5\"",
+          "Click the calculate button",
+          "Verify the page contains \"Monthly Payment: $\""
+        ],
+        "expected_result": "Correct calculation"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E: Clear Previous Calculations",
+        "category": "e2e",
+        "tags": [
+          "e2e",
+          "payment_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/payment-calculator.html\"",
+          "Click the clear button",
+          "Verify the page contains \"Loan Amount: $\"",
+          "Verify loan amount input field is empty"
+        ],
+        "expected_result": "Previous calculations cleared"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/retirement-calculator.html",
+    "page_type": "form",
+    "priority": "high",
+    "module_name": "RETIREMENT_CALCULATOR",
+    "test_scenarios": [
+      {
+        "scenario_id": "TC_001",
+        "title": "Happy Path: Calculate Retirement Savings",
+        "category": "happy_path",
+        "tags": [
+          "happy_path",
+          "retirement_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/retirement-calculator.html\"",
+          "Enter current age \"65\"",
+          "Enter retirement age \"70\"",
+          "Enter life expectancy \"80\"",
+          "Enter current income \"50000\"",
+          "Enter income growth rate \"5\"",
+          "Enter desired retirement income \"60000\"",
+          "Select income unit \"dollars\"",
+          "Click the calculate button"
+        ],
+        "expected_result": "The page displays the calculated retirement savings"
+      },
+      {
+        "scenario_id": "TC_002",
+        "title": "Negative: Invalid Input",
+        "category": "negative",
+        "tags": [
+          "negative",
+          "retirement_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/retirement-calculator.html\"",
+          "Enter current age \"-1\"",
+          "Enter retirement age \"70\"",
+          "Enter life expectancy \"80\"",
+          "Enter current income \"50000\"",
+          "Enter income growth rate \"5\"",
+          "Enter desired retirement income \"60000\"",
+          "Select income unit \"dollars\"",
+          "Click the calculate button"
+        ],
+        "expected_result": "The page displays an error message for invalid input"
+      },
+      {
+        "scenario_id": "TC_003",
+        "title": "Boundary: Minimum Input",
+        "category": "boundary",
+        "tags": [
+          "boundary",
+          "retirement_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/retirement-calculator.html\"",
+          "Enter current age \"25\"",
+          "Enter retirement age \"65\"",
+          "Enter life expectancy \"75\"",
+          "Enter current income \"20000\"",
+          "Enter income growth rate \"0\"",
+          "Enter desired retirement income \"40000\"",
+          "Select income unit \"dollars\"",
+          "Click the calculate button"
+        ],
+        "expected_result": "The page displays the calculated retirement savings for minimum input"
+      },
+      {
+        "scenario_id": "TC_004",
+        "title": "E2E: Retirement Planning Options",
+        "category": "e2e",
+        "tags": [
+          "e2e",
+          "retirement_calculator"
+        ],
+        "steps": [
+          "Navigate to \"https://www.calculator.net/retirement-calculator.html\"",
+          "Click the view retirement planning options button",
+          "Verify the page contains \"Retirement Planning Options\""
+        ],
+        "expected_result": "The page displays the retirement planning options"
+      }
+    ]
+  },
+  {
+    "url": "https://www.calculator.net/amortization-calculator.html",
+    "test_scenarios": [],
+    "error": "Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.1-8b-instant` in organization `org_01kfnhj60heqrrnvzjspzkrmyk` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Requested 6863, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  }
+]

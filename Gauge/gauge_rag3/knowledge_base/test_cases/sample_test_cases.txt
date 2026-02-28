@@ -1,0 +1,437 @@
+# AI Exploratory Tests
+
+## VT-01: Break the loan calculator with a large loan amount
+* Navigate to '/loan-calculator.html'
+* Enter '999999999' into 'cloanamount'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-02: Poison the interest calculator with a special character
+* Navigate to '/interest-calculator.html'
+* Enter '!@#' into 'cinterestrate'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-03: Contaminate the mortgage calculator with a long string
+* Navigate to '/mortgage-calculator.html'
+* Enter '999999999999999999' into 'chouseprice'
+* Click 'See your local rates'
+* Verify: Error message or calculator crash
+
+## VT-04: Break the retirement calculator with a negative age
+* Navigate to '/retirement-calculator.html'
+* Enter '-1' into 'cagenow'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-05: Poison the auto loan calculator with a whitespace-only value
+* Navigate to '/auto-loan-calculator.html'
+* Enter '   ' into 'csaleprice'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-06: Contaminate the payment calculator with a cross-field value
+* Navigate to '/payment-calculator.html'
+* Enter 'abc' into 'cloanamount'
+* Copy value from 'cloanamount' and paste into 'cinterestrate'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-07: Break the financial calculator with an empty required field
+* Navigate to '/financial-calculator.html'
+* Leave all fields empty
+* Click 'Reload'
+* Verify: Error message or calculator crash
+
+## VT-08: Poison the calculator with a max limit exceeded value
+* Navigate to '/loan-calculator.html'
+* Enter '1000000001' into 'cloanamount'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-10: Break loan calculator by filling 50% of form and navigating away
+* Navigate to '/loan-calculator.html'
+* Enter '10000' into 'cloanamount'
+* Enter '5' into 'cloanterm'
+* Navigate to '/'
+* Verify: Form values are lost
+
+## VT-11: Test state transition by modifying a single field and recalculating
+* Navigate to '/mortgage-calculator.html'
+* Enter '200000' into 'chouseprice'
+* Enter '20' into 'cdownpayment'
+* Enter '30' into 'cloanterm'
+* Click 'See your local rates'
+* Enter '25' into 'cdownpayment'
+* Click 'See your local rates'
+* Verify: Output updates with new down payment value
+
+## VT-12: Check if form resets or retains values after navigating back
+* Navigate to '/auto-loan-calculator.html'
+* Enter '30000' into 'csaleprice'
+* Enter '5' into 'cloanterm'
+* Navigate to '/interest-calculator.html'
+* Navigate back to '/auto-loan-calculator.html'
+* Verify: Form values are retained
+
+## VT-13: Test state persistence by changing a value mid-form and navigating away
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Enter '60' into 'cretireage'
+* Enter '50000' into 'cincomenow'
+* Navigate to '/'
+* Navigate back to '/retirement-calculator.html'
+* Verify: Form values are retained
+
+## VT-14: Break payment calculator by submitting and then changing inputs without clearing result
+* Navigate to '/payment-calculator.html'
+* Enter '10000' into 'cloanamount'
+* Enter '5' into 'cloanterm'
+* Enter '5' into 'cinterestrate'
+* Click 'x'
+* Enter '15000' into 'cloanamount'
+* Click 'x'
+* Verify: Output updates with new loan amount value
+
+## VT-15: Test loan calculator by filling all fields and then modifying a single field
+* Navigate to '/loan-calculator.html'
+* Enter '10000' into 'cloanamount'
+* Enter '5' into 'cloanterm'
+* Enter '5' into 'cinterestrate'
+* Click 'x'
+* Enter '6' into 'cinterestrate'
+* Click 'x'
+* Verify: Output updates with new interest rate value
+
+## VT-16: Check if mortgage calculator retains values after navigating away and back
+* Navigate to '/mortgage-calculator.html'
+* Enter '200000' into 'chouseprice'
+* Enter '20' into 'cdownpayment'
+* Enter '30' into 'cloanterm'
+* Navigate to '/'
+* Navigate back to '/mortgage-calculator.html'
+* Verify: Form values are retained
+
+## VT-17: Test interest calculator by filling all fields and then changing a single field
+* Navigate to '/interest-calculator.html'
+* Enter '10000' into 'cstartingprinciple'
+* Enter '5' into 'cannualaddition'
+* Enter '5' into 'cinterestrate'
+* Click 'x'
+* Enter '6' into 'cinterestrate'
+* Click 'x'
+* Verify: Output updates with new interest rate value
+
+## VT-18: Break retirement calculator by submitting and then changing inputs without clearing result
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Enter '60' into 'cretireage'
+* Enter '50000' into 'cincomenow'
+* Click 'x'
+* Enter '60000' into 'cincomenow'
+* Click 'x'
+* Verify: Output updates with new income value
+
+## VT-19: Test auto loan calculator by filling 50% of form and navigating away
+* Navigate to '/auto-loan-calculator.html'
+* Enter '30000' into 'csaleprice'
+* Enter '5' into 'cloanterm'
+* Navigate to '/'
+* Verify: Form values are lost
+
+## VT-20: Break the loan calculator with minimum loan amount
+* Navigate to '/loan-calculator.html'
+* Enter '0' into 'cloanamount'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-21: Break the mortgage calculator with maximum house price
+* Navigate to '/mortgage-calculator.html'
+* Enter '9999999999' into 'chouseprice'
+* Click 'See your local rates'
+* Verify: Error message or calculator crash
+
+## VT-22: Break the auto loan calculator with minimum sale price
+* Navigate to '/auto-loan-calculator.html'
+* Enter '0' into 'csaleprice'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-23: Break the interest calculator with maximum interest rate
+* Navigate to '/interest-calculator.html'
+* Enter '100' into 'cinterestrate'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-24: Break the payment calculator with minimum loan term
+* Navigate to '/payment-calculator.html'
+* Enter '0' into 'cloanterm'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-25: Break the retirement calculator with maximum age
+* Navigate to '/retirement-calculator.html'
+* Enter '150' into 'cagenow'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-26: Break the loan calculator with very small loan amount
+* Navigate to '/loan-calculator.html'
+* Enter '0.0001' into 'cloanamount'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-27: Break the mortgage calculator with very large down payment
+* Navigate to '/mortgage-calculator.html'
+* Enter '9999999999' into 'cdownpayment'
+* Click 'See your local rates'
+* Verify: Error message or calculator crash
+
+## VT-28: Break the auto loan calculator with one below minimum loan term
+* Navigate to '/auto-loan-calculator.html'
+* Enter '-1' into 'cloanterm'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-29: Break the interest calculator with one above maximum interest rate
+* Navigate to '/interest-calculator.html'
+* Enter '101' into 'cinterestrate'
+* Click 'x'
+* Verify: Error message or calculator crash
+
+## VT-30: Break the loan calculator by navigating away and back
+* Navigate to '/loan-calculator.html'
+* Enter '10000' into 'cloanamount'
+* Navigate to '/auto-loan-calculator.html'
+* Navigate to '/loan-calculator.html'
+* Verify 'cloanamount' is '10000'
+* Verify: The loan amount is retained as '10000'
+
+## VT-31: Disrupt the interest calculator with a search
+* Navigate to '/interest-calculator.html'
+* Enter '1000' into 'cstartingprinciple'
+* Click 'Search'
+* Enter 'loan' into 'calcSearchTerm'
+* Click 'Search'
+* Verify: The interest calculator is reset
+
+## VT-32: Confuse the retirement calculator with multiple navigations
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Navigate to '/loan-calculator.html'
+* Navigate to '/retirement-calculator.html'
+* Verify 'cagenow' is '30'
+* Verify: The retirement calculator retains the age as '30'
+
+## VT-33: Break the payment calculator with a clear and reload
+* Navigate to '/payment-calculator.html'
+* Enter '5000' into 'cloanamount'
+* Click 'Clear'
+* Click 'Reload'
+* Verify 'cloanamount' is empty
+* Verify: The payment calculator is reset
+
+## VT-34: Disrupt the mortgage calculator with a get pre-approval
+* Navigate to '/mortgage-calculator.html'
+* Enter '200000' into 'chouseprice'
+* Click 'Get pre-approval'
+* Verify 'chouseprice' is '200000'
+* Verify: The mortgage calculator retains the house price as '200000'
+
+## VT-35: Confuse the financial calculator with multiple searches
+* Navigate to '/financial-calculator.html'
+* Click 'Reload'
+* Navigate to '/loan-calculator.html'
+* Enter 'loan' into 'calcSearchTerm'
+* Click 'Search'
+* Verify: The financial calculator is reset
+
+## VT-36: Break the auto loan calculator with a trade-in value change
+* Navigate to '/auto-loan-calculator.html'
+* Enter '10000' into 'csaleprice'
+* Enter '5000' into 'ctradeinvalue'
+* Navigate to '/loan-calculator.html'
+* Navigate to '/auto-loan-calculator.html'
+* Verify 'csaleprice' is '10000' and 'ctradeinvalue' is '5000'
+* Verify: The auto loan calculator retains the sale price and trade-in value
+
+## VT-37: Disrupt the calculator with multiple tab changes
+* Navigate to '/'
+* Click 'sin'
+* Click 'cos'
+* Click 'tan'
+* Verify the calculator is in a valid state
+* Verify: The calculator is in a valid state
+
+## VT-38: Break mode switching on loan calculator
+* Navigate to '/loan-calculator.html'
+* Enter '1000' into 'cloanamount'
+* Click 'Clear'
+* Enter '500' into 'c2loanamount'
+* Click 'x'
+* Verify: Calculator displays correct results for both loan amounts
+
+## VT-39: Test rapid mode switching on interest calculator
+* Navigate to '/interest-calculator.html'
+* Enter '1000' into 'cstartingprinciple'
+* Click 'x'
+* Click 'Clear'
+* Enter '500' into 'cstartingprinciple'
+* Click 'x'
+* Verify: Calculator displays correct results for both principle amounts
+
+## VT-40: Verify value retention on retirement calculator
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Enter '60' into 'cretireage'
+* Click 'x'
+* Click 'Clear'
+* Enter '40' into 'cagenow'
+* Click 'x'
+* Verify: Calculator retains previous values for age and retirement age
+
+## VT-41: Check UI state after rapid mode switching on payment calculator
+* Navigate to '/payment-calculator.html'
+* Enter '1000' into 'cloanamount'
+* Click 'x'
+* Click 'Clear'
+* Enter '500' into 'cloanamount'
+* Click 'x'
+* Click 'Clear'
+* Verify: Calculator displays correct results and UI state is consistent
+
+## VT-42: Test mode switching with incomplete fields on mortgage calculator
+* Navigate to '/mortgage-calculator.html'
+* Enter '100000' into 'chouseprice'
+* Click 'See your local rates'
+* Enter '20' into 'cdownpayment'
+* Click 'Get pre-approval'
+* Verify: Calculator displays error message or warning for incomplete fields
+
+## VT-43: Verify label changes on auto loan calculator
+* Navigate to '/auto-loan-calculator.html'
+* Enter '10000' into 'csaleprice'
+* Click 'x'
+* Click 'Clear'
+* Enter '5000' into 'csaleprice'
+* Click 'x'
+* Verify: Calculator displays correct results and label changes are reflected
+
+## VT-44: Check UI flicker on financial calculator
+* Navigate to '/financial-calculator.html'
+* Click 'Reload'
+* Click 'Reload'
+* Click 'Reload'
+* Verify: Calculator UI does not flicker or display inconsistent results
+
+## VT-45: Test mode switching with valid and invalid inputs on loan calculator
+* Navigate to '/loan-calculator.html'
+* Enter 'abc' into 'cloanamount'
+* Click 'x'
+* Enter '1000' into 'cloanamount'
+* Click 'x'
+* Verify: Calculator displays error message for invalid input and correct results for valid input
+
+## VT-46: Verify calculation results after mode switching on interest calculator
+* Navigate to '/interest-calculator.html'
+* Enter '1000' into 'cstartingprinciple'
+* Enter '5' into 'cinterestrate'
+* Click 'x'
+* Click 'Clear'
+* Enter '500' into 'cstartingprinciple'
+* Enter '3' into 'cinterestrate'
+* Click 'x'
+* Verify: Calculator displays correct results for both principle amounts and interest rates
+
+## VT-47: Check UI state consistency after mode switching on retirement calculator
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Enter '60' into 'cretireage'
+* Click 'x'
+* Click 'Clear'
+* Enter '40' into 'cagenow'
+* Enter '65' into 'cretireage'
+* Click 'x'
+* Verify: Calculator UI state is consistent and displays correct results
+
+## VT-48: Trigger calculation error and verify recovery
+* Navigate to '/loan-calculator.html'
+* Enter '0' into 'cloanamount'
+* Click 'x'
+* Enter '1000' into 'cloanamount'
+* Click 'x'
+* Verify: Calculation result is displayed without errors
+
+## VT-49: Submit empty form and verify error recovery
+* Navigate to '/mortgage-calculator.html'
+* Click 'x'
+* Enter '200000' into 'chouseprice'
+* Click 'x'
+* Verify: Error message is cleared and calculation result is displayed
+
+## VT-50: Verify invalid input error clearance
+* Navigate to '/interest-calculator.html'
+* Enter 'abc' into 'cstartingprinciple'
+* Click 'x'
+* Enter '1000' into 'cstartingprinciple'
+* Click 'x'
+* Verify: Error message is cleared and calculation result is displayed
+
+## VT-51: Clear all fields after successful calculation
+* Navigate to '/payment-calculator.html'
+* Enter '1000' into 'cloanamount'
+* Enter '5' into 'cloanterm'
+* Click 'x'
+* Click 'Clear'
+* Verify: All fields are cleared and calculation result is reset
+
+## VT-52: Verify valid data submission and reset
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Enter '60' into 'cretireage'
+* Click 'x'
+* Click 'Clear'
+* Verify: All fields are cleared and calculation result is reset
+
+## VT-53: Trigger division by zero error and recover
+* Navigate to '/loan-calculator.html'
+* Enter '0' into 'cloanterm'
+* Click 'x'
+* Enter '5' into 'cloanterm'
+* Click 'x'
+* Verify: Error message is cleared and calculation result is displayed
+
+## VT-54: Submit form with invalid value and correct it
+* Navigate to '/auto-loan-calculator.html'
+* Enter 'abc' into 'csaleprice'
+* Click 'x'
+* Enter '20000' into 'csaleprice'
+* Click 'x'
+* Verify: Error message is cleared and calculation result is displayed
+
+## VT-55: Verify calculation error recovery with multiple fields
+* Navigate to '/mortgage-calculator.html'
+* Enter '0' into 'chouseprice'
+* Enter '0' into 'cdownpayment'
+* Click 'x'
+* Enter '200000' into 'chouseprice'
+* Enter '20000' into 'cdownpayment'
+* Click 'x'
+* Verify: Error message is cleared and calculation result is displayed
+
+## VT-56: Clear form after successful calculation with multiple fields
+* Navigate to '/interest-calculator.html'
+* Enter '1000' into 'cstartingprinciple'
+* Enter '5' into 'cyears'
+* Click 'x'
+* Click 'Clear'
+* Verify: All fields are cleared and calculation result is reset
+
+## VT-57: Verify valid data submission and reset with multiple fields
+* Navigate to '/retirement-calculator.html'
+* Enter '30' into 'cagenow'
+* Enter '60' into 'cretireage'
+* Enter '50000' into 'cincomenow'
+* Click 'x'
+* Click 'Clear'
+* Verify: All fields are cleared and calculation result is reset

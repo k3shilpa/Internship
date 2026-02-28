@@ -1,0 +1,215 @@
+# Web Testing Best Practices
+
+## Test Strategy
+
+### Testing Pyramid
+- Unit tests: 70% (fast, isolated)
+- Integration tests: 20% (component interaction)
+- End-to-end (UI) tests: 10% (full user flows)
+
+UI tests like Gauge + Selenium are expensive — focus them on critical paths.
+
+### What to Automate
+GOOD candidates:
+- Regression tests that run every release
+- Happy path for core features
+- Critical form submissions
+- Navigation smoke tests
+- Cross-browser compatibility
+
+BAD candidates:
+- One-time exploratory testing
+- UI aesthetic checks
+- Tests that change every sprint
+- CAPTCHAs and third-party authentication
+
+---
+
+## Test Case Writing Principles
+
+### SMART Test Cases
+- Specific: Clear what is being tested
+- Measurable: Pass/fail criteria defined
+- Achievable: Can be automated
+- Relevant: Tests real user behavior
+- Time-bound: Completes in reasonable time
+
+### Test Case Structure
+Every test case should have:
+1. ID: Unique identifier (TC_001, TC_FORM_001)
+2. Name: Short descriptive title
+3. Priority: High / Medium / Low
+4. Category: functional / navigation / form / ui / accessibility / e2e
+5. Preconditions: State before test starts
+6. Steps: Numbered, specific actions
+7. Expected Result: Per step what should happen
+8. Expected Outcome: Final state after all steps
+
+### Naming Conventions
+Good names describe behavior:
+- "Submit loan form with valid amounts returns monthly payment"
+- "Empty required email field shows validation error"
+- "Homepage logo click returns to home page"
+
+Bad names are vague:
+- "Test form" 
+- "Check button"
+- "Verify page"
+
+---
+
+## Priority Guidelines
+
+### HIGH Priority — Test First
+- Core feature on the page (main calculator, main form)
+- Submit with valid data (happy path)
+- Submit with empty required fields (most common user error)
+- Clear/Reset button
+- Primary navigation links
+- Login/authentication flows
+
+### MEDIUM Priority — Test Second
+- Input validation (wrong types, invalid formats)
+- Boundary values (min, max, zero)
+- Dropdown and radio button options
+- Secondary navigation
+- Error message content and placement
+
+### LOW Priority — Test When Time Permits
+- Accessibility checks (alt text, labels)
+- Footer links
+- Browser back button behavior
+- Long input strings
+- Security injection attempts
+
+---
+
+## Coverage Checklist for Any Web Page
+
+When receiving page metadata, ensure test cases cover:
+
+### Forms Coverage
+- [ ] Happy path: all valid inputs → success
+- [ ] All required fields empty → validation errors
+- [ ] Each required field empty one at a time
+- [ ] Invalid type in each numeric field
+- [ ] Invalid email format (if email field present)
+- [ ] Max length exceeded (if text fields present)
+- [ ] Each dropdown option tested
+- [ ] Each radio option tested
+- [ ] Clear/Reset button
+- [ ] Submit button disabled state (if applicable)
+
+### Navigation Coverage
+- [ ] Every unique link navigates to correct URL
+- [ ] Logo/home link returns to homepage
+- [ ] Back button works as expected
+- [ ] No broken links (404s)
+
+### Content Coverage
+- [ ] Page has H1 heading
+- [ ] Page title is descriptive
+- [ ] All images have alt text
+- [ ] Form inputs have labels
+
+### Result Display Coverage
+- [ ] Result hidden before first submission
+- [ ] Result appears after valid submission
+- [ ] Result updates on resubmission
+- [ ] Result cleared after reset
+
+---
+
+## Test Data Best Practices
+
+### Use Realistic Test Data
+Good: $10,000 loan at 5% for 3 years
+Bad: field1=111111, field2=222222
+
+Good: user@example.com
+Bad: test@test.test
+
+### Categories of Test Data Needed
+1. Typical valid data: Normal everyday values
+2. Edge case valid data: Min, max, decimal precision
+3. Invalid data: Wrong type, out of range
+4. Empty data: Null, empty string, whitespace
+5. Malicious data: XSS attempts, SQL injection
+
+### Never Use Real Personal Data in Tests
+- Use fake names (John Doe, Jane Smith)
+- Use fake emails (test@example.com, user@testdomain.com)
+- Use fake phone numbers (555-0100 to 555-0199 in US)
+- Use fake credit card numbers (4111111111111111 for Visa test)
+
+---
+
+## Test Execution Best Practices
+
+### Test Isolation
+- Each test should set up its own preconditions
+- Tests should not depend on other tests running first
+- Reset state (cookies, localStorage) before each test
+- Use before_scenario hooks for setup
+
+### Test Stability
+- Use explicit waits instead of fixed sleep()
+- Retry on StaleElementReferenceException
+- Take screenshot on failure for debugging
+- Log test steps for traceability
+
+### Test Maintenance
+- Use CSS selectors with IDs when available (most stable)
+- Avoid XPath with absolute paths (breaks on DOM changes)
+- Centralize selectors in one place for easy updates
+- Comment any unusual workarounds in code
+
+---
+
+## Defect Classification
+
+When a test fails, classify the defect:
+
+### Severity Levels
+- Critical: Core feature broken, no workaround (calculator returns wrong answer)
+- High: Important feature broken, workaround exists (clear button doesn't work)
+- Medium: Feature works but behaves unexpectedly (validation message unclear)
+- Low: Minor issue, cosmetic (label text spelling error)
+
+### Priority Levels (independent of severity)
+- P1: Fix immediately, blocks release
+- P2: Fix in this sprint
+- P3: Fix in next sprint
+- P4: Fix when time allows
+
+---
+
+## Common Web Testing Anti-Patterns
+
+### Anti-Pattern 1: Thread.sleep / time.sleep
+Problem: Hardcoded waits make tests slow and flaky
+Fix: Use explicit WebDriverWait with expected conditions
+
+### Anti-Pattern 2: Absolute XPath
+Problem: //html/body/div[2]/form/input[3] breaks on any DOM change
+Fix: Use id, name, or meaningful CSS selectors
+
+### Anti-Pattern 3: Testing Implementation Details
+Problem: Testing internal state/variables instead of user-visible behavior
+Fix: Test what the user sees — visible text, visible elements, URL changes
+
+### Anti-Pattern 4: Overly Long Test Cases
+Problem: One test case does 50 steps, hard to debug when it fails
+Fix: Break into focused tests, each testing one behavior
+
+### Anti-Pattern 5: No Assertions
+Problem: Test navigates and clicks but never verifies outcome
+Fix: Every test must have at least one assertion on the expected result
+
+### Anti-Pattern 6: Flaky Selectors
+Problem: Selecting elements by text content that changes ("Click here", dynamic IDs)
+Fix: Use stable attributes: id, name, data-testid, aria-label
+
+### Anti-Pattern 7: Testing Third-Party Services
+Problem: Testing PayPal, Google OAuth, Stripe directly in automated tests
+Fix: Mock or stub third-party services, test only your integration point

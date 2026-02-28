@@ -1,0 +1,266 @@
+# Test Automation Strategy for Web Applications
+
+## Page Type Testing Strategies
+
+### Static / Informational Pages
+Focus on:
+- Page loads without error
+- H1 heading present and matches page topic
+- All navigation links functional
+- All images have alt text
+- No broken links
+
+### Form Pages (contact, signup, login, search)
+Focus on:
+- Happy path: valid submission succeeds
+- Empty required fields: validation shown
+- Invalid formats: appropriate errors (email, phone, date)
+- Security: XSS and injection attempts handled
+- Success/error feedback is clear to user
+
+### Calculator / Tool Pages
+Focus on:
+- Primary calculation with typical inputs → correct result
+- Boundary inputs: zero, very large, decimal values
+- Invalid inputs: text in number fields, empty required fields
+- Clear button resets all fields
+- Result section appears/disappears correctly
+
+### E-commerce / Product Pages
+Focus on:
+- Add to cart functionality
+- Quantity changes
+- Price calculations correct
+- Navigation to checkout
+
+### Listing / Category Pages
+Focus on:
+- Links to individual items work
+- Filters and sorting work
+- Pagination works
+- No broken item links
+
+### Authentication Pages (login/register)
+Focus on:
+- Valid credentials log in successfully
+- Invalid credentials show error (not which field is wrong)
+- Empty fields show required validation
+- Password field masks input
+- Redirect after login goes to correct page
+
+---
+
+## Selector Strategy
+
+### Priority order for element selection (most stable to least):
+
+1. **id** — Best. Unique per page, rarely changes.
+   ```
+   id=submitButton
+   id=emailField
+   ```
+
+2. **name** — Good for form fields. Stable.
+   ```
+   name=username
+   name=password
+   ```
+
+3. **data-testid** — Excellent if developers add them.
+   ```
+   [data-testid='login-button']
+   [data-testid='error-message']
+   ```
+
+4. **aria-label** — Good for accessibility and stability.
+   ```
+   [aria-label='Search']
+   [aria-label='Close dialog']
+   ```
+
+5. **CSS class + tag** — Acceptable if class is semantic.
+   ```
+   button.submit-btn
+   h2.result-heading
+   input.email-field
+   ```
+
+6. **Link text** — Acceptable for navigation links.
+   ```
+   link text=About Us
+   link text=Sign In
+   ```
+
+7. **XPath** — Last resort, brittle.
+   ```
+   //form[@name='loginForm']//input[@type='submit']
+   ```
+
+### What to AVOID
+- Absolute XPath: //html/body/div[2]/table/tr[3]/td[1]/input
+- Auto-generated IDs: id=ext-gen-42837
+- Position-based selectors: nth-child(3) when order can change
+- Text that is user-visible and translated: "Submit" vs "Invia" (Italian)
+
+---
+
+## Test Categorization
+
+### By Test Type
+
+**Smoke Tests** — Run on every build (5-10 tests)
+- Homepage loads
+- Primary feature works with one valid input
+- Can navigate to 2-3 key pages
+- Login works (if auth required)
+
+**Regression Tests** — Run before each release (20-50 tests)
+- All smoke tests
+- All form validations
+- All navigation links
+- All core features
+
+**Full Suite** — Run weekly or on major changes (50+ tests)
+- All regression tests
+- Accessibility checks
+- Edge cases and boundary values
+- Performance checks
+- Cross-browser checks
+
+### By Priority
+
+**P1 / High** (always run)
+- Core feature functionality
+- Form submit happy path
+- Authentication
+- Payment flows
+
+**P2 / Medium** (run in regression)
+- Form validations
+- Navigation
+- Error handling
+- Secondary features
+
+**P3 / Low** (run in full suite)
+- Accessibility
+- Performance
+- Edge cases
+- Cosmetic checks
+
+---
+
+## Result Verification Strategy
+
+### What to Verify After Form Submission
+
+**Success case - verify ALL of:**
+- Success message or confirmation visible
+- Expected content shown (calculation result, confirmation text)
+- URL changed to expected destination (if redirect)
+- No error messages visible
+
+**Failure case - verify ALL of:**
+- Error message(s) visible and specific
+- Relevant field(s) highlighted/marked
+- Form data preserved (user doesn't lose input)
+- No success message visible
+
+**After Clear/Reset - verify:**
+- All input fields are empty
+- All dropdowns reset to default
+- Result section hidden or cleared
+- No error messages visible
+
+---
+
+## Waiting Strategy
+
+### When to use each wait type
+
+**Explicit wait — ALWAYS use for:**
+- Clicking buttons that trigger page changes
+- Waiting for result to appear after calculation
+- Waiting for element to be visible before reading text
+- Waiting for page to load after navigation
+
+```python
+# Wait for element to be present
+wait.until(EC.presence_of_element_located((By.ID, "result")))
+
+# Wait for element to be visible
+wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".success-message")))
+
+# Wait for element to be clickable
+wait.until(EC.element_to_be_clickable((By.NAME, "submit")))
+
+# Wait for text to appear in element
+wait.until(EC.text_to_be_present_in_element((By.ID, "status"), "Complete"))
+
+# Wait for URL to change
+wait.until(EC.url_contains("/success"))
+```
+
+**Implicit wait — Set once at driver level:**
+```python
+driver.implicitly_wait(10)  # wait up to 10s for elements
+```
+
+**time.sleep — Use sparingly, only when:**
+- After scrolling, small pause for visual rendering (0.3s max)
+- After triggering animations before checking state (0.5s max)
+- NEVER as primary wait strategy
+
+---
+
+## Error Recovery in Tests
+
+### Handling common failures gracefully
+
+**Element not found:**
+```python
+try:
+    element = wait.until(EC.presence_of_element_located((By.ID, "result")))
+except TimeoutException:
+    driver.save_screenshot("timeout_result.png")
+    raise AssertionError("Result element did not appear within timeout")
+```
+
+**Stale element reference:**
+```python
+for attempt in range(3):
+    try:
+        element = driver.find_element(By.ID, "dynamic-content")
+        text = element.text
+        break
+    except StaleElementReferenceException:
+        time.sleep(0.5)
+```
+
+**Page load failure:**
+```python
+try:
+    driver.get(url)
+    wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+except TimeoutException:
+    raise AssertionError(f"Page {url} did not load within timeout")
+```
+
+---
+
+## Reporting Best Practices
+
+### What a good test report should show
+- Total tests: pass / fail / skip count
+- Pass rate percentage
+- Test duration
+- Failures with:
+  - Which step failed
+  - Expected vs actual value
+  - Screenshot at time of failure
+  - Full step history leading to failure
+
+### Report organization
+- Group by feature/page (loan tests, navigation tests)
+- Highlight critical failures prominently
+- Show trend over time (if running regularly)
+- Include environment info (browser, OS, URL tested)

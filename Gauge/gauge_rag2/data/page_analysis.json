@@ -1,0 +1,256 @@
+[
+  {
+    "url": "https://www.calculator.net/",
+    "page_type": "landing",
+    "page_purpose": "This page provides a collection of free online calculators for various purposes.",
+    "primary_actions": [
+      "Use a calculator",
+      "Search for a specific calculator"
+    ],
+    "user_journeys": [
+      "Find a calculator for a specific task",
+      "Explore available calculators"
+    ],
+    "critical_elements": [
+      "Calculator inputs",
+      "Search input",
+      "Calculator buttons"
+    ],
+    "risk_areas": [
+      "Calculator functionality",
+      "Search results"
+    ],
+    "testability_score": 8,
+    "notes": "Test calculator functionality and search results thoroughly.",
+    "_raw_url": "https://www.calculator.net/"
+  },
+  {
+    "url": "https://www.calculator.net/my-account/sign-in.php",
+    "page_type": "login",
+    "page_purpose": "This page allows users to sign in to their account.",
+    "primary_actions": [
+      "Sign in to account"
+    ],
+    "user_journeys": [
+      "User attempts to sign in with valid credentials",
+      "User attempts to sign in with invalid credentials"
+    ],
+    "critical_elements": [
+      "Sign In button",
+      "Email input field",
+      "Password input field"
+    ],
+    "risk_areas": [
+      "Form submission",
+      "Error handling for invalid credentials"
+    ],
+    "testability_score": 8,
+    "notes": "The page has a simple layout and minimal interactive elements, making it relatively easy to test.",
+    "_raw_url": "https://www.calculator.net/my-account/sign-in.php"
+  },
+  {
+    "url": "https://www.calculator.net/financial-calculator.html",
+    "page_type": "product_listing",
+    "page_purpose": "This page provides a list of financial calculators for users to select and use.",
+    "primary_actions": [
+      "Select a financial calculator",
+      "Use a financial calculator"
+    ],
+    "user_journeys": [
+      "User searches for a financial calculator",
+      "User selects a financial calculator and uses it"
+    ],
+    "critical_elements": [
+      "calcSearchTerm input field",
+      "financial calculator selection dropdown"
+    ],
+    "risk_areas": [
+      "Calculator functionality",
+      "Search results accuracy"
+    ],
+    "testability_score": 8,
+    "notes": "Test calculator functionality and search results accuracy thoroughly.",
+    "_raw_url": "https://www.calculator.net/financial-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/mortgage-calculator.html",
+    "page_type": "product_detail",
+    "page_purpose": "This page allows users to calculate their mortgage payments and view an amortization schedule.",
+    "primary_actions": [
+      "Calculate mortgage payments",
+      "View amortization schedule"
+    ],
+    "user_journeys": [
+      "User wants to calculate mortgage payments",
+      "User wants to view mortgage details"
+    ],
+    "critical_elements": [
+      "Calculate button",
+      "Clear button",
+      "Mortgage calculator form"
+    ],
+    "risk_areas": [
+      "Form submission",
+      "Button click events"
+    ],
+    "testability_score": 8,
+    "notes": "The page has multiple forms and buttons, which may require careful testing to ensure proper functionality.",
+    "_raw_url": "https://www.calculator.net/mortgage-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/loan-calculator.html",
+    "page_type": "product_detail",
+    "page_purpose": "This page allows users to calculate loan repayments and explore different loan scenarios.",
+    "primary_actions": [
+      "Calculate loan repayments",
+      "Explore different loan scenarios"
+    ],
+    "user_journeys": [
+      "User wants to calculate loan repayments",
+      "User wants to compare different loan options"
+    ],
+    "critical_elements": [
+      "Loan amount input field",
+      "Interest rate input field",
+      "Calculate button"
+    ],
+    "risk_areas": [
+      "Form submission handling",
+      "Calculation logic"
+    ],
+    "testability_score": 8,
+    "notes": "This page has multiple forms and buttons, which may require careful testing to ensure all scenarios are covered.",
+    "_raw_url": "https://www.calculator.net/loan-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/auto-loan-calculator.html",
+    "page_type": "form",
+    "page_purpose": "This page provides an auto loan calculator to help users calculate their monthly payments and amortization schedule.",
+    "primary_actions": [
+      "Calculate",
+      "Submit form"
+    ],
+    "user_journeys": [
+      "User calculates auto loan and views results",
+      "User navigates to calculator from main page"
+    ],
+    "critical_elements": [
+      "Auto Loan Calculator form",
+      "Calculate button"
+    ],
+    "risk_areas": [
+      "Form submission and calculation logic",
+      "Auto Loan Calculator form fields"
+    ],
+    "testability_score": 8,
+    "notes": "The page has a simple form with a few fields and a calculate button. The form submission and calculation logic should be thoroughly tested.",
+    "_raw_url": "https://www.calculator.net/auto-loan-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/interest-calculator.html",
+    "page_type": "form",
+    "page_purpose": "This page allows users to calculate interest on investments and loans.",
+    "primary_actions": [
+      "Calculate interest",
+      "Clear input fields"
+    ],
+    "user_journeys": [
+      "User searches for an interest calculator, lands on this page, inputs values, and views results."
+    ],
+    "critical_elements": [
+      "Calculate button",
+      "Clear button",
+      "Input fields for investment and loan details"
+    ],
+    "risk_areas": [
+      "Form submission handling",
+      "Calculation logic",
+      "Input validation"
+    ],
+    "testability_score": 8,
+    "notes": "This page has multiple forms and input fields, making it a complex page for testing.",
+    "_raw_url": "https://www.calculator.net/interest-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/payment-calculator.html",
+    "page_type": "form",
+    "page_purpose": "This page allows users to calculate their monthly payment for a loan or other financial product.",
+    "primary_actions": [
+      "Calculate",
+      "Clear"
+    ],
+    "user_journeys": [
+      "User enters loan details and calculates monthly payment",
+      "User clears previous calculations and starts over"
+    ],
+    "critical_elements": [
+      "Calculate button",
+      "Clear button",
+      "Loan amount input field"
+    ],
+    "risk_areas": [
+      "Form submission handling",
+      "Calculation logic",
+      "Error handling for invalid input"
+    ],
+    "testability_score": 8,
+    "notes": "This page has a simple form with clear primary actions, but may require additional testing to ensure correct calculation logic and error handling.",
+    "_raw_url": "https://www.calculator.net/payment-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/retirement-calculator.html",
+    "page_type": "form",
+    "page_purpose": "This page provides a retirement calculator to help users determine how much they need to retire and plan their savings.",
+    "primary_actions": [
+      "Calculate retirement savings",
+      "Clear form",
+      "View retirement planning options"
+    ],
+    "user_journeys": [
+      "User plans retirement savings",
+      "User calculates retirement needs",
+      "User views retirement planning options"
+    ],
+    "critical_elements": [
+      "Retirement calculator form",
+      "Calculate button",
+      "Clear button"
+    ],
+    "risk_areas": [
+      "Form submission handling",
+      "Calculator logic and accuracy",
+      "Error handling and messaging"
+    ],
+    "testability_score": 8,
+    "notes": "The calculator form has multiple fields and buttons, making it a complex form to test. The calculator logic and accuracy are critical to the page's purpose, and error handling and messaging should be thoroughly tested.",
+    "_raw_url": "https://www.calculator.net/retirement-calculator.html"
+  },
+  {
+    "url": "https://www.calculator.net/amortization-calculator.html",
+    "page_type": "form",
+    "page_purpose": "This page allows users to calculate and view an amortization schedule for a loan.",
+    "primary_actions": [
+      "Calculate",
+      "Clear"
+    ],
+    "user_journeys": [
+      "calculate amortization schedule",
+      "view amortization schedule"
+    ],
+    "critical_elements": [
+      "cloanamount",
+      "cloanterm",
+      "cinterestrate",
+      "Calculate",
+      "Clear"
+    ],
+    "risk_areas": [
+      "form submission",
+      "input validation",
+      "amortization calculation logic"
+    ],
+    "testability_score": 8,
+    "notes": "The amortization schedule is displayed below the form, and the user can navigate to other calculators from the navigation links.",
+    "_raw_url": "https://www.calculator.net/amortization-calculator.html"
+  }
+]

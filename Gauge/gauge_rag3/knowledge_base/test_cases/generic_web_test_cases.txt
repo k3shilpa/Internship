@@ -1,0 +1,413 @@
+# Generic Web Application Test Cases
+
+## Search Functionality Tests
+
+### TC_SEARCH_001: Valid Search Term
+- Navigate to page with search form
+- Enter a valid keyword in search input
+- Submit the search form
+- Expected: Results page loads, relevant results displayed
+
+### TC_SEARCH_002: Empty Search Submit
+- Navigate to page with search form
+- Leave search field empty
+- Click submit or press Enter
+- Expected: Form validation triggers or empty results shown, no crash
+
+### TC_SEARCH_003: Special Characters in Search
+- Enter "!@#$%^&*()" in search field
+- Submit form
+- Expected: Page handles gracefully, no 500 error, no crash
+
+### TC_SEARCH_004: Very Long Search Input
+- Enter 500+ characters in search field
+- Submit form
+- Expected: Input truncated or rejected, no server error
+
+### TC_SEARCH_005: Whitespace Only Search
+- Enter only spaces in search field
+- Submit
+- Expected: Treated as empty, validation shown or no results
+
+---
+
+## Generic Form Tests
+
+### TC_FORM_001: Valid Form Submission (Happy Path)
+- Navigate to page with form
+- Fill all required fields with valid data
+- Click submit button
+- Expected: Success message shown, or next page loads
+
+### TC_FORM_002: Submit Empty Required Fields
+- Navigate to form page
+- Leave all required fields empty
+- Click submit
+- Expected: Validation errors shown for each required field
+
+### TC_FORM_003: Submit With One Required Field Empty
+- Fill all required fields except one
+- Click submit
+- Expected: Error shown only for the empty required field
+
+### TC_FORM_004: Clear/Reset Button
+- Fill form fields with values
+- Click Clear or Reset button
+- Expected: All fields return to empty or default state
+
+### TC_FORM_005: Form Resubmission
+- Submit form with valid data
+- Navigate back to form
+- Submit again with different data
+- Expected: Second submission works correctly
+
+---
+
+## Numeric Input Field Tests
+
+### TC_NUM_001: Valid Positive Integer
+- Enter a typical positive integer (e.g. 100)
+- Submit
+- Expected: Processing succeeds, result displayed
+
+### TC_NUM_002: Valid Decimal Number
+- Enter decimal value (e.g. 12.5 or 0.99)
+- Submit
+- Expected: Decimal handled correctly in processing
+
+### TC_NUM_003: Zero Value
+- Enter 0 in numeric field
+- Submit
+- Expected: Either valid zero result shown or appropriate message
+
+### TC_NUM_004: Negative Number
+- Enter -100 in numeric field
+- Submit
+- Expected: Validation error shown or graceful handling
+
+### TC_NUM_005: Very Large Number
+- Enter 9999999999 in numeric field
+- Submit
+- Expected: Result shown or overflow message, no crash
+
+### TC_NUM_006: Alphabetical Text in Numeric Field
+- Enter "abc" or "hello" in numeric field
+- Submit
+- Expected: Validation error shown, field highlighted in red
+
+### TC_NUM_007: Special Characters in Numeric Field
+- Enter "!@#$" in numeric field
+- Submit
+- Expected: Input rejected or validation error shown
+
+### TC_NUM_008: Whitespace in Numeric Field
+- Enter "  100  " (with spaces) in numeric field
+- Submit
+- Expected: Either trimmed and accepted, or validation error
+
+---
+
+## Text Input Field Tests
+
+### TC_TEXT_001: Valid Short Text
+- Enter typical short text (e.g. "John Doe")
+- Submit
+- Expected: Form accepts and processes input
+
+### TC_TEXT_002: Valid Long Text
+- Enter text near maximum length limit
+- Submit
+- Expected: Text accepted up to limit
+
+### TC_TEXT_003: Text Exceeding Maximum Length
+- Enter text well beyond expected maximum (500+ chars)
+- Submit
+- Expected: Input truncated by maxlength attribute or validation error
+
+### TC_TEXT_004: HTML Tags in Text Field
+- Enter "<script>alert('xss')</script>"
+- Submit
+- Expected: Input sanitized, no script executed
+
+### TC_TEXT_005: SQL Injection Attempt
+- Enter "'; DROP TABLE users; --"
+- Submit
+- Expected: Input treated as plain text, no database error
+
+---
+
+## Email Input Field Tests
+
+### TC_EMAIL_001: Valid Email Format
+- Enter "user@example.com"
+- Submit
+- Expected: Email accepted, form processed
+
+### TC_EMAIL_002: Missing @ Symbol
+- Enter "userexample.com"
+- Submit
+- Expected: Email validation error shown
+
+### TC_EMAIL_003: Missing Domain
+- Enter "user@"
+- Submit
+- Expected: Validation error shown
+
+### TC_EMAIL_004: Missing Username
+- Enter "@example.com"
+- Submit
+- Expected: Validation error shown
+
+### TC_EMAIL_005: Valid Email With Subdomain
+- Enter "user@mail.example.co.uk"
+- Submit
+- Expected: Email accepted as valid
+
+---
+
+## Password Field Tests
+
+### TC_PASS_001: Valid Password
+- Enter password meeting all requirements
+- Submit
+- Expected: Password accepted
+
+### TC_PASS_002: Too Short Password
+- Enter password shorter than minimum (e.g. "abc")
+- Submit
+- Expected: Password length error shown
+
+### TC_PASS_003: Password Masking
+- Type in password field
+- Expected: Characters shown as dots or asterisks, not plain text
+
+### TC_PASS_004: Password With Special Characters
+- Enter "P@ssw0rd!#$"
+- Submit
+- Expected: Special characters accepted in password
+
+---
+
+## Dropdown / Select Field Tests
+
+### TC_SELECT_001: Default Option on Load
+- Load page with dropdown
+- Expected: A sensible default option is pre-selected
+
+### TC_SELECT_002: Select Each Option
+- Select each available option one by one
+- Submit after each selection
+- Expected: Each option produces valid result or processes correctly
+
+### TC_SELECT_003: First Option Selection
+- Select first option in dropdown
+- Submit
+- Expected: Form processes with first option selected
+
+### TC_SELECT_004: Last Option Selection
+- Select last option in dropdown
+- Submit
+- Expected: Form processes with last option selected
+
+---
+
+## Radio Button Tests
+
+### TC_RADIO_001: Default Selection
+- Load page with radio buttons
+- Expected: One radio pre-selected by default
+
+### TC_RADIO_002: Switch Radio Selection
+- Select a non-default radio option
+- Expected: New radio highlighted, dependent content updates
+
+### TC_RADIO_003: Each Radio Option Submits Correctly
+- Test submitting form with each radio option selected
+- Expected: Each produces a different but valid outcome
+
+---
+
+## Checkbox Tests
+
+### TC_CHECK_001: Checkbox Checked State
+- Check a checkbox
+- Submit form
+- Expected: Form processes with checkbox value included
+
+### TC_CHECK_002: Checkbox Unchecked State
+- Ensure checkbox is unchecked
+- Submit form
+- Expected: Form processes without checkbox value
+
+### TC_CHECK_003: Check and Uncheck
+- Check a checkbox, then uncheck it
+- Expected: Checkbox toggles correctly both ways
+
+---
+
+## Button Tests
+
+### TC_BTN_001: Primary Submit Button
+- Fill form with valid data
+- Click primary submit/calculate button
+- Expected: Form submits, result or next page appears
+
+### TC_BTN_002: Submit Without Data
+- Click submit with no data entered
+- Expected: No crash, validation shown or empty result
+
+### TC_BTN_003: Clear/Reset Button
+- Enter data in fields
+- Click Clear/Reset button
+- Expected: All fields emptied or reset to defaults
+
+### TC_BTN_004: Disabled Button State
+- Check if any buttons are disabled on page load
+- Expected: Disabled buttons show visual indication, cannot be clicked
+
+### TC_BTN_005: Double Click Submit
+- Fill form with valid data
+- Double click submit button rapidly
+- Expected: Form submitted once only, no duplicate submission
+
+---
+
+## Navigation Tests
+
+### TC_NAV_001: Logo/Home Link
+- Click site logo or home link from any page
+- Expected: Redirects to homepage
+
+### TC_NAV_002: Main Navigation Links
+- Click each link in main navigation menu
+- Expected: Each link loads correct destination page
+
+### TC_NAV_003: Footer Links
+- Click each link in footer (about, privacy, terms, contact)
+- Expected: Each link loads correct page
+
+### TC_NAV_004: Breadcrumb Navigation
+- On deep page with breadcrumbs, click each breadcrumb
+- Expected: Each breadcrumb navigates to correct parent page
+
+### TC_NAV_005: Back Button Behavior
+- Navigate to a page
+- Click browser back button
+- Expected: Returns to previous page with correct state
+
+### TC_NAV_006: Internal Anchor Links
+- Click any anchor/jump links (#section)
+- Expected: Page scrolls to or focuses on target section
+
+### TC_NAV_007: External Links Open Correctly
+- Click any external links
+- Expected: Opens in new tab (target=_blank) or navigates correctly
+
+---
+
+## Page Load and Content Tests
+
+### TC_PAGE_001: Page Has H1 Heading
+- Load any page
+- Expected: Exactly one H1 heading present, not empty
+
+### TC_PAGE_002: Page Title in Browser Tab
+- Load page
+- Expected: Browser tab shows descriptive title, not empty
+
+### TC_PAGE_003: Page Loads Without Console Errors
+- Open browser console
+- Load page
+- Expected: No JavaScript errors in console
+
+### TC_PAGE_004: Page Loads Within Acceptable Time
+- Load page and measure load time
+- Expected: Full page loads within 5 seconds on normal connection
+
+### TC_PAGE_005: Correct Page After Navigation
+- Navigate to a specific page
+- Expected: URL matches expected, H1 matches page topic
+
+---
+
+## Accessibility Tests
+
+### TC_ACC_001: All Images Have Alt Text
+- Load page
+- Inspect all img elements
+- Expected: Every image has non-empty alt attribute
+
+### TC_ACC_002: Form Inputs Have Labels
+- Load form page
+- Check each input field
+- Expected: Each input has associated label, aria-label, or placeholder
+
+### TC_ACC_003: Links Have Descriptive Text
+- Check all anchor elements
+- Expected: No links with text "click here" or empty text without aria-label
+
+### TC_ACC_004: Color Contrast (Manual Check)
+- Visually inspect text against backgrounds
+- Expected: Text is readable, sufficient contrast
+
+### TC_ACC_005: Keyboard Navigation
+- Navigate page using Tab key only
+- Expected: All interactive elements reachable and usable
+
+---
+
+## Responsive Design Tests
+
+### TC_RESP_001: Mobile Viewport
+- Set viewport to 375x667 (iPhone SE size)
+- Load page
+- Expected: Content fits, no horizontal scroll, text readable
+
+### TC_RESP_002: Tablet Viewport
+- Set viewport to 768x1024 (iPad size)
+- Load page
+- Expected: Layout adapts, navigation usable
+
+### TC_RESP_003: Desktop Viewport
+- Set viewport to 1920x1080
+- Load page
+- Expected: Full layout visible, no content cropped
+
+---
+
+## Error Handling Tests
+
+### TC_ERR_001: 404 Page
+- Navigate to a non-existent URL on the site
+- Expected: Custom 404 page shown, not server error
+
+### TC_ERR_002: Form Validation Messages
+- Submit invalid data
+- Expected: Clear, specific error messages shown near relevant fields
+
+### TC_ERR_003: Network Error Simulation
+- Submit form with slow/no network (if testable)
+- Expected: Loading indicator shown, appropriate error message
+
+---
+
+## Result/Output Display Tests
+
+### TC_RESULT_001: Result Appears After Valid Submission
+- Submit form with valid data
+- Expected: Result section becomes visible with meaningful output
+
+### TC_RESULT_002: Result Updates on Resubmission
+- Note first result
+- Change input values
+- Resubmit
+- Expected: Result updates to reflect new input
+
+### TC_RESULT_003: Result Hidden Before First Submission
+- Load page fresh
+- Expected: Result section not visible until form submitted
+
+### TC_RESULT_004: Result Cleared After Reset
+- Get a result displayed
+- Click Clear/Reset
+- Expected: Result section hidden or emptied

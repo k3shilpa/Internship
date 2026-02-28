@@ -1,0 +1,22 @@
+{
+  "email": {
+    "valid": ["test@example.com"],
+    "invalid": ["abc", "user@.com", "user.com"]
+  },
+  "password": {
+    "strong": ["Password@123"],
+    "weak": ["12345", "password"]
+  },
+  "username": {
+    "valid": ["testuser"],
+    "invalid": ["", "a"]
+  },
+  "phone": {
+    "valid": ["9876543210"],
+    "invalid": ["123", "abc"]
+  },
+  "otp": {
+    "valid": ["123456"],
+    "invalid": ["12", "abcdef"]
+  }
+}

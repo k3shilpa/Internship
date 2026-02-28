@@ -1,0 +1,321 @@
+[
+  {
+    "critical_fields": [
+      "Email:",
+      "Password:"
+    ],
+    "field_relationships": [],
+    "logical_constraints": [
+      {
+        "field": "Email:",
+        "rule": "must match email format"
+      }
+    ],
+    "derived_fields": [],
+    "url": "https://www.calculator.net/my-account/sign-in.php"
+  },
+  {
+    "critical_fields": [],
+    "field_relationships": [
+      {
+        "field1": "da1",
+        "field2": "ca1",
+        "relationship": "same_as"
+      },
+      {
+        "field1": "la1",
+        "field2": "da1",
+        "relationship": "dependent_on"
+      },
+      {
+        "field1": "da2",
+        "field2": "ca2",
+        "relationship": "same_as"
+      },
+      {
+        "field1": "la2",
+        "field2": "da2",
+        "relationship": "dependent_on"
+      },
+      {
+        "field1": "da3",
+        "field2": "ca3",
+        "relationship": "same_as"
+      },
+      {
+        "field1": "la3",
+        "field2": "da3",
+        "relationship": "dependent_on"
+      },
+      {
+        "field1": "da4",
+        "field2": "ca4",
+        "relationship": "same_as"
+      },
+      {
+        "field1": "la4",
+        "field2": "da4",
+        "relationship": "dependent_on"
+      },
+      {
+        "field1": "da5",
+        "field2": "ca5",
+        "relationship": "same_as"
+      },
+      {
+        "field1": "la5",
+        "field2": "da5",
+        "relationship": "dependent_on"
+      }
+    ],
+    "logical_constraints": [
+      {
+        "field": "la1",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "la2",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "la3",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "la4",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "la5",
+        "rule": "value must be one of allowed options"
+      }
+    ],
+    "derived_fields": [],
+    "url": "https://www.calculator.net/gpa-calculator.html"
+  },
+  {
+    "critical_fields": [
+      "Down Payment",
+      "Start Date",
+      "Loan Term",
+      "Home Price",
+      "Interest Rate"
+    ],
+    "field_relationships": [
+      {
+        "from": "Home Price",
+        "to": "Calculated Output",
+        "relationship": "calculated_from"
+      },
+      {
+        "from": "Down Payment",
+        "to": "Calculated Output",
+        "relationship": "calculated_from"
+      },
+      {
+        "from": "Down Payment",
+        "to": "Calculated Output",
+        "relationship": "calculated_from"
+      },
+      {
+        "from": "Loan Term",
+        "to": "Calculated Output",
+        "relationship": "calculated_from"
+      },
+      {
+        "from": "Interest Rate",
+        "to": "Calculated Output",
+        "relationship": "calculated_from"
+      },
+      {
+        "field1": "Home Price",
+        "field2": "Down Payment",
+        "relationship": "dependent"
+      },
+      {
+        "field1": "Loan Term",
+        "field2": "Interest Rate",
+        "relationship": "independent"
+      }
+    ],
+    "logical_constraints": [
+      {
+        "field": "Home Price",
+        "rule": "must be numeric"
+      },
+      {
+        "field": "Down Payment",
+        "rule": "must be numeric"
+      },
+      {
+        "field": "Down Payment",
+        "rule": "must be numeric"
+      },
+      {
+        "field": "Down Payment",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "Loan Term",
+        "rule": "must be numeric"
+      },
+      {
+        "field": "Interest Rate",
+        "rule": "must be numeric"
+      },
+      {
+        "field": "Start Date",
+        "rule": "must be valid date"
+      },
+      {
+        "field": "Start Date",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "Start Date",
+        "rule": "must be valid date"
+      },
+      {
+        "field": "Property Taxes",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "Home Insurance",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "PMI Insurance",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "HOA Fee",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "Other Costs",
+        "rule": "value must be one of allowed options"
+      }
+    ],
+    "derived_fields": [
+      "Calculated Output"
+    ],
+    "url": "https://www.calculator.net/mortgage-calculator.html"
+  },
+  {
+    "critical_fields": [],
+    "field_relationships": [
+      {
+        "source_field": "today_Month_ID",
+        "target_field": "ageat_Month_ID",
+        "relationship_type": "same_semantic_type"
+      },
+      {
+        "source_field": "today_Day_ID",
+        "target_field": "ageat_Day_ID",
+        "relationship_type": "same_semantic_type"
+      },
+      {
+        "source_field": "today_Year_ID",
+        "target_field": "ageat_Year_ID",
+        "relationship_type": "same_semantic_type"
+      }
+    ],
+    "logical_constraints": [
+      {
+        "field": "today_Month_ID",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "today_Day_ID",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "ageat_Month_ID",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "ageat_Day_ID",
+        "rule": "value must be one of allowed options"
+      }
+    ],
+    "derived_fields": [],
+    "url": "https://www.calculator.net/age-calculator.html"
+  },
+  {
+    "critical_fields": [],
+    "field_relationships": [
+      {
+        "field1": "vx",
+        "field2": "vy",
+        "relationship": "dependent"
+      },
+      {
+        "field1": "vc",
+        "field2": "vb",
+        "relationship": "dependent"
+      }
+    ],
+    "logical_constraints": [
+      {
+        "field": "Angle Unit:",
+        "rule": "value must be one of allowed options"
+      }
+    ],
+    "derived_fields": [],
+    "url": "https://www.calculator.net/triangle-calculator.html"
+  },
+  {
+    "critical_fields": [],
+    "field_relationships": [
+      {
+        "field1": "cinterestrate",
+        "field2": "cincompound",
+        "relationship": "proportional_to"
+      },
+      {
+        "field1": "cinterestrate",
+        "field2": "coutcompound",
+        "relationship": "proportional_to"
+      }
+    ],
+    "logical_constraints": [
+      {
+        "field": "cincompound",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "coutcompound",
+        "rule": "value must be one of allowed options"
+      }
+    ],
+    "derived_fields": [],
+    "url": "https://www.calculator.net/compound-interest-calculator.html"
+  },
+  {
+    "critical_fields": [],
+    "field_relationships": [
+      {
+        "field1": "Prefix Length:",
+        "relationship": "dependent_on",
+        "field2": "Subnet"
+      },
+      {
+        "field1": "IP Address:",
+        "relationship": "dependent_on",
+        "field2": "IP Address"
+      }
+    ],
+    "logical_constraints": [
+      {
+        "field": "Subnet",
+        "rule": "value must be one of allowed options"
+      },
+      {
+        "field": "Prefix Length:",
+        "rule": "value must be one of allowed options"
+      }
+    ],
+    "derived_fields": [],
+    "url": "https://www.calculator.net/ip-subnet-calculator.html"
+  }
+]

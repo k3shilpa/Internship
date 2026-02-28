@@ -1,0 +1,93 @@
+[
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "high",
+    "url": "https://www.calculator.net/my-account/sign-in.php"
+  },
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "medium",
+    "url": "https://www.calculator.net/gpa-calculator.html"
+  },
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "medium",
+    "url": "https://www.calculator.net/mortgage-calculator.html"
+  },
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "medium",
+    "url": "https://www.calculator.net/age-calculator.html"
+  },
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "medium",
+    "url": "https://www.calculator.net/triangle-calculator.html"
+  },
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "medium",
+    "url": "https://www.calculator.net/compound-interest-calculator.html"
+  },
+  {
+    "test_scenarios": [
+      {
+        "name": "Basic Validation"
+      }
+    ],
+    "boundary_tests": [],
+    "negative_tests": [],
+    "relationship_tests": [],
+    "risk_based_tests": [],
+    "priority": "medium",
+    "url": "https://www.calculator.net/ip-subnet-calculator.html"
+  }
+]

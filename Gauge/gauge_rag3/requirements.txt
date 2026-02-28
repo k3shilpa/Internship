@@ -1,0 +1,24 @@
+# AI-Driven Automated Exploratory Testing Framework
+# Requirements
+
+# ── Core Web Automation ────────────────────────────────────────
+selenium>=4.18.0
+webdriver-manager>=4.0.1
+
+# ── AI / LLM ──────────────────────────────────────────────────
+groq>=0.9.0
+
+# ── RAG: Embeddings ───────────────────────────────────────────
+sentence-transformers>=2.6.0
+
+# ── RAG: Vector Store ─────────────────────────────────────────
+chromadb>=0.5.0
+
+# ── Data Handling ─────────────────────────────────────────────
+requests>=2.31.0
+
+# ── Gauge Python Client ───────────────────────────────────────
+getgauge>=0.4.4
+
+# ── Utilities ─────────────────────────────────────────────────
+python-dotenv>=1.0.0

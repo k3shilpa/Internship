@@ -1,0 +1,222 @@
+# Generic Form Testing Patterns
+
+## Boundary Value Analysis (BVA)
+
+Boundary value analysis tests at the edges of valid input ranges.
+For any numeric field with a known range [min, max]:
+
+### BVA Test Points
+- Below minimum: min - 1 (invalid, expect error)
+- At minimum: min (valid, expect success)
+- Just above minimum: min + 1 (valid, expect success)
+- Nominal middle value: (min + max) / 2 (valid)
+- Just below maximum: max - 1 (valid)
+- At maximum: max (valid, expect success)
+- Above maximum: max + 1 (invalid, expect error)
+
+### Example: Age field (min=0, max=120)
+- Test: -1 → invalid
+- Test: 0 → valid
+- Test: 1 → valid
+- Test: 60 → valid
+- Test: 119 → valid
+- Test: 120 → valid
+- Test: 121 → invalid
+
+### Example: Percentage field (min=0, max=100)
+- Test: -0.1 → invalid
+- Test: 0 → valid (zero percent)
+- Test: 50 → valid (typical)
+- Test: 100 → valid (full percent)
+- Test: 100.1 → invalid
+
+---
+
+## Equivalence Partitioning
+
+Divide inputs into groups that should behave the same way.
+
+### Partitions for a numeric field
+- Partition 1 (invalid): Non-numeric text → "abc", "xyz"
+- Partition 2 (invalid): Negative numbers → -1, -100, -999
+- Partition 3 (invalid): Zero (if not allowed) → 0
+- Partition 4 (valid): Positive integers → 1, 50, 1000
+- Partition 5 (valid): Positive decimals → 0.5, 12.99, 100.50
+- Partition 6 (invalid): Special characters → "!@#", "$100"
+
+Test one representative from each partition.
+
+### Partitions for an email field
+- Partition 1 (valid): standard email → user@domain.com
+- Partition 2 (valid): subdomain → user@mail.domain.co.uk
+- Partition 3 (invalid): no @ → userATdomain.com
+- Partition 4 (invalid): no domain → user@
+- Partition 5 (invalid): no username → @domain.com
+- Partition 6 (invalid): spaces → "user @domain.com"
+
+### Partitions for a text name field
+- Partition 1 (valid): normal name → "John Smith"
+- Partition 2 (valid): single word → "Madonna"
+- Partition 3 (valid): hyphenated → "Mary-Jane Watson"
+- Partition 4 (invalid/edge): numbers → "John123"
+- Partition 5 (invalid): empty → ""
+- Partition 6 (edge): very long → 500 character string
+
+---
+
+## Decision Table Testing
+
+For forms with multiple input fields that interact, test combinations.
+
+### Two-field form example (field A and field B both required)
+| Field A | Field B | Expected Result |
+|---------|---------|-----------------|
+| Valid   | Valid   | Success         |
+| Valid   | Invalid | Error on B      |
+| Invalid | Valid   | Error on A      |
+| Invalid | Invalid | Error on A, B   |
+| Empty   | Valid   | Required error A|
+| Valid   | Empty   | Required error B|
+| Empty   | Empty   | Required both   |
+
+### Three-field calculator form
+Always test:
+1. All valid → success
+2. All empty → all required errors
+3. One empty, rest valid → error on empty field only
+4. One invalid, rest valid → error on invalid field only
+
+---
+
+## State Transition Testing
+
+Test how the page/form changes state.
+
+### Form lifecycle states
+1. Initial (empty): Form loads for first time
+2. Partially filled: Some fields filled, others empty
+3. Fully filled valid: All fields filled with valid data
+4. Submitted: After submit button clicked
+5. Result shown: After successful submission
+6. Error state: After failed validation
+7. Reset: After clear button clicked
+
+### Transitions to test
+- Initial → Submit → Error state (empty required fields)
+- Initial → Fill fields → Submit → Result shown
+- Result shown → Clear → Initial
+- Error state → Fix errors → Submit → Result shown
+- Result shown → Change values → Submit → Updated result
+
+---
+
+## Usability Test Patterns
+
+### Tab Order Test
+- Press Tab from first field
+- Expected: Focus moves logically through fields in reading order
+
+### Enter Key Submission
+- Fill form, press Enter in last field
+- Expected: Form submits (if applicable)
+
+### Copy-Paste Input
+- Copy a valid value from clipboard
+- Paste into input field
+- Submit
+- Expected: Pasted value accepted same as typed
+
+### Auto-fill Compatibility
+- If browser offers autocomplete suggestions
+- Select an autocomplete suggestion
+- Expected: Field populated correctly, form can be submitted
+
+---
+
+## Security Test Patterns
+
+### Cross-Site Scripting (XSS) Inputs to Test
+- <script>alert('xss')</script>
+- <img src=x onerror=alert(1)>
+- javascript:alert(1)
+- <svg onload=alert(1)>
+Expected: All rendered as plain text, no script execution
+
+### SQL Injection Inputs to Test
+- ' OR '1'='1
+- '; DROP TABLE users; --
+- 1; SELECT * FROM users
+- ' UNION SELECT null,null--
+Expected: Treated as plain text, no database errors
+
+### Path Traversal Inputs to Test (file inputs)
+- ../../../etc/passwd
+- ..\..\..\windows\system32
+Expected: Input rejected or treated as plain text
+
+---
+
+## Performance Test Patterns
+
+### Rapid Repeated Submission
+- Click submit button 10 times quickly
+- Expected: Only one submission processed, no duplicate results
+
+### Large File Upload (if applicable)
+- Attempt to upload file larger than limit
+- Expected: Clear error message about file size
+
+### Long Session Test
+- Use form after leaving page open for 30+ minutes
+- Expected: Form still functional, no session timeout errors
+
+---
+
+## Cross-Browser Consistency Patterns
+
+Test on multiple browsers:
+- Chrome (latest)
+- Firefox (latest)
+- Edge (latest)
+- Safari (if Mac)
+
+For each browser verify:
+- Form renders correctly
+- All fields visible and interactive
+- Submit produces same result
+- Error messages display correctly
+- Dropdowns and radios function
+
+---
+
+## Mobile Form Testing Patterns
+
+### Touch Interaction
+- Tap each form field
+- Expected: Keyboard appears, field gets focus
+
+### Mobile Keyboard Types
+- Numeric field → should show numeric keyboard
+- Email field → should show email keyboard (with @ key)
+- Text field → should show standard keyboard
+
+### Viewport Scroll on Mobile
+- When keyboard opens, form should scroll so active field is visible
+- Expected: No fields hidden behind keyboard
+
+---
+
+## Data Persistence Patterns
+
+### Browser Back/Forward
+- Submit form, navigate away, use Back button
+- Expected: Previous page shows correct state
+
+### Page Refresh After Submission
+- Submit form successfully
+- Refresh page
+- Expected: No duplicate submission, browser warns about repost
+
+### Browser Tab Duplicate
+- Open form, fill fields, duplicate tab
+- Expected: Duplicated tab shows original empty form (or warning)

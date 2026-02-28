@@ -1,0 +1,298 @@
+# Gauge Test Framework Reference
+
+## Overview
+Gauge is a free, open-source test automation framework.
+Tests written in plain English .spec files.
+Step implementations written in Python.
+Reports generated in HTML.
+
+## Installation
+```
+# Install Gauge
+choco install gauge            # Windows
+brew install gauge             # macOS
+# or download from gauge.org/get-started
+
+# Install plugins
+gauge install python
+gauge install html-report
+
+# Verify installation
+gauge version
+```
+
+## Project Structure
+```
+gauge_project/
+├── manifest.json          # project config
+├── step_impl.py           # Python step implementations
+├── env/
+│   └── default/
+│       └── default.properties
+├── specs/
+│   ├── smoke_tests.spec
+│   ├── functional_tests.spec
+│   ├── navigation_tests.spec
+│   ├── form_tests.spec
+│   └── accessibility_tests.spec
+└── reports/
+    └── html-report/
+```
+
+## Spec File Syntax
+
+### Full example
+```markdown
+# Login Feature Tests
+
+This suite tests all login page functionality.
+
+tags: login, authentication
+
+## Successful Login with Valid Credentials
+
+tags: smoke, high, functional
+
+* Navigate to url <https://example.com/login>
+* Enter <admin@example.com> in input with id <email>
+* Enter <Password123> in input with id <password>
+* Click on element with id <submit-btn>
+* Assert current URL contains </dashboard>
+* Assert element with id <welcome-message> is visible
+
+## Login Fails with Wrong Password
+
+tags: negative, medium
+
+* Navigate to url <https://example.com/login>
+* Enter <admin@example.com> in input with id <email>
+* Enter <wrongpassword> in input with id <password>
+* Click on element with id <submit-btn>
+* Assert text <Invalid credentials> exists on page
+* Assert current URL contains </login>
+```
+
+## Running Tests
+
+### Basic run commands
+```bash
+# Run all specs (from gauge_project directory)
+gauge run specs/
+
+# Run one spec file
+gauge run specs/smoke_tests.spec
+
+# Run by tag (AND)
+gauge run specs/ --tags "smoke and high"
+
+# Run by tag (OR)
+gauge run specs/ --tags "smoke,navigation"
+
+# Run excluding tag
+gauge run specs/ --tags "not low"
+
+# Run in parallel
+gauge run specs/ --parallel -n 4
+
+# Verbose output
+gauge run specs/ --verbose
+
+# Machine readable (for parsing results in Python)
+gauge run specs/ --machine-readable
+```
+
+### Running from project root (not gauge_project dir)
+```bash
+cd gauge_project && gauge run specs/
+# or
+gauge run gauge_project/specs/ --dir gauge_project
+```
+
+## Python Step Implementation Reference
+
+### Required imports
+```python
+from getgauge.python import (
+    step, before_suite, after_suite,
+    before_scenario, after_scenario,
+    data_store
+)
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait, Select
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+```
+
+### Lifecycle hooks
+```python
+@before_suite
+def suite_setup():
+    """Runs once before all tests"""
+    opts = Options()
+    opts.add_argument("--headless=new")
+    opts.add_argument("--no-sandbox")
+    opts.add_argument("--disable-dev-shm-usage")
+    opts.add_argument("--window-size=1920,1080")
+    data_store.suite["driver"] = webdriver.Chrome(options=opts)
+    data_store.suite["driver"].set_page_load_timeout(30)
+
+@after_suite
+def suite_teardown():
+    """Runs once after all tests"""
+    driver = data_store.suite.get("driver")
+    if driver:
+        driver.quit()
+
+@before_scenario
+def scenario_setup():
+    """Runs before each scenario"""
+    data_store.suite["driver"].delete_all_cookies()
+
+@after_scenario
+def scenario_teardown():
+    """Runs after each scenario — good for screenshots on failure"""
+    pass
+```
+
+### Navigation steps
+```python
+@step("Navigate to url <url>")
+def navigate_to(url):
+    driver = data_store.suite["driver"]
+    driver.get(url)
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.TAG_NAME, "body"))
+    )
+
+@step("Assert current URL contains <partial_url>")
+def assert_url_contains(partial_url):
+    current = data_store.suite["driver"].current_url
+    assert partial_url in current, f"URL '{current}' does not contain '{partial_url}'"
+```
+
+### Input steps
+```python
+@step("Enter <value> in input with id <element_id>")
+def enter_by_id(value, element_id):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, element_id))
+    )
+    el.clear()
+    el.send_keys(value)
+
+@step("Enter <value> in input with name <element_name>")
+def enter_by_name(value, element_name):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.NAME, element_name))
+    )
+    el.clear()
+    el.send_keys(value)
+
+@step("Select option <option_text> from dropdown with id <element_id>")
+def select_by_id(option_text, element_id):
+    driver = data_store.suite["driver"]
+    el = driver.find_element(By.ID, element_id)
+    Select(el).select_by_visible_text(option_text)
+```
+
+### Click steps
+```python
+@step("Click on element with id <element_id>")
+def click_by_id(element_id):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, element_id))
+    )
+    driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
+    el.click()
+
+@step("Click on element with name <element_name>")
+def click_by_name(element_name):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.NAME, element_name))
+    )
+    el.click()
+
+@step("Click on link with text <link_text>")
+def click_link(link_text):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.LINK_TEXT, link_text))
+    )
+    el.click()
+```
+
+### Assertion steps
+```python
+@step("Assert element with id <element_id> is visible")
+def assert_visible_by_id(element_id):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.ID, element_id))
+    )
+    assert el.is_displayed(), f"Element #{element_id} is not visible"
+
+@step("Assert text <expected_text> exists on page")
+def assert_text_on_page(expected_text):
+    body = data_store.suite["driver"].find_element(By.TAG_NAME, "body").text
+    assert expected_text.lower() in body.lower(), \
+        f"Text '{expected_text}' not found on page"
+
+@step("Assert element with css <selector> is visible")
+def assert_visible_by_css(selector):
+    driver = data_store.suite["driver"]
+    el = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, selector))
+    )
+    assert el.is_displayed()
+
+@step("Verify all images have alt text")
+def verify_image_alt():
+    driver = data_store.suite["driver"]
+    images = driver.find_elements(By.TAG_NAME, "img")
+    missing = [img.get_attribute("src") for img in images
+               if not img.get_attribute("alt")]
+    assert not missing, f"{len(missing)} image(s) missing alt text: {missing}"
+```
+
+## manifest.json
+```json
+{
+  "Language": "python",
+  "Plugins": ["html-report"],
+  "FileName": "manifest.json"
+}
+```
+
+## env/default/default.properties
+```properties
+gauge_screenshots_dir = reports/screenshots
+screenshot_on_failure = true
+GAUGE_TELEMETRY_ENABLED = false
+```
+
+## Common Errors
+
+### "No step implementation found"
+Cause: Step text in .spec doesn't exactly match @step decorator
+Fix: Copy step text exactly, including parameter syntax <param>
+
+### "Module getgauge not found"
+Cause: getgauge-python not installed in active venv
+Fix: pip install getgauge
+
+### "Failed to start suite"
+Cause: manifest.json missing or wrong, or Python not found
+Fix: Check manifest.json has "Language": "python"
+
+### "Element not interactable"
+Cause: Element exists but is hidden, disabled, or off-screen
+Fix: Scroll to element first, wait for it to be enabled
+
+### Gauge not finding specs
+Cause: Running from wrong directory
+Fix: Must run from inside gauge_project directory, or use --dir flag

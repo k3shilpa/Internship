@@ -1,0 +1,153 @@
+{
+  "version": "1.0",
+  "description": "Shared test patterns and knowledge for AI-driven Gauge testing",
+  "test_patterns": [
+    {
+      "type": "login",
+      "title": "Login Form - Valid Credentials",
+      "description": "Test login form with valid username and password",
+      "steps": [
+        "Navigate to login page",
+        "Enter valid email",
+        "Enter valid password",
+        "Click submit",
+        "Verify redirect to dashboard"
+      ],
+      "tags": ["auth", "login", "happy-path"]
+    },
+    {
+      "type": "login",
+      "title": "Login Form - Invalid Credentials",
+      "description": "Test login form with invalid credentials shows error",
+      "steps": [
+        "Navigate to login page",
+        "Enter invalid email",
+        "Enter wrong password",
+        "Click submit",
+        "Verify error message is displayed"
+      ],
+      "tags": ["auth", "login", "negative"]
+    },
+    {
+      "type": "registration",
+      "title": "Registration - Happy Path",
+      "description": "New user can register with valid data",
+      "steps": [
+        "Navigate to registration page",
+        "Fill in all required fields with valid data",
+        "Submit form",
+        "Verify confirmation email or success message"
+      ],
+      "tags": ["auth", "registration", "happy-path"]
+    },
+    {
+      "type": "registration",
+      "title": "Registration - Duplicate Email",
+      "description": "Registration with existing email shows appropriate error",
+      "steps": [
+        "Navigate to registration page",
+        "Enter an email that already exists",
+        "Submit form",
+        "Verify error message about duplicate email"
+      ],
+      "tags": ["auth", "registration", "negative"]
+    },
+    {
+      "type": "form",
+      "title": "Required Field Validation",
+      "description": "Form submission with empty required fields shows validation errors",
+      "steps": [
+        "Navigate to form page",
+        "Leave required fields empty",
+        "Submit form",
+        "Verify validation error messages appear"
+      ],
+      "tags": ["form", "validation", "negative"]
+    },
+    {
+      "type": "form",
+      "title": "Email Field Validation",
+      "description": "Invalid email format shows validation error",
+      "steps": [
+        "Navigate to form with email field",
+        "Enter invalid email format e.g. 'notanemail'",
+        "Attempt to submit",
+        "Verify email validation error"
+      ],
+      "tags": ["form", "validation", "email"]
+    },
+    {
+      "type": "e-commerce",
+      "title": "Add Product to Cart",
+      "description": "User can add a product to the shopping cart",
+      "steps": [
+        "Navigate to product listing page",
+        "Click on a product",
+        "Click Add to Cart button",
+        "Verify cart count increases",
+        "Navigate to cart and verify product is present"
+      ],
+      "tags": ["ecommerce", "cart", "functional"]
+    },
+    {
+      "type": "e-commerce",
+      "title": "Checkout Flow",
+      "description": "User can complete a purchase through checkout",
+      "steps": [
+        "Add item to cart",
+        "Navigate to cart",
+        "Click checkout",
+        "Fill in shipping information",
+        "Fill in payment details",
+        "Submit order",
+        "Verify order confirmation"
+      ],
+      "tags": ["ecommerce", "checkout", "e2e"]
+    },
+    {
+      "type": "search",
+      "title": "Search Returns Results",
+      "description": "Searching for a known item returns relevant results",
+      "steps": [
+        "Navigate to page with search",
+        "Type search query",
+        "Submit search",
+        "Verify results are displayed"
+      ],
+      "tags": ["search", "functional"]
+    },
+    {
+      "type": "search",
+      "title": "Search with No Results",
+      "description": "Searching for unknown term shows no-results message",
+      "steps": [
+        "Navigate to page with search",
+        "Type a query that returns no results",
+        "Submit search",
+        "Verify empty state or no-results message"
+      ],
+      "tags": ["search", "negative", "boundary"]
+    },
+    {
+      "type": "navigation",
+      "title": "Navigation Links Work",
+      "description": "All main navigation links navigate to correct pages",
+      "steps": [
+        "From home page, click each navigation link",
+        "Verify correct page loads for each link"
+      ],
+      "tags": ["navigation", "smoke"]
+    },
+    {
+      "type": "accessibility",
+      "title": "Tab Navigation",
+      "description": "All interactive elements are keyboard accessible",
+      "steps": [
+        "Navigate to page",
+        "Use Tab key to move through interactive elements",
+        "Verify all elements receive focus in logical order"
+      ],
+      "tags": ["accessibility", "keyboard"]
+    }
+  ]
+}

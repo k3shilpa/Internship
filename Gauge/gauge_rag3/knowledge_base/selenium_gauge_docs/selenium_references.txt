@@ -1,0 +1,371 @@
+# Selenium WebDriver Complete Reference
+
+## Driver Setup
+
+### Chrome (recommended)
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+opts = Options()
+opts.add_argument("--headless=new")           # no GUI
+opts.add_argument("--no-sandbox")             # required in CI
+opts.add_argument("--disable-dev-shm-usage")  # prevent crashes
+opts.add_argument("--window-size=1920,1080")  # set viewport
+opts.add_argument("--disable-gpu")
+opts.add_argument("--disable-extensions")
+# Prevent bot detection
+opts.add_experimental_option("excludeSwitches", ["enable-automation"])
+opts.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
+
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()),
+    options=opts
+)
+driver.set_page_load_timeout(30)
+driver.implicitly_wait(5)
+```
+
+## Locator Strategies
+
+### By ID
+```python
+driver.find_element(By.ID, "username")
+driver.find_element(By.ID, "submit-btn")
+```
+
+### By Name
+```python
+driver.find_element(By.NAME, "email")
+driver.find_element(By.NAME, "q")  # Google search box
+```
+
+### By CSS Selector
+```python
+# By class
+driver.find_element(By.CSS_SELECTOR, ".submit-button")
+driver.find_element(By.CSS_SELECTOR, "button.primary")
+
+# By attribute
+driver.find_element(By.CSS_SELECTOR, "input[type='submit']")
+driver.find_element(By.CSS_SELECTOR, "[data-testid='login-btn']")
+driver.find_element(By.CSS_SELECTOR, "[aria-label='Search']")
+
+# By tag + class
+driver.find_element(By.CSS_SELECTOR, "h2.result-heading")
+driver.find_element(By.CSS_SELECTOR, "table.data-table")
+
+# Descendant
+driver.find_element(By.CSS_SELECTOR, "form#login input[type='submit']")
+```
+
+### By XPath
+```python
+# By text content
+driver.find_element(By.XPATH, "//button[text()='Calculate']")
+driver.find_element(By.XPATH, "//a[contains(text(), 'Sign In')]")
+
+# By attribute
+driver.find_element(By.XPATH, "//input[@name='username']")
+driver.find_element(By.XPATH, "//form[@name='loginForm']")
+
+# Parent-child relationship
+driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
+```
+
+### By Link Text
+```python
+driver.find_element(By.LINK_TEXT, "About Us")
+driver.find_element(By.PARTIAL_LINK_TEXT, "Sign")  # matches "Sign In", "Sign Up"
+```
+
+## WebDriverWait — Explicit Waits
+
+### Common expected conditions
+```python
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+wait = WebDriverWait(driver, 10)  # 10 second timeout
+
+# Element exists in DOM (may not be visible)
+wait.until(EC.presence_of_element_located((By.ID, "result")))
+
+# Element is visible on screen
+wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".success")))
+
+# Element is hidden
+wait.until(EC.invisibility_of_element_located((By.ID, "loading-spinner")))
+
+# Element can be clicked (visible + enabled)
+wait.until(EC.element_to_be_clickable((By.NAME, "submit")))
+
+# Text appears in element
+wait.until(EC.text_to_be_present_in_element((By.ID, "status"), "Complete"))
+
+# URL changes
+wait.until(EC.url_changes("https://old-url.com"))
+wait.until(EC.url_contains("/dashboard"))
+wait.until(EC.url_to_be("https://example.com/success"))
+
+# Title changes
+wait.until(EC.title_contains("Success"))
+
+# Alert present
+wait.until(EC.alert_is_present())
+
+# Number of windows changes
+wait.until(EC.number_of_windows_to_be(2))
+```
+
+## Form Interactions
+
+### Text inputs
+```python
+# Type into field
+field = driver.find_element(By.ID, "email")
+field.clear()
+field.send_keys("user@example.com")
+
+# Clear field
+field.clear()
+
+# Get current value
+current_value = field.get_attribute("value")
+
+# Send keyboard keys
+from selenium.webdriver.common.keys import Keys
+field.send_keys(Keys.RETURN)   # press Enter
+field.send_keys(Keys.TAB)      # press Tab
+field.send_keys(Keys.CONTROL, "a")  # Ctrl+A (select all)
+field.send_keys(Keys.CONTROL, "c")  # Ctrl+C (copy)
+```
+
+### Dropdowns / Select
+```python
+from selenium.webdriver.support.ui import Select
+
+select_el = driver.find_element(By.ID, "country")
+select = Select(select_el)
+
+# Select by visible text
+select.select_by_visible_text("United States")
+
+# Select by value attribute
+select.select_by_value("US")
+
+# Select by index
+select.select_by_index(0)
+
+# Get all options
+options = [o.text for o in select.options]
+
+# Get selected option
+selected = select.first_selected_option.text
+```
+
+### Radio buttons and checkboxes
+```python
+# Click radio button
+radio = driver.find_element(By.ID, "option1")
+radio.click()
+
+# Check if selected
+is_selected = radio.is_selected()  # True/False
+
+# Checkbox - check
+checkbox = driver.find_element(By.ID, "agree")
+if not checkbox.is_selected():
+    checkbox.click()
+
+# Checkbox - uncheck
+if checkbox.is_selected():
+    checkbox.click()
+```
+
+### Buttons
+```python
+# Click submit button
+submit = driver.find_element(By.CSS_SELECTOR, "input[type='submit']")
+submit.click()
+
+# Or by name
+driver.find_element(By.NAME, "submit").click()
+
+# Check if button is enabled
+is_enabled = submit.is_enabled()  # True/False
+is_displayed = submit.is_displayed()  # True/False
+```
+
+## Page Interactions
+
+### Navigation
+```python
+driver.get("https://example.com")       # navigate to URL
+driver.back()                            # browser back
+driver.forward()                         # browser forward
+driver.refresh()                         # refresh page
+current_url = driver.current_url         # get current URL
+title = driver.title                     # get page title
+```
+
+### Scrolling
+```python
+# Scroll to element
+el = driver.find_element(By.ID, "target")
+driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", el)
+
+# Scroll to top
+driver.execute_script("window.scrollTo(0, 0);")
+
+# Scroll to bottom
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+# Scroll by pixels
+driver.execute_script("window.scrollBy(0, 500);")  # down 500px
+```
+
+### JavaScript execution
+```python
+# Click via JS (when regular click fails)
+driver.execute_script("arguments[0].click();", element)
+
+# Set value via JS (when send_keys fails)
+driver.execute_script("arguments[0].value = '100';", input_field)
+
+# Highlight element for debugging
+driver.execute_script("arguments[0].style.border='3px solid red'", element)
+
+# Get inner text
+text = driver.execute_script("return arguments[0].innerText;", element)
+```
+
+## Assertions
+
+### Element state assertions
+```python
+# Is element visible?
+assert element.is_displayed(), "Element should be visible"
+
+# Is element enabled?
+assert element.is_enabled(), "Element should be enabled"
+
+# Is checkbox/radio selected?
+assert element.is_selected(), "Checkbox should be checked"
+
+# Does element have text?
+assert element.text != "", "Element should have text"
+assert "expected text" in element.text.lower()
+
+# Does element have attribute?
+alt_text = img.get_attribute("alt")
+assert alt_text, f"Image missing alt text: {img.get_attribute('src')}"
+```
+
+### Page-level assertions
+```python
+# Check URL
+assert "success" in driver.current_url, f"Expected /success URL, got {driver.current_url}"
+
+# Check title
+assert "Welcome" in driver.title
+
+# Check body text
+body = driver.find_element(By.TAG_NAME, "body").text
+assert "Error" not in body
+assert "Monthly Payment" in body
+
+# Check element count
+errors = driver.find_elements(By.CSS_SELECTOR, ".error-message")
+assert len(errors) == 0, f"Found {len(errors)} unexpected error messages"
+assert len(errors) == 1, "Expected exactly one error message"
+```
+
+## Screenshots
+
+```python
+# Take screenshot to file
+driver.save_screenshot("test_result.png")
+
+# Take screenshot of specific element
+element = driver.find_element(By.ID, "result-section")
+element.screenshot("result_element.png")
+
+# Screenshot as bytes (for embedding in report)
+screenshot_bytes = driver.get_screenshot_as_png()
+```
+
+## Cookies and Storage
+
+```python
+# Delete all cookies (good for test isolation)
+driver.delete_all_cookies()
+
+# Get all cookies
+cookies = driver.get_cookies()
+
+# Add cookie
+driver.add_cookie({"name": "session", "value": "abc123"})
+
+# Clear localStorage via JavaScript
+driver.execute_script("window.localStorage.clear();")
+driver.execute_script("window.sessionStorage.clear();")
+```
+
+## Multiple Windows/Tabs
+
+```python
+# Get current window handle
+main_window = driver.current_window_handle
+
+# Open new tab
+driver.execute_script("window.open('');")
+
+# Get all windows
+all_windows = driver.window_handles
+
+# Switch to new window
+driver.switch_to.window(all_windows[-1])
+
+# Switch back to main window
+driver.switch_to.window(main_window)
+
+# Close current window
+driver.close()
+```
+
+## Common Exceptions and Fixes
+
+### NoSuchElementException
+Cause: Element not in DOM
+Fix: Wait for element, check selector is correct
+
+### ElementNotInteractableException
+Cause: Element exists but hidden or off-screen
+Fix: Scroll to element, wait for it to be visible
+
+### StaleElementReferenceException
+Cause: DOM changed after finding element
+Fix: Re-find element, retry logic:
+```python
+for _ in range(3):
+    try:
+        element = driver.find_element(By.ID, "target")
+        element.click()
+        break
+    except StaleElementReferenceException:
+        time.sleep(0.3)
+```
+
+### TimeoutException
+Cause: Waited too long for condition
+Fix: Increase timeout, check if page is actually loading
+
+### ElementClickInterceptedException
+Cause: Another element is on top (modal, cookie banner)
+Fix: Close overlay first, or use JS click:
+```python
+driver.execute_script("arguments[0].click();", element)
+```

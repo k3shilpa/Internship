@@ -1,0 +1,1590 @@
+[
+  {
+    "page_url": "https://www.calculator.net/",
+    "title": "Calculator.net: Free Online Calculators - Math, Fitness, Finance, Science",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/my-account/sign-in.php",
+    "title": "Sign In",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Email:",
+            "id": "",
+            "name": "email",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='email']",
+            "semantic_type": "email",
+            "complexity_score": 5
+          },
+          {
+            "tag": "input",
+            "type": "password",
+            "label": "Password:",
+            "id": "",
+            "name": "password",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='password']",
+            "semantic_type": "password",
+            "complexity_score": 5
+          },
+          {
+            "tag": "input",
+            "type": "checkbox",
+            "label": "stay signed in",
+            "id": "rememberme",
+            "name": "rememberme",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='rememberme']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='submit']",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/gpa-calculator.html",
+    "title": "GPA Calculator",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "da1",
+            "id": "",
+            "name": "da1",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='da1']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "ca1",
+            "id": "",
+            "name": "ca1",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='ca1']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "la1",
+            "id": "",
+            "name": "la1",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "-",
+              "A+",
+              "A",
+              "A-",
+              "B+",
+              "B",
+              "B-",
+              "C+",
+              "C",
+              "C-",
+              "D+",
+              "D",
+              "D-",
+              "F",
+              "P",
+              "NP"
+            ],
+            "locator": "//*[@name='la1']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "da2",
+            "id": "",
+            "name": "da2",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='da2']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "ca2",
+            "id": "",
+            "name": "ca2",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='ca2']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "la2",
+            "id": "",
+            "name": "la2",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "-",
+              "A+",
+              "A",
+              "A-",
+              "B+",
+              "B",
+              "B-",
+              "C+",
+              "C",
+              "C-",
+              "D+",
+              "D",
+              "D-",
+              "F",
+              "P",
+              "NP"
+            ],
+            "locator": "//*[@name='la2']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "da3",
+            "id": "",
+            "name": "da3",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='da3']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "ca3",
+            "id": "",
+            "name": "ca3",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='ca3']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "la3",
+            "id": "",
+            "name": "la3",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "-",
+              "A+",
+              "A",
+              "A-",
+              "B+",
+              "B",
+              "B-",
+              "C+",
+              "C",
+              "C-",
+              "D+",
+              "D",
+              "D-",
+              "F",
+              "P",
+              "NP"
+            ],
+            "locator": "//*[@name='la3']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "da4",
+            "id": "",
+            "name": "da4",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='da4']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "ca4",
+            "id": "",
+            "name": "ca4",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='ca4']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "la4",
+            "id": "",
+            "name": "la4",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "-",
+              "A+",
+              "A",
+              "A-",
+              "B+",
+              "B",
+              "B-",
+              "C+",
+              "C",
+              "C-",
+              "D+",
+              "D",
+              "D-",
+              "F",
+              "P",
+              "NP"
+            ],
+            "locator": "//*[@name='la4']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "da5",
+            "id": "",
+            "name": "da5",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='da5']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "ca5",
+            "id": "",
+            "name": "ca5",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='ca5']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "la5",
+            "id": "",
+            "name": "la5",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "-",
+              "A+",
+              "A",
+              "A-",
+              "B+",
+              "B",
+              "B-",
+              "C+",
+              "C",
+              "C-",
+              "D+",
+              "D",
+              "D-",
+              "F",
+              "P",
+              "NP"
+            ],
+            "locator": "//*[@name='la5']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='x']",
+            "text": ""
+          },
+          {
+            "locator": "//*[@id='content']/form[1]/table[1]/tbody[1]/tr[1]/td[1]/table[6]/tbody[1]/tr[1]/td[2]/input[1]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Current GPA",
+            "id": "",
+            "name": "grcCurrentGPA",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='grcCurrentGPA']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Target GPA",
+            "id": "",
+            "name": "grcTargetGPA",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='grcTargetGPA']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Current Credits",
+            "id": "",
+            "name": "grcCurrentCredit",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='grcCurrentCredit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Additional Credits",
+            "id": "",
+            "name": "grcAdditionalCredit",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='grcAdditionalCredit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@id='content']/form[2]/table[1]/tbody[1]/tr[5]/td[1]/input[3]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/mortgage-calculator.html",
+    "title": "Mortgage Calculator",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Home Price",
+            "id": "chouseprice",
+            "name": "chouseprice",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='chouseprice']",
+            "semantic_type": "numeric",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Down Payment",
+            "id": "cdownpayment",
+            "name": "cdownpayment",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cdownpayment']",
+            "semantic_type": "numeric",
+            "complexity_score": 3
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Down Payment",
+            "id": "",
+            "name": "cdownpaymentunit",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "%",
+              "$"
+            ],
+            "locator": "//*[@name='cdownpaymentunit']",
+            "semantic_type": "numeric",
+            "complexity_score": 4
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Loan Term",
+            "id": "cloanterm",
+            "name": "cloanterm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cloanterm']",
+            "semantic_type": "duration",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Interest Rate",
+            "id": "cinterestrate",
+            "name": "cinterestrate",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cinterestrate']",
+            "semantic_type": "numeric",
+            "complexity_score": 3
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Start Date",
+            "id": "cstartmonth",
+            "name": "cstartmonth",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "locator": "//*[@id='cstartmonth']",
+            "semantic_type": "date",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Start Date",
+            "id": "cstartyear",
+            "name": "cstartyear",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cstartyear']",
+            "semantic_type": "date",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Property Taxes",
+            "id": "cpropertytaxes",
+            "name": "cpropertytaxes",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cpropertytaxes']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Property Taxes",
+            "id": "",
+            "name": "cpropertytaxesunit",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "%",
+              "$"
+            ],
+            "locator": "//*[@name='cpropertytaxesunit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Home Insurance",
+            "id": "chomeins",
+            "name": "chomeins",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='chomeins']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Home Insurance",
+            "id": "",
+            "name": "chomeinsunit",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "%",
+              "$"
+            ],
+            "locator": "//*[@name='chomeinsunit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "PMI Insurance",
+            "id": "cpmi",
+            "name": "cpmi",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cpmi']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "PMI Insurance",
+            "id": "",
+            "name": "cpmiunit",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "%",
+              "$"
+            ],
+            "locator": "//*[@name='cpmiunit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "HOA Fee",
+            "id": "choa",
+            "name": "choa",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='choa']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "HOA Fee",
+            "id": "",
+            "name": "choaunit",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "%",
+              "$"
+            ],
+            "locator": "//*[@name='choaunit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "Other Costs",
+            "id": "cothercost",
+            "name": "cothercost",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cothercost']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Other Costs",
+            "id": "",
+            "name": "cothercostunit",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "%",
+              "$"
+            ],
+            "locator": "//*[@name='cothercostunit']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='x']",
+            "text": ""
+          },
+          {
+            "locator": "//*[@id='content']/div[4]/div[1]/form[1]/table[1]/tbody[1]/tr[8]/td[1]/input[3]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/age-calculator.html",
+    "title": "Age Calculator",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "today_Month_ID",
+            "id": "today_Month_ID",
+            "name": "",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "locator": "//*[@id='today_Month_ID']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "today_Day_ID",
+            "id": "today_Day_ID",
+            "name": "",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28"
+            ],
+            "locator": "//*[@id='today_Day_ID']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "today_Year_ID",
+            "id": "today_Year_ID",
+            "name": "",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='today_Year_ID']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "ageat_Month_ID",
+            "id": "ageat_Month_ID",
+            "name": "",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            "locator": "//*[@id='ageat_Month_ID']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "ageat_Day_ID",
+            "id": "ageat_Day_ID",
+            "name": "",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28"
+            ],
+            "locator": "//*[@id='ageat_Day_ID']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "ageat_Year_ID",
+            "id": "ageat_Year_ID",
+            "name": "",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='ageat_Year_ID']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='x']",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/triangle-calculator.html",
+    "title": "Triangle Calculator",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "vc",
+            "id": "",
+            "name": "vc",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='vc']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "vx",
+            "id": "",
+            "name": "vx",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='vx']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "vy",
+            "id": "",
+            "name": "vy",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='vy']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "va",
+            "id": "",
+            "name": "va",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='va']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "vz",
+            "id": "",
+            "name": "vz",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='vz']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "vb",
+            "id": "",
+            "name": "vb",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='vb']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Angle Unit:",
+            "id": "",
+            "name": "angleunits",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "degree \u00b0",
+              "radian"
+            ],
+            "locator": "//*[@name='angleunits']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='x']",
+            "text": ""
+          },
+          {
+            "locator": "//*[@id='content']/div[2]/form[1]/table[1]/tbody[1]/tr[5]/td[1]/input[2]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/compound-interest-calculator.html",
+    "title": "Compound Interest Calculator",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "cinterestrate",
+            "id": "cinterestrate",
+            "name": "cinterestrate",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cinterestrate']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "cincompound",
+            "id": "cincompound",
+            "name": "cincompound",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "Annually (APY)",
+              "Semiannually",
+              "Quarterly",
+              "Monthly (APR)",
+              "Semimonthly",
+              "Biweekly",
+              "Weekly",
+              "Daily",
+              "Continuously"
+            ],
+            "locator": "//*[@id='cincompound']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          },
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "coutcompound",
+            "id": "coutcompound",
+            "name": "coutcompound",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "Annually (APY)",
+              "Semiannually",
+              "Quarterly",
+              "Monthly (APR)",
+              "Semimonthly",
+              "Biweekly",
+              "Weekly",
+              "Daily",
+              "Continuously"
+            ],
+            "locator": "//*[@id='coutcompound']",
+            "semantic_type": "generic_text",
+            "complexity_score": 2
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='x']",
+            "text": ""
+          },
+          {
+            "locator": "//*[@id='content']/form[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[3]/td[1]/input[2]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  },
+  {
+    "page_url": "https://www.calculator.net/ip-subnet-calculator.html",
+    "title": "IP Subnet Calculator",
+    "forms": [
+      {
+        "fields": [
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Subnet",
+            "id": "csubnet",
+            "name": "csubnet",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "255.255.255.255 /32",
+              "255.255.255.254 /31",
+              "255.255.255.252 /30",
+              "255.255.255.248 /29",
+              "255.255.255.240 /28",
+              "255.255.255.224 /27",
+              "255.255.255.192 /26",
+              "255.255.255.128 /25",
+              "255.255.255.0 /24",
+              "255.255.254.0 /23",
+              "255.255.252.0 /22",
+              "255.255.248.0 /21",
+              "255.255.240.0 /20",
+              "255.255.224.0 /19",
+              "255.255.192.0 /18",
+              "255.255.128.0 /17",
+              "255.255.0.0 /16",
+              "255.254.0.0 /15",
+              "255.252.0.0 /14",
+              "255.248.0.0 /13",
+              "255.240.0.0 /12",
+              "255.224.0.0 /11",
+              "255.192.0.0 /10",
+              "255.128.0.0 /9",
+              "255.0.0.0 /8",
+              "254.0.0.0 /7",
+              "252.0.0.0 /6",
+              "248.0.0.0 /5",
+              "240.0.0.0 /4",
+              "224.0.0.0 /3",
+              "192.0.0.0 /2",
+              "128.0.0.0 /1"
+            ],
+            "locator": "//*[@id='csubnet']",
+            "semantic_type": "generic_text",
+            "complexity_score": 3
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "IP Address",
+            "id": "cip",
+            "name": "cip",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='cip']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@name='x']",
+            "text": ""
+          },
+          {
+            "locator": "//*[@id='ipv4table']/tbody[1]/tr[4]/td[1]/input[3]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "select",
+            "type": "select-one",
+            "label": "Prefix Length:",
+            "id": "",
+            "name": "c6subnet",
+            "placeholder": null,
+            "min": null,
+            "max": null,
+            "step": null,
+            "options": [
+              "/1",
+              "/2",
+              "/3",
+              "/4",
+              "/5",
+              "/6",
+              "/7",
+              "/8",
+              "/9",
+              "/10",
+              "/11",
+              "/12",
+              "/13",
+              "/14",
+              "/15",
+              "/16",
+              "/17",
+              "/18",
+              "/19",
+              "/20",
+              "/21",
+              "/22",
+              "/23",
+              "/24",
+              "/25",
+              "/26",
+              "/27",
+              "/28",
+              "/29",
+              "/30",
+              "/31",
+              "/32",
+              "/33",
+              "/34",
+              "/35",
+              "/36",
+              "/37",
+              "/38",
+              "/39",
+              "/40",
+              "/41",
+              "/42",
+              "/43",
+              "/44",
+              "/45",
+              "/46",
+              "/47",
+              "/48",
+              "/49",
+              "/50",
+              "/51",
+              "/52",
+              "/53",
+              "/54",
+              "/55",
+              "/56",
+              "/57",
+              "/58",
+              "/59",
+              "/60",
+              "/61",
+              "/62",
+              "/63",
+              "/64",
+              "/65",
+              "/66",
+              "/67",
+              "/68",
+              "/69",
+              "/70",
+              "/71",
+              "/72",
+              "/73",
+              "/74",
+              "/75",
+              "/76",
+              "/77",
+              "/78",
+              "/79",
+              "/80",
+              "/81",
+              "/82",
+              "/83",
+              "/84",
+              "/85",
+              "/86",
+              "/87",
+              "/88",
+              "/89",
+              "/90",
+              "/91",
+              "/92",
+              "/93",
+              "/94",
+              "/95",
+              "/96",
+              "/97",
+              "/98",
+              "/99",
+              "/100",
+              "/101",
+              "/102",
+              "/103",
+              "/104",
+              "/105",
+              "/106",
+              "/107",
+              "/108",
+              "/109",
+              "/110",
+              "/111",
+              "/112",
+              "/113",
+              "/114",
+              "/115",
+              "/116",
+              "/117",
+              "/118",
+              "/119",
+              "/120",
+              "/121",
+              "/122",
+              "/123",
+              "/124",
+              "/125",
+              "/126",
+              "/127",
+              "/128"
+            ],
+            "locator": "//*[@name='c6subnet']",
+            "semantic_type": "generic_text",
+            "complexity_score": 4
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "IP Address:",
+            "id": "",
+            "name": "c6ip",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@name='c6ip']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": [
+          {
+            "locator": "//*[@id='content']/div[3]/form[1]/table[1]/tbody[1]/tr[3]/td[1]/input[3]",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "label": "calcSearchTerm",
+            "id": "calcSearchTerm",
+            "name": "calcSearchTerm",
+            "placeholder": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "options": [],
+            "locator": "//*[@id='calcSearchTerm']",
+            "semantic_type": "generic_text",
+            "complexity_score": 1
+          }
+        ],
+        "submit_buttons": []
+      }
+    ]
+  }
+]

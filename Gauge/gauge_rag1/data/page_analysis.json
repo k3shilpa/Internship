@@ -1,0 +1,44 @@
+[
+  {
+    "page_type": "search",
+    "risk_level": "low",
+    "confidence": 0.9,
+    "reasoning": "Single text input field with no password or finance/math/utility-related content",
+    "url": "https://www.calculator.net/"
+  },
+  {
+    "page_type": "login",
+    "risk_level": "high",
+    "confidence": 0.9,
+    "reasoning": "login page detected from title",
+    "url": "https://www.calculator.net/my-account/sign-in.php"
+  },
+  {
+    "page_type": "utility_calculator",
+    "risk_level": "low",
+    "confidence": 0.9,
+    "reasoning": "The page title 'Age Calculator' and the presence of date-related fields suggest a utility calculator, which is further confirmed by the lack of password or registration-related fields.",
+    "url": "https://www.calculator.net/age-calculator.html"
+  },
+  {
+    "page_type": "math_calculator",
+    "risk_level": "low",
+    "confidence": 0.9,
+    "reasoning": "Page title indicates a math-related calculator, and all fields are simple text inputs with no password or sensitive information.",
+    "url": "https://www.calculator.net/triangle-calculator.html"
+  },
+  {
+    "page_type": "math_calculator",
+    "risk_level": "low",
+    "confidence": 0.9,
+    "reasoning": "Page title and fields suggest a mathematical calculator, specifically for compound interest calculations.",
+    "url": "https://www.calculator.net/compound-interest-calculator.html"
+  },
+  {
+    "page_type": "utility_calculator",
+    "risk_level": "low",
+    "confidence": 0.9,
+    "reasoning": "The page title and fields suggest a utility-related calculator, specifically an IP subnet calculator.",
+    "url": "https://www.calculator.net/ip-subnet-calculator.html"
+  }
+]

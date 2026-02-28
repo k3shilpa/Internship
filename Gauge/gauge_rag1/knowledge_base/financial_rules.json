@@ -1,0 +1,79 @@
+{
+  "money": {
+    "positive": [1000, 5000, 25000],
+    "boundary": [0, 1],
+    "negative": [-100],
+    "large": [1000000, 5000000]
+  },
+  "loan_amount": {
+    "positive": [200000, 500000],
+    "boundary": [0, 1],
+    "negative": [-1000],
+    "large": [10000000]
+  },
+  "down_payment": {
+    "positive": [10000, 50000],
+    "boundary": [0],
+    "invalid": [-5000]
+  },
+  "interest_rate": {
+    "positive": [5, 7.5],
+    "boundary": [0, 100],
+    "invalid": [-5, 150]
+  },
+  "duration": {
+    "positive": [5, 10, 20],
+    "boundary": [0, 1],
+    "invalid": [-1]
+  },
+  "months": {
+    "positive": [12, 24, 36],
+    "boundary": [0],
+    "invalid": [-5]
+  },
+  "emi": {
+    "positive": [5000],
+    "boundary": [0],
+    "invalid": [-100]
+  },
+  "percentage": {
+    "positive": [10, 25, 50],
+    "boundary": [0, 100],
+    "invalid": [-10, 150]
+  },
+  "tax_rate": {
+    "positive": [5, 18],
+    "boundary": [0],
+    "invalid": [-5]
+  },
+  "income": {
+    "positive": [30000, 50000],
+    "boundary": [0],
+    "invalid": [-1000]
+  },
+  "salary": {
+    "positive": [40000, 80000],
+    "boundary": [0],
+    "invalid": [-2000]
+  },
+  "investment": {
+    "positive": [10000, 50000],
+    "boundary": [0],
+    "invalid": [-1000]
+  },
+  "credit_score": {
+    "positive": [650, 750],
+    "boundary": [300, 850],
+    "invalid": [100, 900]
+  },
+  "age": {
+    "positive": [25, 40],
+    "boundary": [0, 18, 100],
+    "invalid": [-5, 150]
+  },
+  "number": {
+    "positive": [10],
+    "boundary": [0],
+    "invalid": [-10]
+  }
+}
