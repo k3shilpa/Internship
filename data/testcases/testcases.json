@@ -1,0 +1,1049 @@
+{
+  "generation_metadata": {
+    "base_url": "https://www.calculator.net/",
+    "generated_at": "2026-03-01T11:33:31.339401",
+    "total_test_cases": 21,
+    "rag_enabled": true
+  },
+  "statistics": {
+    "by_category": {
+      "functional": 13,
+      "navigation": 7,
+      "ui": 1
+    },
+    "by_priority": {
+      "high": 11,
+      "low": 6,
+      "medium": 4
+    },
+    "total": 21
+  },
+  "test_cases": [
+    {
+      "id": "TC_001",
+      "name": "Calculator Home Page Loads Successfully",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify the Calculator home page loads successfully",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/",
+            "description": "Navigate to the Calculator home page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Verify the page title"
+          },
+          "input_data": null,
+          "expected_result": "Free Online Calculators"
+        }
+      ],
+      "expected_outcome": "Calculator home page loads successfully",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_002",
+      "name": "Sign In Link Works Correctly",
+      "category": "navigation",
+      "priority": "low",
+      "description": "Verify the sign in link works correctly",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/",
+            "description": "Navigate to the Calculator home page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Click the sign in link"
+          },
+          "input_data": null,
+          "expected_result": "Sign in page displayed"
+        }
+      ],
+      "expected_outcome": "Sign in link works correctly",
+      "tags": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "TC_003",
+      "name": "Mortgage Calculator Link Works Correctly",
+      "category": "navigation",
+      "priority": "low",
+      "description": "Verify the mortgage calculator link works correctly",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/",
+            "description": "Navigate to the Calculator home page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "Mortgage Calculator",
+            "description": "Click the mortgage calculator link"
+          },
+          "input_data": null,
+          "expected_result": "Mortgage calculator page displayed"
+        }
+      ],
+      "expected_outcome": "Mortgage calculator link works correctly",
+      "tags": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "TC_004",
+      "name": "Navigate to Fitness and Health Calculators",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify that the user can navigate to the Fitness and Health Calculators page",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "description": "Navigate to the Fitness and Health Calculators page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        }
+      ],
+      "expected_outcome": "User is on the Fitness and Health Calculators page",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_005",
+      "name": "Search for a term",
+      "category": "functional",
+      "priority": "medium",
+      "description": "Verify that the user can search for a term",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "description": "Navigate to the Fitness and Health Calculators page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "calcSearchTerm",
+            "description": "Search input field"
+          },
+          "input_data": "test search term",
+          "expected_result": "Search term is entered"
+        },
+        {
+          "step_number": 3,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Search button"
+          },
+          "input_data": null,
+          "expected_result": "Search is performed"
+        }
+      ],
+      "expected_outcome": "Search results are displayed",
+      "tags": []
+    },
+    {
+      "id": "TC_006",
+      "name": "Click on a link",
+      "category": "navigation",
+      "priority": "low",
+      "description": "Verify that the user can click on a link",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "description": "Navigate to the Fitness and Health Calculators page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "BMI Calculator",
+            "description": "BMI Calculator link"
+          },
+          "input_data": null,
+          "expected_result": "User is redirected to the BMI Calculator page"
+        }
+      ],
+      "expected_outcome": "User is on the BMI Calculator page",
+      "tags": []
+    },
+    {
+      "id": "TC_007",
+      "name": "Verify heading text",
+      "category": "ui",
+      "priority": "low",
+      "description": "Verify that the heading text is correct",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "description": "Navigate to the Fitness and Health Calculators page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "assert_text",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Fitness and Health Calculators heading"
+          },
+          "input_data": "Fitness and Health Calculators",
+          "expected_result": "Heading text is correct"
+        }
+      ],
+      "expected_outcome": "Heading text is correct",
+      "tags": []
+    },
+    {
+      "id": "TC_008",
+      "name": "Happy Path: Calculate TDEE",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify TDEE calculation with valid input",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/tdee-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "cage",
+            "description": "Select age"
+          },
+          "input_data": "30",
+          "expected_result": "Age selected successfully"
+        },
+        {
+          "step_number": 3,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "csex1",
+            "description": "Select male"
+          },
+          "input_data": null,
+          "expected_result": "Sex selected successfully"
+        },
+        {
+          "step_number": 4,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "cheightfeet",
+            "description": "Enter height in feet"
+          },
+          "input_data": "5",
+          "expected_result": "Height entered successfully"
+        },
+        {
+          "step_number": 5,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "cheightinch",
+            "description": "Enter height in inches"
+          },
+          "input_data": "8",
+          "expected_result": "Height entered successfully"
+        },
+        {
+          "step_number": 6,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "cpound",
+            "description": "Enter weight in pounds"
+          },
+          "input_data": "150",
+          "expected_result": "Weight entered successfully"
+        },
+        {
+          "step_number": 7,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate TDEE"
+          },
+          "input_data": null,
+          "expected_result": "TDEE calculated successfully"
+        },
+        {
+          "step_number": 8,
+          "action": "assert_text",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Verify TDEE displayed"
+          },
+          "input_data": null,
+          "expected_result": "TDEE displayed successfully"
+        }
+      ],
+      "expected_outcome": "TDEE calculated successfully",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_009",
+      "name": "Empty Required Fields: Calculate TDEE",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify TDEE calculation with empty required fields",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/tdee-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate TDEE"
+          },
+          "input_data": null,
+          "expected_result": "Error message displayed for empty fields"
+        },
+        {
+          "step_number": 3,
+          "action": "assert_text",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h3",
+            "description": "Verify error message displayed"
+          },
+          "input_data": null,
+          "expected_result": "Error message displayed successfully"
+        }
+      ],
+      "expected_outcome": "Error message displayed successfully",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_010",
+      "name": "Invalid Format: Calculate TDEE",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify TDEE calculation with invalid format",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/tdee-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "cage",
+            "description": "Enter invalid age"
+          },
+          "input_data": "abc",
+          "expected_result": "Error message displayed for invalid age"
+        },
+        {
+          "step_number": 3,
+          "action": "assert_text",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h3",
+            "description": "Verify error message displayed"
+          },
+          "input_data": null,
+          "expected_result": "Error message displayed successfully"
+        }
+      ],
+      "expected_outcome": "Error message displayed successfully",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_011",
+      "name": "Click on Sign In Link",
+      "category": "navigation",
+      "priority": "medium",
+      "description": "Verify sign in link functionality",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/tdee-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Click on sign in link"
+          },
+          "input_data": null,
+          "expected_result": "Sign in page loaded successfully"
+        }
+      ],
+      "expected_outcome": "Sign in page loaded successfully",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_012",
+      "name": "Happy Path",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify calculator works as expected",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
+          },
+          "input_data": null,
+          "expected_result": "Calculator results displayed"
+        },
+        {
+          "step_number": 3,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Page title"
+          },
+          "input_data": null,
+          "expected_result": "Pregnancy Weight Gain Calculator"
+        }
+      ],
+      "expected_outcome": "Calculator results displayed",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_013",
+      "name": "Empty Required Fields",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify error messages for empty required fields",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
+          },
+          "input_data": null,
+          "expected_result": "Error messages for empty fields"
+        },
+        {
+          "step_number": 3,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h3",
+            "description": "Error message"
+          },
+          "input_data": null,
+          "expected_result": "Please enter your height in feet and inches"
+        }
+      ],
+      "expected_outcome": "Error messages for empty fields",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_014",
+      "name": "Invalid Format",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify error messages for invalid format",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "name",
+            "selector_value": "cheightfeet",
+            "description": "Height in feet"
+          },
+          "input_data": "abc",
+          "expected_result": "Error message for invalid format"
+        },
+        {
+          "step_number": 3,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h3",
+            "description": "Error message"
+          },
+          "input_data": null,
+          "expected_result": "Please enter a valid number"
+        }
+      ],
+      "expected_outcome": "Error message for invalid format",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_015",
+      "name": "Twin Pregnancy",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify calculator results for twin pregnancy",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
+          },
+          "input_data": null,
+          "expected_result": "Calculator results displayed"
+        },
+        {
+          "step_number": 3,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "name",
+            "selector_value": "cheightfeet",
+            "description": "Height in feet"
+          },
+          "input_data": "5",
+          "expected_result": "Calculator results displayed"
+        },
+        {
+          "step_number": 4,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "name",
+            "selector_value": "cheightinch",
+            "description": "Height in inches"
+          },
+          "input_data": "8",
+          "expected_result": "Calculator results displayed"
+        },
+        {
+          "step_number": 5,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
+          },
+          "input_data": null,
+          "expected_result": "Calculator results displayed"
+        },
+        {
+          "step_number": 6,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Page title"
+          },
+          "input_data": null,
+          "expected_result": "Pregnancy Weight Gain Calculator"
+        }
+      ],
+      "expected_outcome": "Calculator results displayed",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_016",
+      "name": "Sign In",
+      "category": "navigation",
+      "priority": "high",
+      "description": "Verify sign in link",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Sign in link"
+          },
+          "input_data": null,
+          "expected_result": "Sign in page displayed"
+        },
+        {
+          "step_number": 3,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Page title"
+          },
+          "input_data": null,
+          "expected_result": "Sign in"
+        }
+      ],
+      "expected_outcome": "Sign in page displayed",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_017",
+      "name": "Verify Page Title",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify the page title is correct",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/financial-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Verify page title"
+          },
+          "input_data": null,
+          "expected_result": "Financial Calculators"
+        }
+      ],
+      "expected_outcome": "Page title is correct",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_018",
+      "name": "Verify Mortgage and Real Estate Section",
+      "category": "functional",
+      "priority": "medium",
+      "description": "Verify the Mortgage and Real Estate section is visible",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/financial-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "verify",
+          "target": {
+            "element_type": "heading",
+            "selector_type": "css",
+            "selector_value": "h3.h3head",
+            "description": "Verify Mortgage and Real Estate section"
+          },
+          "input_data": null,
+          "expected_result": "Mortgage and Real Estate"
+        }
+      ],
+      "expected_outcome": "Mortgage and Real Estate section is visible",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_019",
+      "name": "Verify Sign In Link",
+      "category": "navigation",
+      "priority": "low",
+      "description": "Verify the Sign In link is clickable",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/financial-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Click Sign In link"
+          },
+          "input_data": null,
+          "expected_result": "Sign In page loads"
+        }
+      ],
+      "expected_outcome": "Sign In link is clickable",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_020",
+      "name": "Verify Mortgage Calculator Link",
+      "category": "navigation",
+      "priority": "low",
+      "description": "Verify the Mortgage Calculator link is clickable",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/financial-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "Mortgage Calculator",
+            "description": "Click Mortgage Calculator link"
+          },
+          "input_data": null,
+          "expected_result": "Mortgage Calculator page loads"
+        }
+      ],
+      "expected_outcome": "Mortgage Calculator link is clickable",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_021",
+      "name": "Verify Search Term Input",
+      "category": "functional",
+      "priority": "medium",
+      "description": "Verify the Search Term input field is visible and editable",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/financial-calculator.html",
+            "description": "Navigate to the page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "verify",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "calcSearchTerm",
+            "description": "Verify Search Term input field"
+          },
+          "input_data": null,
+          "expected_result": "Search Term input field is visible and editable"
+        }
+      ],
+      "expected_outcome": "Search Term input field is visible and editable",
+      "tags": [
+        "smoke"
+      ]
+    }
+  ]
+}

@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 # =============================================================================
 
 TARGET_URL      = "https://www.calculator.net/"             # website to crawl
-MAX_PAGES       = 10                                  # max pages to visit
+MAX_PAGES       = 5                                 # max pages to visit
 MAX_DEPTH       = 2                                   # how deep to follow links
 HEADLESS        = True                                # False = show browser window
 WAIT_AFTER_LOAD = 2                                   # seconds to wait for JS after page load

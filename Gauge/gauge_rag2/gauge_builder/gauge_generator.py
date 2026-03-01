@@ -1,391 +1,344 @@
-# gauge_builder/gauge_generator.py
-# Generates a valid Gauge .spec file from strategy_normalized.json
-# Includes calculated expected values and full output verification for every scenario.
-# Compatible with Python 3.9+
+"""
+spec_generator.py
+=================
+Reads data/test_strategy.json and generates a Gauge .spec file
+using the exploratory test format with real element IDs.
 
-import json
-import logging
-import os
-import re
-import sys
-from typing import List, Optional
-from urllib.parse import urlparse
+Step format produced:
+    * Navigate to '/loan-calculator.html'
+    * Enter '100000' into 'cloanamount'
+    * Click 'x'
+    * Verify: Page shows expected result
+
+Usage:
+    python gauge_builder/spec_generator.py
+    python gauge_builder/spec_generator.py --input data/test_strategy.json --output specs/generated_test.spec
+"""
+
+import json, os, re, sys, argparse
 from pathlib import Path
+from urllib.parse import urlparse
 
-# Add project root
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import config
+BASE_URL = "https://www.calculator.net"
+SEARCH_FIELD_ID = "calcSearchTerm"
+SEARCH_BTN = "Search"
 
-logger = logging.getLogger(__name__)
+# ---------------------------------------------------------------------------
+# Element ID knowledge base  (from exploratory spec + calculator.net DOM)
+# ---------------------------------------------------------------------------
 
-
-# ==============================================================================
-# FINANCIAL CALCULATION UTILITIES
-# Used to compute expected results for assertion steps
-# ==============================================================================
-
-def _monthly_payment_apr(principal: float, annual_rate: float, years: float) -> Optional[str]:
-    """Standard amortization formula using Monthly (APR) compounding."""
-    r = annual_rate / 100 / 12
-    n = years * 12
-    if r == 0 or n == 0:
-        return None
-    payment = principal * r * (1 + r) ** n / ((1 + r) ** n - 1)
-    return f"${payment:,.2f}"
-
-
-def _monthly_payment_apy(principal: float, annual_rate: float, years: float) -> Optional[str]:
-    """Amortization using Annually (APY) compounding — converts to effective monthly rate."""
-    monthly_r = (1 + annual_rate / 100) ** (1 / 12) - 1
-    n = years * 12
-    if monthly_r == 0 or n == 0:
-        return None
-    payment = principal * monthly_r * (1 + monthly_r) ** n / ((1 + monthly_r) ** n - 1)
-    return f"${payment:,.2f}"
-
-
-def _extract_numeric(value: str) -> Optional[float]:
-    """Safely parse a numeric string like '100000' or '50000'."""
-    try:
-        return float(str(value).replace(",", "").replace("$", "").strip())
-    except (ValueError, TypeError):
-        return None
-
-
-def _extract_quoted(step: str) -> str:
-    """Extract the last quoted value from a step string."""
-    matches = re.findall(r'"([^"]*)"', step)
-    return matches[-1] if matches else ""
-
-
-def _try_compute_expected_value(steps: List[str], compounding: str = "monthly") -> Optional[str]:
-    """
-    Inspect steps for loan amount, interest rate, loan term and
-    return the expected monthly payment string if computable.
-    """
-    principal = None
-    rate = None
-    term = None
-
-    for step in steps:
-        s = step.lower()
-        if "loan amount" in s or "sale price" in s or "house" in s:
-            val = _extract_numeric(_extract_quoted(step))
-            if val is not None:
-                principal = val
-        elif "interest rate" in s:
-            val = _extract_numeric(_extract_quoted(step))
-            if val is not None:
-                rate = val
-        elif "loan term" in s:
-            val = _extract_numeric(_extract_quoted(step))
-            if val is not None:
-                term = val
-        elif "compounding" in s or "frequency" in s:
-            quoted = _extract_quoted(step).lower()
-            if "annual" in quoted or "apy" in quoted:
-                compounding = "annually"
-            else:
-                compounding = "monthly"
-
-    if principal and rate and term:
-        if compounding == "annually":
-            return _monthly_payment_apy(principal, rate, term)
-        else:
-            return _monthly_payment_apr(principal, rate, term)
-    return None
-
-
-# ==============================================================================
-# STEP CLASSIFICATION
-# Determines what kind of verification to append based on scenario type
-# ==============================================================================
-
-# Keywords that indicate invalid/negative test inputs
-_INVALID_INPUT_KEYWORDS = {"abc", "invalid", "xss", "-1", "xss-attack"}
-
-# Steps that indicate calculator form inputs
-_CALC_INPUT_STEPS = {
-    "enter loan amount", "enter sale price", "enter interest rate", "enter loan term",
-    "enter current age", "enter retirement age", "enter life expectancy",
-    "enter current income", "enter income growth rate", "enter desired retirement income",
+PAGE_ELEMENT_MAP = {
+    "/loan-calculator.html": {
+        "fields": {
+            "loan amount": "cloanamount", "loan_amount": "cloanamount",
+            "interest rate": "cinterestrate", "interest_rate": "cinterestrate",
+            "loan term": "cloanterm", "loan_term": "cloanterm",
+            "compounding frequency": "ccompound", "compounding_frequency": "ccompound",
+        },
+        "calculate_btn": "x", "clear_btn": "Clear",
+    },
+    "/mortgage-calculator.html": {
+        "fields": {
+            "loan amount": "chouseprice", "loan_amount": "chouseprice",
+            "house price": "chouseprice", "house_price": "chouseprice",
+            "down payment": "cdownpayment", "down_payment": "cdownpayment",
+            "loan term": "cloanterm", "loan_term": "cloanterm",
+            "interest rate": "cinterestrate", "interest_rate": "cinterestrate",
+        },
+        "calculate_btn": "See your local rates", "clear_btn": "Clear",
+    },
+    "/payment-calculator.html": {
+        "fields": {
+            "loan amount": "cloanamount", "loan_amount": "cloanamount",
+            "interest rate": "cinterestrate", "interest_rate": "cinterestrate",
+            "loan term": "cloanterm", "loan_term": "cloanterm",
+        },
+        "calculate_btn": "x", "clear_btn": "Clear",
+    },
+    "/auto-loan-calculator.html": {
+        "fields": {
+            "sale price": "csaleprice", "sale_price": "csaleprice",
+            "loan term": "cloanterm", "loan_term": "cloanterm",
+            "interest rate": "cinterestrate", "interest_rate": "cinterestrate",
+            "incentive": "cincentive",
+            "down payment": "cdownpayment", "down_payment": "cdownpayment",
+            "trade in value": "ctradeinvalue", "trade_in_value": "ctradeinvalue",
+            "trade in owned": "ctradeowned", "trade_in_owned": "ctradeowned",
+            "down payment unit": "cdownpaymentunit", "down_payment_unit": "cdownpaymentunit",
+            "state": "cstate",
+            "sale tax": "csaletax", "sale_tax": "csaletax",
+            "title and registration": "ctitle", "title_and_registration": "ctitle",
+        },
+        "calculate_btn": "x", "clear_btn": "Clear",
+    },
+    "/interest-calculator.html": {
+        "fields": {
+            "starting principal": "cstartingprinciple", "starting_principal": "cstartingprinciple",
+            "loan amount": "cstartingprinciple", "loan_amount": "cstartingprinciple",
+            "annual addition": "cannualaddition", "annual_addition": "cannualaddition",
+            "interest rate": "cinterestrate", "interest_rate": "cinterestrate",
+            "years": "cyears", "loan term": "cyears", "loan_term": "cyears",
+            "compound frequency": "ccompound", "compound_frequency": "ccompound",
+        },
+        "calculate_btn": "x", "clear_btn": "Clear",
+    },
+    "/retirement-calculator.html": {
+        "fields": {
+            "current age": "cagenow", "current_age": "cagenow",
+            "retirement age": "cretireage", "retirement_age": "cretireage",
+            "life expectancy": "clifeexpectancy", "life_expectancy": "clifeexpectancy",
+            "current income": "cincomenow", "current_income": "cincomenow",
+            "income growth rate": "cincgrowth", "income_growth_rate": "cincgrowth",
+            "desired retirement income": "cretireincome", "desired_retirement_income": "cretireincome",
+            "income unit": "cincomeunit", "income_unit": "cincomeunit",
+        },
+        "calculate_btn": "x", "clear_btn": "Clear",
+    },
+    "/financial-calculator.html": {
+        "fields": {
+            # After clicking a calculator link, user lands on that calculator page
+            # Use mortgage field IDs as defaults for E2E scenarios
+            "loan amount": "chouseprice", "loan_amount": "chouseprice",
+            "interest rate": "cinterestrate", "interest_rate": "cinterestrate",
+            "loan term": "cloanterm", "loan_term": "cloanterm",
+        },
+        "calculate_btn": "See your local rates", "clear_btn": "Clear",
+    },
+    "/my-account/sign-in.php": {
+        "fields": {"email": "email", "password": "password"},
+        "calculate_btn": "submit", "clear_btn": "",
+    },
+    "/": {
+        "fields": {"search term": SEARCH_FIELD_ID, "search_term": SEARCH_FIELD_ID},
+        "calculate_btn": SEARCH_BTN, "clear_btn": "",
+    },
 }
 
-# Verification step prefixes — stripped before regenerating
-_VERIFY_PREFIXES = (
-    "verify the page contains",
-    "verify monthly payment",
-    "verify calculated result",
-    "verify amortization",
-    "verify search does not crash",
-    "verify page does not show",
-    "verify login was attempted",
-    "verify the user is logged in",
-    "verify retirement result",
-    "verify loan amount input field",
-)
+# ---------------------------------------------------------------------------
+# URL / config helpers
+# ---------------------------------------------------------------------------
 
-# Map of URL path keywords → page type
-_PAGE_TYPE_MAP = {
-    "mortgage-calculator":  "mortgage",
-    "loan-calculator":      "loan",
-    "auto-loan-calculator": "auto_loan",
-    "payment-calculator":   "payment",
-    "retirement-calculator":"retirement",
-    "interest-calculator":  "interest",
-    "financial-calculator": "financial",
-    "sign-in":              "login",
-    "/":                    "homepage",
-}
+def url_to_path(url):
+    url = url.strip().strip("'\"")
+    if url.startswith("http"):
+        return urlparse(url).path or "/"
+    return url if url.startswith("/") else "/" + url
 
+def get_page_config(url):
+    path = url_to_path(url)
+    if path in PAGE_ELEMENT_MAP:
+        return PAGE_ELEMENT_MAP[path], path
+    for key, cfg in PAGE_ELEMENT_MAP.items():
+        if key in path or path in key:
+            return cfg, path
+    return {"fields": {}, "calculate_btn": "x", "clear_btn": "Clear"}, path
 
-def _page_type(url: str) -> str:
-    for key, ptype in _PAGE_TYPE_MAP.items():
-        if key in url:
-            return ptype
-    return "generic"
+def get_field_id(concept, page_config):
+    c = concept.lower().strip()
+    fields = page_config.get("fields", {})
+    if c in fields:
+        return fields[c]
+    for key, eid in fields.items():
+        if key in c or c in key:
+            return eid
+    return "c" + re.sub(r"[^a-z0-9]", "", c)
 
+# ---------------------------------------------------------------------------
+# Step converters
+# ---------------------------------------------------------------------------
 
-def _scenario_type(scenario: dict) -> str:
-    """Classify scenario as: happy, negative, boundary, e2e."""
-    combined = (scenario.get("title", "") + " " + scenario.get("scenario_id", "")).lower()
-    if any(k in combined for k in ("negative", "invalid", "empty", "error")):
-        return "negative"
-    if any(k in combined for k in ("boundary", "maximum", "minimum", "max", "min")):
-        return "boundary"
-    if any(k in combined for k in ("e2e", "end to end", "end-to-end")):
-        return "e2e"
-    return "happy"
+def convert_step(raw, page_config, path):
+    if isinstance(raw, dict):
+        return _from_dict(raw, page_config, path)
+    return _from_string(str(raw), page_config, path)
 
+def _from_dict(step, page_config, path):
+    action = step.get("action", "").lower()
+    target = step.get("target", "")
+    value  = step.get("value", "")
+    desc   = step.get("description", "")
+    if action == "navigate":
+        p = url_to_path(value or target)
+        return [f'Navigate to "{p}"']
+    if action in ("input", "enter", "fill") and value and target:
+        fid = get_field_id(target, page_config)
+        return [f'Enter "{value}" into "{fid}"']
+    if action == "click":
+        return [f"Click '{target}'"]
+    if action == "verify":
+        if value not in ("page loaded", "form visible", ""):
+            return [f"Verify: {desc or value}"]
+        return ["Verify: Page loaded successfully"]
+    return _from_string(desc or f"{action} {target} {value}".strip(), page_config, path)
 
-def _has_invalid_input(steps: List[str]) -> bool:
-    """Return True if any step contains a clearly invalid value."""
-    for step in steps:
-        if _extract_quoted(step).lower() in _INVALID_INPUT_KEYWORDS:
-            return True
-    return False
+def _from_string(raw, page_config, path):
+    raw = raw.strip()
 
+    # Navigate
+    m = re.match(r'^navigate to ["\']?(https?://[^\s"\']+|/[^\s"\']*)["\']?$', raw, re.I)
+    if m:
+        return [f'Navigate to "{url_to_path(m.group(1))}"']
 
-def _is_search_scenario(steps: List[str]) -> bool:
-    return any("enter search term" in s.lower() for s in steps)
+    # Enter search term -> two steps
+    m = re.match(r'^enter search term ["\']?([^"\']*)["\']?$', raw, re.I)
+    if m:
+        term = m.group(1).strip() or "empty"
+        return [f'Enter "{term}" into "{SEARCH_FIELD_ID}"', f'Click "{SEARCH_BTN}"']
 
+    # Enter email
+    m = re.match(r'^enter email ["\']?([^"\']+)["\']?$', raw, re.I)
+    if m:
+        return [f'Enter "{m.group(1)}" into "email"']
 
-def _is_login_scenario(steps: List[str]) -> bool:
-    return any("enter email" in s.lower() or "enter password" in s.lower() for s in steps)
+    # Enter password
+    m = re.match(r'^enter password ["\']?([^"\']+)["\']?$', raw, re.I)
+    if m:
+        return [f'Enter "{m.group(1)}" into "password"']
 
+    # Generic Enter <concept> <value>
+    m = re.match(r'^enter (?:the )?(.+?)\s+["\']?([^"\']+)["\']?$', raw, re.I)
+    if m:
+        concept = m.group(1).strip().rstrip("\"'")
+        value   = m.group(2).strip().strip("\"'")
+        FIELD_KEYWORDS = r'amount|rate|term|price|age|income|tax|payment|email|password|search|frequency|unit|state|reg|incentive|trade|life|expectancy|growth|retirement|sale|principal|addition'
+        if re.search(FIELD_KEYWORDS, concept, re.I):
+            fid = get_field_id(concept, page_config)
+            return [f'Enter "{value}" into "{fid}"']
 
-def _is_calculator_scenario(steps: List[str]) -> bool:
-    return any(any(k in s.lower() for k in _CALC_INPUT_STEPS) for s in steps)
+    # Select
+    m = re.match(r'^select (.+?)\s+["\']?([^"\']+)["\']?$', raw, re.I)
+    if m:
+        concept = m.group(1).strip()
+        value   = m.group(2).strip().strip("\"'")
+        fid = get_field_id(concept, page_config)
+        return [f'Select "{value}" in "{fid}"']
 
+    # Click buttons
+    if re.match(r'^click the search button$', raw, re.I):
+        return [f'Click "{SEARCH_BTN}"']
+    if re.match(r'^click the (calculate|calc) button$', raw, re.I):
+        return [f'Click "{page_config.get("calculate_btn", "x")}"']
+    if re.match(r'^click the login button$', raw, re.I):
+        return ["Click \"submit\""]
+    if re.match(r'^click the clear button$', raw, re.I):
+        return ["Click \"Clear\""]
+    if re.match(r'^click the view amortization schedule button$', raw, re.I):
+        return ["Click \"Show/Hide Amortization Schedule\""]
+    if re.match(r'^click the view retirement planning options button$', raw, re.I):
+        return ["Click \"Show Retirement Planning Options\""]
+    m = re.match(r'^click the ["\']?(.+?)["\']? link$', raw, re.I)
+    if m:
+        return [f'Click "{m.group(1)}"']
 
-# ==============================================================================
-# VERIFICATION STEP BUILDER
-# ==============================================================================
+    # Verify steps
+    if re.match(r'^verify (the )?page (loads|loaded)', raw, re.I):
+        return ["Verify: Page loaded successfully"]
+    if re.match(r'^verify (the )?user is logged in$', raw, re.I):
+        return ["Verify: User is logged in"]
+    if re.match(r'^verify login was attempted$', raw, re.I):
+        return ["Verify: Login was attempted"]
+    if re.match(r'^verify search does not crash$', raw, re.I):
+        return ["Verify: Search did not crash"]
+    if re.match(r'^verify monthly payment is displayed$', raw, re.I):
+        return ["Verify: Monthly payment is displayed"]
+    if re.match(r'^verify amortization schedule is displayed$', raw, re.I):
+        return ["Verify: Amortization schedule is displayed"]
+    if re.match(r'^verify retirement result is displayed$', raw, re.I):
+        return ["Verify: Retirement result is displayed"]
+    if re.match(r'^form is visible$', raw, re.I):
+        return ["Verify: Form is visible"]
 
-def _build_verification_steps(scenario: dict, url: str, steps: List[str]) -> List[str]:
-    """
-    Returns verification step strings to append to a scenario based on its context:
-    - Search       → verify result text or no crash
-    - Login        → verify login attempted or user logged in
-    - Calculator   → verify monthly payment + calculated value (or no result for invalid)
-    - Retirement   → verify retirement result displayed
-    - Page load    → no extra steps needed (already has Verify the page contains)
-    """
-    stype = _scenario_type(scenario)
-    ptype = _page_type(url)
-    verification = []
-    invalid = _has_invalid_input(steps)
+    m = re.match(r'^verify the page contains ["\']?([^"\']+)["\']?$', raw, re.I)
+    if m:
+        return [f'Verify: Page contains "{m.group(1)}"']
 
-    # ── Search ─────────────────────────────────────────────────────────────────
-    if _is_search_scenario(steps):
-        search_term = next(
-            (_extract_quoted(s) for s in steps if "enter search term" in s.lower()), ""
-        )
-        if not search_term or len(search_term) > 50 or any(
-            k in search_term.lower() for k in ("xss", "<", ">", "script")
-        ):
-            verification.append('Verify search does not crash')
-        else:
-            verification.append(f'Verify the page contains "{search_term.title()}"')
-        return verification
+    m = re.match(r'^verify (calculated result contains|page does not show valid result for) ["\']?([^"\']+)["\']?$', raw, re.I)
+    if m:
+        return [f'Verify: {m.group(1)} "{m.group(2)}"']
 
-    # ── Login ──────────────────────────────────────────────────────────────────
-    if _is_login_scenario(steps):
-        if stype == "e2e":
-            verification.append('Verify the user is logged in')
-        else:
-            verification.append('Verify login was attempted')
-        return verification
+    if raw.lower().startswith("verify"):
+        return [f'Verify: {raw[7:].strip()}']
 
-    # ── Retirement ─────────────────────────────────────────────────────────────
-    if ptype == "retirement" and _is_calculator_scenario(steps):
-        verification.append('Verify retirement result is displayed')
-        return verification
+    return []
 
-    # ── Interest / static module pages ─────────────────────────────────────────
-    if ptype == "interest":
-        return verification  # already has Verify the page contains in spec
+# ---------------------------------------------------------------------------
+# Spec builder
+# ---------------------------------------------------------------------------
 
-    # ── Calculator pages ───────────────────────────────────────────────────────
-    if _is_calculator_scenario(steps):
-        if not any("click the calculate button" in s.lower() for s in steps):
-            return verification  # no calculation triggered
+SPEC_HEADER = "# calculator.net Automated Test Suite\n"
 
-        if invalid:
-            invalid_val = next(
-                (_extract_quoted(s) for s in steps
-                 if _extract_quoted(s).lower() in _INVALID_INPUT_KEYWORDS),
-                "invalid"
-            )
-            verification.append(f'Verify page does not show valid result for "{invalid_val}"')
-            return verification
+def build_spec(strategy):
+    lines = [SPEC_HEADER, ""]
+    for page in strategy:
+        url = page.get("url", "")
+        module = page.get("module_name", "")
+        page_config, path = get_page_config(url)
 
-        # Valid calculation
-        verification.append('Verify monthly payment is displayed')
-        expected = _try_compute_expected_value(steps)
-        if expected:
-            verification.append(f'Verify calculated result contains "{expected}"')
+        for sc in page.get("test_scenarios", []):
+            steps_raw = sc.get("steps", [])
+            if not steps_raw:
+                continue
 
-        # E2E mortgage also checks amortization table
-        if ptype == "mortgage" and stype == "e2e":
-            verification.append('Verify amortization schedule is displayed')
+            gauge_steps = [f'Navigate to "{path}"']
+            for raw in steps_raw:
+                for s in convert_step(raw, page_config, path):
+                    # Skip duplicate consecutive steps
+                    if gauge_steps and gauge_steps[-1] == s:
+                        continue
+                    gauge_steps.append(s)
 
-        return verification
+            if len(gauge_steps) < 2:
+                continue
 
-    return verification
+            sc_id  = sc.get("scenario_id", "TC_000")
+            title  = sc.get("title", "Untitled")
+            tags   = [t.replace("-", "_") for t in sc.get("tags", [])]
+            prefix = f"{module}_{sc_id}" if module else sc_id
 
-
-# ==============================================================================
-# UTILITIES
-# ==============================================================================
-
-def _domain_name(url: str) -> str:
-    try:
-        return urlparse(url).netloc.replace("www.", "")
-    except Exception:
-        return "Automated Test Suite"
-
-
-def _module_name(strategy: dict, index: int) -> str:
-    name = strategy.get("module_name", "").strip().upper()
-    if name:
-        return name
-    url = strategy.get("url", "")
-    path = url.rstrip("/").split("/")[-1]
-    path = path.replace(".html", "").replace(".php", "")
-    parts = [p.upper() for p in path.replace("-", "_").split("_") if p]
-    return "_".join(parts[:2]) if parts else f"MODULE_{index}"
-
-
-def _safe_step(step: str) -> str:
-    step = step.strip().lstrip("* ").strip()
-    step = step.replace("'", '"')
-    return step
-
-
-# ==============================================================================
-# SCENARIO RENDERER
-# ==============================================================================
-
-def _render_scenario(scenario: dict, module: str, idx: int, page_url: str, used_ids: set) -> str:
-    """Render a single Gauge scenario block with verified output steps."""
-
-    raw_id = scenario.get("scenario_id", f"TC_{idx:03d}").strip().upper()
-    scenario_id = f"{module}_{raw_id}"
-
-    # Ensure uniqueness
-    base_id = scenario_id
-    counter = 1
-    while scenario_id in used_ids:
-        scenario_id = f"{base_id}_{counter}"
-        counter += 1
-    used_ids.add(scenario_id)
-
-    title = scenario.get("title", f"Test {idx}")
-    steps = scenario.get("steps", [])
-
-    # Clean raw steps
-    clean_steps = [_safe_step(s) for s in steps if isinstance(s, str) and s.strip()]
-
-    # Ensure Navigate is first
-    if not clean_steps or not clean_steps[0].startswith("Navigate to"):
-        clean_steps.insert(0, f'Navigate to "{page_url}"')
-
-    # Strip any existing verify steps — we regenerate with correct values
-    clean_steps = [
-        s for s in clean_steps
-        if not any(s.lower().startswith(p) for p in _VERIFY_PREFIXES)
-    ]
-
-    # Generate and append correct verification steps
-    all_steps = clean_steps + _build_verification_steps(scenario, page_url, clean_steps)
-
-    lines = [f"## {scenario_id}: {title}", ""]
-    lines += [f"* {s}" for s in all_steps]
-    lines.append("")
+            lines.append(f"  ## {prefix}: {title}")
+            if tags:
+                lines.append(f"  tags: {', '.join(tags)}")
+            lines.append("")
+            for s in gauge_steps:
+                lines.append(f"  * {s}")
+            lines.append("")
 
     return "\n".join(lines)
 
-
-# ==============================================================================
-# MAIN GENERATOR
-# ==============================================================================
-
-def generate_spec(strategies: list, output_path: Optional[str] = None) -> str:
-    """Generate a Gauge spec file from normalized strategy JSON."""
-
-    if not strategies:
-        raise ValueError("No strategies provided.")
-
-    output_path = output_path or config.GENERATED_SPEC_PATH
-    domain = _domain_name(strategies[0].get("url", ""))
-
-    lines = ["Tags: regression", "", f"# {domain} Automated Test Suite", ""]
-    used_ids: set = set()
-
-    for i, strategy in enumerate(strategies, start=1):
-        url = strategy.get("url", "")
-        scenarios = strategy.get("test_scenarios", [])
-        if not scenarios:
-            continue
-        module = _module_name(strategy, i)
-        for j, scenario in enumerate(scenarios, start=1):
-            lines.append(_render_scenario(scenario, module, j, url, used_ids))
-
-    full_spec = "\n".join(lines).strip() + "\n"
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(full_spec)
-
-    logger.info(f"✓ Spec written: {output_path}")
-    return full_spec
-
-
-# ==============================================================================
-# ENTRY POINT
-# ==============================================================================
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
 
 def main():
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s | %(levelname)s | %(message)s"
-    )
+    parser = argparse.ArgumentParser(description="Generate Gauge .spec with element IDs from test_strategy.json")
+    parser.add_argument("--input",  "-i", default="data/test_strategy.json", metavar="FILE")
+    parser.add_argument("--output", "-o", default="specs/generated_test.spec", metavar="FILE")
+    args = parser.parse_args()
 
-    strategy_path = os.path.join(config.DATA_DIR, "strategy_normalized.json")
+    input_path = Path(args.input)
+    if not input_path.exists():
+        print(f"[ERROR] Not found: {input_path}"); sys.exit(1)
 
-    if not os.path.exists(strategy_path):
-        print("strategy_normalized.json not found. Run normalizer first.")
-        sys.exit(1)
+    with open(input_path, encoding="utf-8") as f:
+        strategy = json.load(f)
 
-    with open(strategy_path, encoding="utf-8") as f:
-        strategies = json.load(f)
+    print(f"[INFO] Loaded {len(strategy)} page entries from {input_path}")
+    spec = build_spec(strategy)
 
-    generate_spec(strategies)
-    print("✓ Spec generated successfully.")
+    scenarios = spec.count("\n  ## ")
+    steps     = spec.count("\n  * ")
+    print(f"[INFO] Generated {scenarios} scenarios, {steps} steps")
 
+    out = Path(args.output)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(spec, encoding="utf-8")
+    print(f"[OK]  Spec written to: {out.resolve()}")
+
+    print("\n--- Preview (first 70 lines) ---")
+    for line in spec.splitlines()[:70]:
+        print(line)
 
 if __name__ == "__main__":
     main()

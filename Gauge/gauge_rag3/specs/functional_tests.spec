@@ -1,8 +1,8 @@
 # Functional Tests
 
-Generated : 2026-02-28 19:12
+Generated : 2026-03-01 11:52
 Base URL  : https://www.calculator.net/
-Scenarios : 36
+Scenarios : 17
 
 tags: functional, automated
 
@@ -13,27 +13,29 @@ tags: smoke, high, TC_001
 <!-- Pre: Navigate to page URL -->
 
 * Navigate to url "https://www.calculator.net/"
-* Verify element with xpath "//h1" is visible
+* Verify heading with xpath "//h1" contains "Free Online Calculators"
 * Verify test outcome is "Calculator loads successfully"
 
-## Search calculator functionality [TC_002]
+## Mortgage calculator functionality [TC_002]
 
 tags: smoke, high, TC_002
 
 <!-- Pre: Navigate to page URL -->
 
 * Navigate to url "https://www.calculator.net/"
-* Verify test outcome is "Search calculator functionality works"
+* Click on link with text "Mortgage Calculator"
+* Verify test outcome is "Search results displayed"
 
-## Mortgage calculator functionality [TC_003]
+## Sign in functionality [TC_003]
 
 tags: smoke, high, TC_003
 
 <!-- Pre: Navigate to page URL -->
 
 * Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Mortgage Calculator"
-* Verify test outcome is "Mortgage calculator functionality works"
+* Click on link with text "sign in"
+* Click on link with text "sign in"
+* Verify test outcome is "User logged in successfully"
 
 ## Loan calculator functionality [TC_004]
 
@@ -42,351 +44,147 @@ tags: smoke, high, TC_004
 <!-- Pre: Navigate to page URL -->
 
 * Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Loan Calculator"
-* Verify test outcome is "Loan calculator functionality works"
+* Click on link with text "Loan Calculator"
+* Verify test outcome is "Search results displayed"
 
-## Auto loan calculator functionality [TC_005]
+## Submit valid IP and subnet [TC_006]
 
-tags: smoke, high, TC_005
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Auto Loan Calculator"
-* Verify test outcome is "Auto loan calculator functionality works"
-
-## Interest calculator functionality [TC_006]
-
-tags: smoke, high, TC_006
+tags: high, TC_006
 
 <!-- Pre: Navigate to page URL -->
 
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Interest Calculator"
-* Verify test outcome is "Interest calculator functionality works"
+* Navigate to url "https://www.calculator.net/ip-subnet-calculator.html"
+* Enter "192.168.1.1" in input with id "c6ip"
+* Enter "255.255.255.0" in input with id "c6subnet"
+* Click on button with name "x"
+* Verify test outcome is "Result displayed successfully"
 
-## Payment calculator functionality [TC_007]
+## Submit empty IP and subnet [TC_007]
 
-tags: smoke, high, TC_007
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Payment Calculator"
-* Verify test outcome is "Payment calculator functionality works"
-
-## Retirement calculator functionality [TC_008]
-
-tags: smoke, high, TC_008
+tags: high, TC_007
 
 <!-- Pre: Navigate to page URL -->
 
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Retirement Calculator"
-* Verify test outcome is "Retirement calculator functionality works"
+* Navigate to url "https://www.calculator.net/ip-subnet-calculator.html"
+* Clear field with id "c6ip"
+* Clear field with id "c6subnet"
+* Verify test outcome is "Error: IP address required and Error: Subnet mask required"
 
-## Amortization calculator functionality [TC_009]
+## Time Calculator Page Loads Successfully [TC_009]
 
 tags: smoke, high, TC_009
 
 <!-- Pre: Navigate to page URL -->
 
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Amortization Calculator"
-* Verify test outcome is "Amortization calculator functionality works"
+* Navigate to url "https://www.calculator.net/time-calculator.html"
+* Verify heading with xpath "//h1" contains "Time Calculator"
+* Verify test outcome is "Page title is displayed correctly"
 
-## Investment calculator functionality [TC_010]
+## Add Time to a Date [TC_010]
 
 tags: smoke, high, TC_010
 
 <!-- Pre: Navigate to page URL -->
 
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Investment Calculator"
-* Verify test outcome is "Investment calculator functionality works"
+* Navigate to url "https://www.calculator.net/time-calculator.html"
+* Enter "2022-01-01" in input with id "tcday1"
+* Enter "2" in input with id "tchour1"
+* Enter "30" in input with id "tcminute1"
+* Click on button with name "x"
+* Verify test outcome is "Result is displayed correctly"
 
-## Inflation calculator functionality [TC_011]
+## Subtract Time from a Date [TC_011]
 
 tags: smoke, high, TC_011
 
 <!-- Pre: Navigate to page URL -->
 
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Inflation Calculator"
-* Verify test outcome is "Inflation calculator functionality works"
-
-## Mortgage calculator functionality with valid input [TC_012]
-
-tags: smoke, medium, TC_012
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Mortgage Calculator"
-* Verify test outcome is "Mortgage calculator functionality works with valid input"
-
-## Loan calculator functionality with valid input [TC_013]
-
-tags: smoke, medium, TC_013
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Loan Calculator"
-* Verify test outcome is "Loan calculator functionality works with valid input"
-
-## Auto loan calculator functionality with valid input [TC_014]
-
-tags: general, auto-generated, medium, TC_014
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/"
-* Click on link with link_text "Auto Loan Calculator"
-* Verify test outcome is "Test passes"
-
-## Navigate to Loan Calculator Page [TC_015]
-
-tags: smoke, high, TC_015
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/loan-calculator.html"
-* Verify test outcome is "Loan calculator page loaded"
-
-## Submit Loan Calculator with Valid Inputs [TC_016]
-
-tags: smoke, high, TC_016
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/loan-calculator.html"
-* Enter "5" in input with id "rate"
+* Navigate to url "https://www.calculator.net/time-calculator.html"
+* Enter "2022-01-01" in input with id "tcday1"
+* Enter "2" in input with id "tchour1"
+* Enter "30" in input with id "tcminute1"
 * Click on button with name "x"
-* Verify test outcome is "Loan calculation result displayed"
+* Verify test outcome is "Result is displayed correctly"
 
-## Submit Loan Calculator with Empty Required Fields [TC_017]
+## Time Calculator in Expression [TC_012]
+
+tags: smoke, high, TC_012
+
+<!-- Pre: Navigate to page URL -->
+
+* Navigate to url "https://www.calculator.net/time-calculator.html"
+* Enter "2 hours 30 minutes" in input with id "tcexpression"
+* Click on button with name "x"
+* Verify test outcome is "Result is displayed correctly"
+
+## Invalid Input [TC_013]
+
+tags: smoke, high, TC_013
+
+<!-- Pre: Navigate to page URL -->
+
+* Navigate to url "https://www.calculator.net/time-calculator.html"
+* Enter "invalid" in input with id "tcday1"
+* Verify test outcome is "Invalid input is handled correctly"
+
+## Sitemap Page Loads Successfully [TC_014]
+
+tags: smoke, high, TC_014
+
+<!-- Pre: Navigate to page URL -->
+
+* Navigate to url "https://www.calculator.net/sitemap.html"
+* Verify test outcome is "Page loads successfully"
+
+## Page Loads Successfully [TC_017]
 
 tags: smoke, high, TC_017
 
 <!-- Pre: Navigate to page URL -->
 
-* Navigate to url "https://www.calculator.net/loan-calculator.html"
-* Enter "value" in input with id "rate"
-* Click on button with name "x"
-* Verify test outcome is "Validation errors displayed"
+* Navigate to url "https://www.calculator.net/about-us.html#terms"
+* Verify test outcome is "Page loaded without errors"
 
-## Loan Calculator Page Loads Successfully [TC_020]
+## Page Title is Correct [TC_018]
 
-tags: smoke, high, TC_020
+tags: smoke, high, TC_018
 
-<!-- Pre: Navigate to page URL -->
+<!-- Pre: Page loaded successfully -->
 
-* Navigate to url "https://www.calculator.net/loan-calculator.html#fixedend"
-* Verify element with xpath "//h1" is visible
+* Navigate to url "https://www.calculator.net/about-us.html#terms"
+* Verify heading with xpath "//h1" contains "About Us"
 * Verify test outcome is "Page title is correct"
 
-## Calculate Loan Payment with Valid Inputs [TC_021]
+## Navigation Links are Functional [TC_019]
 
-tags: high, TC_021
+tags: smoke, high, TC_019
 
-<!-- Pre: Navigate to page URL -->
+<!-- Pre: Page loaded successfully -->
 
-* Navigate to url "https://www.calculator.net/loan-calculator.html#fixedend"
-* Click on button with name "x"
-* Verify element with css "h2.h2result" is visible
-* Verify test outcome is "Loan payment is calculated correctly"
+* Navigate to url "https://www.calculator.net/about-us.html#terms"
+* Click on link with text "about us"
+* Click on link with text "sign in"
+* Verify test outcome is "All navigation links are functional"
 
-## Empty Required Fields Show Validation Errors [TC_022]
+## Form Fields are Present [TC_020]
 
-tags: high, TC_022
+tags: medium, TC_020
 
-<!-- Pre: Navigate to page URL -->
+<!-- Pre: Page loaded successfully -->
 
-* Navigate to url "https://www.calculator.net/loan-calculator.html#fixedend"
-* Click on button with name "x"
-* Verify element with css "h2.h2red" is visible
-* Verify test outcome is "Validation errors are shown for empty required fields"
+* Navigate to url "https://www.calculator.net/about-us.html#terms"
+* Verify element with name "name1" is visible
+* Verify element with name "email1" is visible
+* Verify test outcome is "All form fields are present"
 
-## Invalid Inputs Show Error Messages [TC_023]
+## Form Submission is Successful [TC_021]
 
-tags: high, TC_023
+tags: smoke, high, TC_021
 
-<!-- Pre: Navigate to page URL -->
+<!-- Pre: Page loaded successfully -->
 
-* Navigate to url "https://www.calculator.net/loan-calculator.html#fixedend"
-* Click on button with name "x"
-* Verify element with css "h2.h2red" is visible
-* Verify test outcome is "Error messages are shown for invalid inputs"
-
-## Clear Button Resets All Fields [TC_024]
-
-tags: high, TC_024
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/loan-calculator.html#fixedend"
-* Click on button with name "x"
-* Click on button with name "x"
-* Verify element with css "h2.h2result" is visible
-* Verify test outcome is "All fields are reset correctly"
-
-## Verify Calculator Form Fields [TC_027]
-
-tags: functional, high, TC_027
-
-<!-- Pre: Page is open -->
-
-* Navigate to url "https://www.calculator.net/math-calculator.html"
-* Verify element with id "calcSearchTerm" is visible
-* Verify element with name "calcSearchTerm" is visible
-* Verify test outcome is "Search term field is present and enabled"
-
-## Submit Calculator Form with Empty Required Fields [TC_028]
-
-tags: functional, high, TC_028
-
-<!-- Pre: Page is open -->
-
-* Navigate to url "https://www.calculator.net/math-calculator.html"
-* Verify test outcome is "Error message is displayed"
-
-## Interest Rate Calculator Happy Path [TC_030]
-
-tags: smoke, high, TC_030
-
-<!-- Pre: Navigate to the interest rate calculator page -->
-
-* Navigate to url "https://www.calculator.net/interest-rate-calculator.html"
-* Enter "10000" in input with id "cloanamount"
-* Enter "5" in input with id "cloanterm"
-* Click on button with name "x"
-* Verify element with css "h2.h2result" is visible
-* Verify test outcome is "Calculation result displayed"
-
-## Interest Rate Calculator Empty Fields [TC_031]
-
-tags: smoke, high, TC_031
-
-<!-- Pre: Navigate to the interest rate calculator page -->
-
-* Navigate to url "https://www.calculator.net/interest-rate-calculator.html"
-* Enter "value" in input with id "cloanamount"
-* Enter "value" in input with id "cloanterm"
-* Verify test outcome is "Error messages displayed for empty fields"
-
-## Interest Rate Calculator Invalid Inputs [TC_032]
-
-tags: smoke, high, TC_032
-
-<!-- Pre: Navigate to the interest rate calculator page -->
-
-* Navigate to url "https://www.calculator.net/interest-rate-calculator.html"
-* Enter "abc" in input with id "cloanamount"
-* Enter "abc" in input with id "cloanterm"
-* Verify test outcome is "Error messages displayed for invalid inputs"
-
-## About Us Page Loads Successfully [TC_034]
-
-tags: smoke, high, TC_034
-
-<!-- Pre: Navigate to the About Us page -->
-
-* Navigate to url "https://www.calculator.net/about-us.html"
-* Verify element with xpath "//h1" is visible
-* Verify test outcome is "Page loads successfully with correct title"
-
-## Calculate Salary with Valid Inputs [TC_044]
-
-tags: smoke, high, TC_044
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/salary-calculator.html"
-* Enter "10000" in input with id "camount"
-* Enter "40" in input with id "chours"
-* Click on button with name "x"
-* Verify test outcome is "Calculation result displayed"
-
-## Calculate Salary with Empty Required Fields [TC_045]
-
-tags: smoke, high, TC_045
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/salary-calculator.html"
-* Enter "value" in input with id "camount"
-* Enter "value" in input with id "chours"
-* Click on button with name "x"
-* Verify test outcome is "Error messages displayed for empty fields"
-
-## Calculate Salary with Invalid Inputs [TC_046]
-
-tags: smoke, high, TC_046
-
-<!-- Pre: Navigate to page URL -->
-
-* Navigate to url "https://www.calculator.net/salary-calculator.html"
-* Enter "abc" in input with id "camount"
-* Enter "abc" in input with id "chours"
-* Click on button with name "x"
-* Verify test outcome is "Error messages displayed for invalid fields"
-
-## Verify Search functionality [TC_049]
-
-tags: functional, medium, TC_049
-
-<!-- Pre: Navigate to Other Calculators page -->
-
-* Navigate to url "https://www.calculator.net/other-calculator.html"
-* Verify element with css "//h1" is visible
-* Verify test outcome is "Search results appear"
-
-## Submit valid data [TC_061]
-
-tags: smoke, high, TC_061
-
-<!-- Pre: User is on the credit card calculator page -->
-
-* Navigate to url "https://www.calculator.net/credit-card-calculator.html"
-* Enter "10000" in input with id "balance"
-* Enter "5" in input with id "rate"
-* Click on button with name "x"
-* Verify test outcome is "User gets the correct result"
-
-## Submit empty required fields [TC_062]
-
-tags: smoke, high, TC_062
-
-<!-- Pre: User is on the credit card calculator page -->
-
-* Navigate to url "https://www.calculator.net/credit-card-calculator.html"
-* Enter "value" in input with id "balance"
-* Enter "value" in input with id "rate"
-* Click on button with name "x"
-* Verify test outcome is "User gets validation errors"
-
-## Submit invalid data [TC_063]
-
-tags: smoke, high, TC_063
-
-<!-- Pre: User is on the credit card calculator page -->
-
-* Navigate to url "https://www.calculator.net/credit-card-calculator.html"
-* Enter "abc" in input with id "balance"
-* Enter "abc" in input with id "rate"
-* Click on button with name "x"
-* Verify test outcome is "User gets validation errors"
-
-## Clear button [TC_064]
-
-tags: smoke, high, TC_064
-
-<!-- Pre: User is on the credit card calculator page -->
-
-* Navigate to url "https://www.calculator.net/credit-card-calculator.html"
-* Enter "10000" in input with id "balance"
-* Enter "5" in input with id "rate"
-* Click on button with name "x"
-* Click on button with name "x"
-* Verify test outcome is "All fields are empty"
+* Navigate to url "https://www.calculator.net/about-us.html#terms"
+* Enter "John Doe" in input with name "name1"
+* Enter "john.doe@example.com" in input with name "email1"
+* Click on button with name "Submits"
+* Verify test outcome is "Form submission is successful"

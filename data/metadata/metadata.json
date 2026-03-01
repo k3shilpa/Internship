@@ -1,0 +1,3890 @@
+{
+  "crawl_metadata": {
+    "base_url": "https://www.calculator.net/",
+    "pages": 5,
+    "crawled_at": "2026-03-01T11:29:53.649587"
+  },
+  "pages": [
+    {
+      "url": "https://www.calculator.net/",
+      "title": "Calculator.net: Free Online Calculators - Math, Fitness, Finance, Science",
+      "crawled_at": "2026-03-01T11:29:08.236841",
+      "page_type": "general",
+      "elements": {
+        "interactive": [],
+        "navigation": [
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sign in",
+            "href": "https://www.calculator.net/my-account/sign-in.php",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sign in'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/financial-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Mortgage Calculator",
+            "href": "https://www.calculator.net/mortgage-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Mortgage Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Loan Calculator",
+            "href": "https://www.calculator.net/loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Auto Loan Calculator",
+            "href": "https://www.calculator.net/auto-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Auto Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Interest Calculator",
+            "href": "https://www.calculator.net/interest-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Interest Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Payment Calculator",
+            "href": "https://www.calculator.net/payment-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Payment Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Retirement Calculator",
+            "href": "https://www.calculator.net/retirement-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Retirement Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Amortization Calculator",
+            "href": "https://www.calculator.net/amortization-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Amortization Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Investment Calculator",
+            "href": "https://www.calculator.net/investment-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Investment Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Inflation Calculator",
+            "href": "https://www.calculator.net/inflation-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Inflation Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Finance Calculator",
+            "href": "https://www.calculator.net/finance-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Finance Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Income Tax Calculator",
+            "href": "https://www.calculator.net/tax-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Income Tax Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Compound Interest Calculator",
+            "href": "https://www.calculator.net/compound-interest-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Compound Interest Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Salary Calculator",
+            "href": "https://www.calculator.net/salary-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Salary Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Interest Rate Calculator",
+            "href": "https://www.calculator.net/interest-rate-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Interest Rate Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Sales Tax Calculator",
+            "href": "https://www.calculator.net/sales-tax-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Sales Tax Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMI Calculator",
+            "href": "https://www.calculator.net/bmi-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMI Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Calorie Calculator",
+            "href": "https://www.calculator.net/calorie-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Calorie Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Body Fat Calculator",
+            "href": "https://www.calculator.net/body-fat-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Body Fat Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMR Calculator",
+            "href": "https://www.calculator.net/bmr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMR Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Ideal Weight Calculator",
+            "href": "https://www.calculator.net/ideal-weight-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Ideal Weight Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pace Calculator",
+            "href": "https://www.calculator.net/pace-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pace Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Calculator",
+            "href": "https://www.calculator.net/pregnancy-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Conception Calculator",
+            "href": "https://www.calculator.net/pregnancy-conception-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Conception Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Due Date Calculator",
+            "href": "https://www.calculator.net/due-date-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Due Date Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/math-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Scientific Calculator",
+            "href": "https://www.calculator.net/scientific-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Scientific Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Fraction Calculator",
+            "href": "https://www.calculator.net/fraction-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Fraction Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Percentage Calculator",
+            "href": "https://www.calculator.net/percent-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Percentage Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Random Number Generator",
+            "href": "https://www.calculator.net/random-number-generator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Random Number Generator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Triangle Calculator",
+            "href": "https://www.calculator.net/triangle-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Triangle Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Standard Deviation Calculator",
+            "href": "https://www.calculator.net/standard-deviation-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Standard Deviation Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/other-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Age Calculator",
+            "href": "https://www.calculator.net/age-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Age Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Date Calculator",
+            "href": "https://www.calculator.net/date-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Date Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Time Calculator",
+            "href": "https://www.calculator.net/time-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Time Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Hours Calculator",
+            "href": "https://www.calculator.net/hours-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Hours Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "GPA Calculator",
+            "href": "https://www.calculator.net/gpa-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'GPA Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Grade Calculator",
+            "href": "https://www.calculator.net/grade-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Grade Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Concrete Calculator",
+            "href": "https://www.calculator.net/concrete-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Concrete Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Subnet Calculator",
+            "href": "https://www.calculator.net/ip-subnet-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Subnet Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Password Generator",
+            "href": "https://www.calculator.net/password-generator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Password Generator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Conversion Calculator",
+            "href": "https://www.calculator.net/conversion-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Conversion Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/sitemap.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "about us",
+            "href": "https://www.calculator.net/about-us.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'about us'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "terms of use",
+            "href": "https://www.calculator.net/about-us.html#terms",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'terms of use'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "privacy policy",
+            "href": "https://www.calculator.net/about-us.html#privacy",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'privacy policy'",
+            "target": "",
+            "is_external": false
+          }
+        ],
+        "forms": [
+          {
+            "element_type": "form",
+            "form_index": 0,
+            "action": "https://www.calculator.net/",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calcSearchForm"
+            },
+            "fields": [
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "calcSearchTerm",
+                "id": "calcSearchTerm",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "calcSearchTerm"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              }
+            ],
+            "submit_buttons": []
+          }
+        ],
+        "media": [
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/calculator-white.svg",
+            "alt": "Calculator.net",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          },
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/financial-calculator.jpg",
+            "alt": "Financial Calculators",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          },
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/fitness-calculator.jpg",
+            "alt": "Fitness & Health Calculators",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          },
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/math-calculator.jpg",
+            "alt": "Math Calculators",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          },
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/other-calculator.jpg",
+            "alt": "Other Calculators",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          },
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/all-calculators.svg",
+            "alt": "All Calculators",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          }
+        ],
+        "content": [
+          {
+            "element_type": "heading",
+            "level": "h1",
+            "text": "Free Online Calculators",
+            "selector": {
+              "type": "xpath",
+              "value": "//h1"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "element_type": "table",
+            "table_index": 0,
+            "headers": [],
+            "row_count": 6,
+            "selector": {
+              "type": "xpath",
+              "value": "//table"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 1,
+            "headers": [],
+            "row_count": 3,
+            "selector": {
+              "type": "id",
+              "value": "sciout"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 2,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "xpath",
+              "value": "//table"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.calculator.net/fitness-and-health-calculator.html",
+      "title": "Fitness and Health Calculators",
+      "crawled_at": "2026-03-01T11:29:17.468589",
+      "page_type": "general",
+      "elements": {
+        "interactive": [],
+        "navigation": [
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sign in",
+            "href": "https://www.calculator.net/my-account/sign-in.php",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sign in'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "fitness & health",
+            "href": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'fitness & health'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMI Calculator",
+            "href": "https://www.calculator.net/bmi-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMI Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Calorie Calculator",
+            "href": "https://www.calculator.net/calorie-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Calorie Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Body Fat Calculator",
+            "href": "https://www.calculator.net/body-fat-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Body Fat Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMR Calculator",
+            "href": "https://www.calculator.net/bmr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMR Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Ideal Weight Calculator",
+            "href": "https://www.calculator.net/ideal-weight-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Ideal Weight Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pace Calculator",
+            "href": "https://www.calculator.net/pace-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pace Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Army Body Fat Calculator",
+            "href": "https://www.calculator.net/army-body-fat-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Army Body Fat Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Lean Body Mass Calculator",
+            "href": "https://www.calculator.net/lean-body-mass-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Lean Body Mass Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Healthy Weight Calculator",
+            "href": "https://www.calculator.net/healthy-weight-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Healthy Weight Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Calories Burned Calculator",
+            "href": "https://www.calculator.net/calories-burned-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Calories Burned Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "One Rep Max Calculator",
+            "href": "https://www.calculator.net/one-rep-max-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'One Rep Max Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Target Heart Rate Calculator",
+            "href": "https://www.calculator.net/target-heart-rate-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Target Heart Rate Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Calculator",
+            "href": "https://www.calculator.net/pregnancy-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Weight Gain Calculator",
+            "href": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Weight Gain Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Conception Calculator",
+            "href": "https://www.calculator.net/pregnancy-conception-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Conception Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Due Date Calculator",
+            "href": "https://www.calculator.net/due-date-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Due Date Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Ovulation Calculator",
+            "href": "https://www.calculator.net/ovulation-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Ovulation Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Conception Calculator",
+            "href": "https://www.calculator.net/conception-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Conception Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Period Calculator",
+            "href": "https://www.calculator.net/period-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Period Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Macro Calculator",
+            "href": "https://www.calculator.net/macro-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Macro Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Carbohydrate Calculator",
+            "href": "https://www.calculator.net/carbohydrate-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Carbohydrate Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Protein Calculator",
+            "href": "https://www.calculator.net/protein-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Protein Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Fat Intake Calculator",
+            "href": "https://www.calculator.net/fat-intake-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Fat Intake Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "TDEE Calculator",
+            "href": "https://www.calculator.net/tdee-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'TDEE Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "GFR Calculator",
+            "href": "https://www.calculator.net/gfr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'GFR Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Body Type Calculator",
+            "href": "https://www.calculator.net/body-type-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Body Type Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Body Surface Area Calculator",
+            "href": "https://www.calculator.net/body-surface-area-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Body Surface Area Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BAC Calculator",
+            "href": "https://www.calculator.net/bac-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BAC Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Financial",
+            "href": "https://www.calculator.net/financial-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Financial'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Math",
+            "href": "https://www.calculator.net/math-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Math'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Other",
+            "href": "https://www.calculator.net/other-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Other'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "about us",
+            "href": "https://www.calculator.net/about-us.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'about us'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sitemap",
+            "href": "https://www.calculator.net/sitemap.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sitemap'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "terms of use",
+            "href": "https://www.calculator.net/about-us.html#terms",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'terms of use'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "privacy policy",
+            "href": "https://www.calculator.net/about-us.html#privacy",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'privacy policy'",
+            "target": "",
+            "is_external": false
+          }
+        ],
+        "forms": [
+          {
+            "element_type": "form",
+            "form_index": 0,
+            "action": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calcSearchForm"
+            },
+            "fields": [
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "calcSearchTerm",
+                "id": "calcSearchTerm",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "calcSearchTerm"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              }
+            ],
+            "submit_buttons": []
+          }
+        ],
+        "media": [
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/calculator-white.svg",
+            "alt": "Calculator.net",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          }
+        ],
+        "content": [
+          {
+            "element_type": "heading",
+            "level": "h1",
+            "text": "Fitness and Health Calculators",
+            "selector": {
+              "type": "xpath",
+              "value": "//h1"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Fitness",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Pregnancy",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Other",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "element_type": "table",
+            "table_index": 0,
+            "headers": [],
+            "row_count": 1,
+            "selector": {
+              "type": "css",
+              "value": "table.smtb"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 1,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "searchbox"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.calculator.net/tdee-calculator.html",
+      "title": "TDEE Calculator",
+      "crawled_at": "2026-03-01T11:29:26.674482",
+      "page_type": "general",
+      "elements": {
+        "interactive": [
+          {
+            "element_type": "input_button",
+            "text": "Calculate",
+            "selector": {
+              "type": "name",
+              "value": "x"
+            },
+            "description": "<input type='submit'>",
+            "type": "submit"
+          },
+          {
+            "element_type": "input_button",
+            "text": "Clear",
+            "selector": {
+              "type": "xpath",
+              "value": "//input"
+            },
+            "description": "<input type='button'>",
+            "type": "button"
+          }
+        ],
+        "navigation": [
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sign in",
+            "href": "https://www.calculator.net/my-account/sign-in.php",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sign in'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "fitness & health",
+            "href": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'fitness & health'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "tdee calculator",
+            "href": "https://www.calculator.net/tdee-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'tdee calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Print",
+            "href": "https://www.calculator.net/tdee-calculator.html#",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Print'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMI Calculator",
+            "href": "https://www.calculator.net/bmi-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMI Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Calorie Calculator",
+            "href": "https://www.calculator.net/calorie-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Calorie Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Macro Calculator",
+            "href": "https://www.calculator.net/macro-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Macro Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Body Fat",
+            "href": "https://www.calculator.net/body-fat-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Body Fat'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMR",
+            "href": "https://www.calculator.net/bmr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMR'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Ideal Weight",
+            "href": "https://www.calculator.net/ideal-weight-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Ideal Weight'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy",
+            "href": "https://www.calculator.net/pregnancy-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Weight Gain",
+            "href": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Weight Gain'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Conception",
+            "href": "https://www.calculator.net/pregnancy-conception-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Conception'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Due Date",
+            "href": "https://www.calculator.net/due-date-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Due Date'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pace",
+            "href": "https://www.calculator.net/pace-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pace'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Financial",
+            "href": "https://www.calculator.net/financial-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Financial'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Math",
+            "href": "https://www.calculator.net/math-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Math'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Other",
+            "href": "https://www.calculator.net/other-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Other'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "about us",
+            "href": "https://www.calculator.net/about-us.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'about us'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sitemap",
+            "href": "https://www.calculator.net/sitemap.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sitemap'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "terms of use",
+            "href": "https://www.calculator.net/about-us.html#terms",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'terms of use'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "privacy policy",
+            "href": "https://www.calculator.net/about-us.html#privacy",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'privacy policy'",
+            "target": "",
+            "is_external": false
+          }
+        ],
+        "forms": [
+          {
+            "element_type": "form",
+            "form_index": 0,
+            "action": "https://www.calculator.net/tdee-calculator.html",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calform"
+            },
+            "fields": [
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cage",
+                "id": "cage",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cage"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "csex",
+                "id": "csex1",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "csex1"
+                },
+                "label": "male",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "csex",
+                "id": "csex2",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "csex2"
+                },
+                "label": "female",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cheightfeet",
+                "id": "cheightfeet",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cheightfeet"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cheightinch",
+                "id": "cheightinch",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cheightinch"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cpound",
+                "id": "cpound",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cpound"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cheightmeter",
+                "id": "cheightmeter",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cheightmeter"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "ckg",
+                "id": "ckg",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "ckg"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "coutunit",
+                "id": "coutunit1",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "coutunit1"
+                },
+                "label": "",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "coutunit",
+                "id": "coutunit2",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "coutunit2"
+                },
+                "label": "",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "cformula",
+                "id": "cformula1",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cformula1"
+                },
+                "label": "",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "cformula",
+                "id": "cformula2",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cformula2"
+                },
+                "label": "",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cfatpct",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "cfatpct"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "select",
+                "name": "cactivity",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cactivity"
+                },
+                "label": "",
+                "options": [
+                  {
+                    "text": "Basal Metabolic Rate (BMR)",
+                    "value": "1"
+                  },
+                  {
+                    "text": "Sedentary: little or no exercise",
+                    "value": "1.2"
+                  },
+                  {
+                    "text": "Light: exercise 1-3 times/week",
+                    "value": "1.375"
+                  },
+                  {
+                    "text": "Moderate: exercise 4-5 times/week",
+                    "value": "1.465"
+                  },
+                  {
+                    "text": "Active: daily exercise or intense exercise 3-4 times/week",
+                    "value": "1.55"
+                  },
+                  {
+                    "text": "Very Active: intense exercise 6-7 times/week",
+                    "value": "1.725"
+                  },
+                  {
+                    "text": "Extra Active: very intense exercise daily, or physical job",
+                    "value": "1.9"
+                  }
+                ],
+                "description": "<select type='select-one'> 'Basal Metabolic Rate (BMR)\n   Sedentary: little or'"
+              }
+            ],
+            "submit_buttons": [
+              {
+                "type": "submit",
+                "value": "Calculate",
+                "selector": {
+                  "type": "name",
+                  "value": "x"
+                }
+              },
+              {
+                "type": "button",
+                "value": "Clear",
+                "selector": {
+                  "type": "xpath",
+                  "value": "//input"
+                }
+              }
+            ]
+          },
+          {
+            "element_type": "form",
+            "form_index": 1,
+            "action": "https://www.calculator.net/tdee-calculator.html",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calcSearchForm"
+            },
+            "fields": [
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "calcSearchTerm",
+                "id": "calcSearchTerm",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "calcSearchTerm"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              }
+            ],
+            "submit_buttons": []
+          }
+        ],
+        "media": [
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/calculator-white.svg",
+            "alt": "Calculator.net",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          },
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/insm.svg",
+            "alt": "Modify the values and click the calculate button to use",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          }
+        ],
+        "content": [
+          {
+            "element_type": "heading",
+            "level": "h1",
+            "text": "TDEE Calculator",
+            "selector": {
+              "type": "xpath",
+              "value": "//h1"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "What is TDEE?",
+            "selector": {
+              "type": "xpath",
+              "value": "//h3"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "How is TDEE calculated?",
+            "selector": {
+              "type": "xpath",
+              "value": "//h3"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "element_type": "table",
+            "table_index": 0,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "calinputtable"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 1,
+            "headers": [],
+            "row_count": 3,
+            "selector": {
+              "type": "id",
+              "value": "standardheightweight"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 2,
+            "headers": [],
+            "row_count": 1,
+            "selector": {
+              "type": "xpath",
+              "value": "//table"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 3,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "metricheightweight"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 4,
+            "headers": [],
+            "row_count": 3,
+            "selector": {
+              "type": "xpath",
+              "value": "//table"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 5,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "searchbox"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+      "title": "Pregnancy Weight Gain Calculator",
+      "crawled_at": "2026-03-01T11:29:35.116836",
+      "page_type": "general",
+      "elements": {
+        "interactive": [
+          {
+            "element_type": "input_button",
+            "text": "Calculate",
+            "selector": {
+              "type": "name",
+              "value": "x"
+            },
+            "description": "<input type='submit'>",
+            "type": "submit"
+          },
+          {
+            "element_type": "input_button",
+            "text": "Clear",
+            "selector": {
+              "type": "xpath",
+              "value": "//input"
+            },
+            "description": "<input type='button'>",
+            "type": "button"
+          }
+        ],
+        "navigation": [
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sign in",
+            "href": "https://www.calculator.net/my-account/sign-in.php",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sign in'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "fitness & health",
+            "href": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'fitness & health'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "pregnancy weight gain calculator",
+            "href": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'pregnancy weight gain calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Print",
+            "href": "https://www.calculator.net/pregnancy-weight-gain-calculator.html#",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Print'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Weight Gain During Pregnancy: Reexamining The Guidelines.",
+            "href": "https://www.calculator.net/pdf/weight-gain-during-pregnancy.pdf",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Weight Gain During Pregnancy: Reexamining The Guid'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMI",
+            "href": "https://www.calculator.net/bmi-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMI'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Calorie",
+            "href": "https://www.calculator.net/calorie-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Calorie'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Body Fat",
+            "href": "https://www.calculator.net/body-fat-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Body Fat'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "BMR",
+            "href": "https://www.calculator.net/bmr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'BMR'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Macro",
+            "href": "https://www.calculator.net/macro-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Macro'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Ideal Weight",
+            "href": "https://www.calculator.net/ideal-weight-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Ideal Weight'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy",
+            "href": "https://www.calculator.net/pregnancy-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pregnancy Conception",
+            "href": "https://www.calculator.net/pregnancy-conception-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pregnancy Conception'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Due Date",
+            "href": "https://www.calculator.net/due-date-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Due Date'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pace",
+            "href": "https://www.calculator.net/pace-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pace'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Financial",
+            "href": "https://www.calculator.net/financial-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Financial'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Math",
+            "href": "https://www.calculator.net/math-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Math'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Other",
+            "href": "https://www.calculator.net/other-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Other'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "about us",
+            "href": "https://www.calculator.net/about-us.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'about us'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sitemap",
+            "href": "https://www.calculator.net/sitemap.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sitemap'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "terms of use",
+            "href": "https://www.calculator.net/about-us.html#terms",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'terms of use'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "privacy policy",
+            "href": "https://www.calculator.net/about-us.html#privacy",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'privacy policy'",
+            "target": "",
+            "is_external": false
+          }
+        ],
+        "forms": [
+          {
+            "element_type": "form",
+            "form_index": 0,
+            "action": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calform"
+            },
+            "fields": [
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "twins",
+                "id": "twins1",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "twins1"
+                },
+                "label": "No",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_radio",
+                "input_type": "radio",
+                "name": "twins",
+                "id": "twins2",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "twins2"
+                },
+                "label": "Yes",
+                "description": "<input type='radio'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cheightfeet",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "cheightfeet"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cheightinch",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "cheightinch"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cpoundbefore",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "cpoundbefore"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cpoundnow",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "cpoundnow"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "cheightmeter",
+                "id": "cheightmeter",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "cheightmeter"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "ckgbefore",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "ckgbefore"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "ckgnow",
+                "id": "",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "ckgnow"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              },
+              {
+                "element_type": "select",
+                "name": "pstage",
+                "required": true,
+                "selector": {
+                  "type": "name",
+                  "value": "pstage"
+                },
+                "label": "",
+                "options": [
+                  {
+                    "text": "Week 1",
+                    "value": "1"
+                  },
+                  {
+                    "text": "Week 2",
+                    "value": "2"
+                  },
+                  {
+                    "text": "Week 3",
+                    "value": "3"
+                  },
+                  {
+                    "text": "Week 4",
+                    "value": "4"
+                  },
+                  {
+                    "text": "Week 5",
+                    "value": "5"
+                  },
+                  {
+                    "text": "Week 6",
+                    "value": "6"
+                  },
+                  {
+                    "text": "Week 7",
+                    "value": "7"
+                  },
+                  {
+                    "text": "Week 8",
+                    "value": "8"
+                  },
+                  {
+                    "text": "Week 9",
+                    "value": "9"
+                  },
+                  {
+                    "text": "Week 10",
+                    "value": "10"
+                  },
+                  {
+                    "text": "Week 11",
+                    "value": "11"
+                  },
+                  {
+                    "text": "Week 12",
+                    "value": "12"
+                  },
+                  {
+                    "text": "Week 13",
+                    "value": "13"
+                  },
+                  {
+                    "text": "Week 14",
+                    "value": "14"
+                  },
+                  {
+                    "text": "Week 15",
+                    "value": "15"
+                  },
+                  {
+                    "text": "Week 16",
+                    "value": "16"
+                  },
+                  {
+                    "text": "Week 17",
+                    "value": "17"
+                  },
+                  {
+                    "text": "Week 18",
+                    "value": "18"
+                  },
+                  {
+                    "text": "Week 19",
+                    "value": "19"
+                  },
+                  {
+                    "text": "Week 20",
+                    "value": "20"
+                  }
+                ],
+                "description": "<select type='select-one'> 'Week 1\nWeek 2\nWeek 3\nWeek 4\nWeek 5\nWeek 6\nWeek 7\nW'"
+              }
+            ],
+            "submit_buttons": [
+              {
+                "type": "submit",
+                "value": "Calculate",
+                "selector": {
+                  "type": "name",
+                  "value": "x"
+                }
+              },
+              {
+                "type": "button",
+                "value": "Clear",
+                "selector": {
+                  "type": "xpath",
+                  "value": "//input"
+                }
+              }
+            ]
+          },
+          {
+            "element_type": "form",
+            "form_index": 1,
+            "action": "https://www.calculator.net/pregnancy-weight-gain-calculator.html",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calcSearchForm"
+            },
+            "fields": [
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "calcSearchTerm",
+                "id": "calcSearchTerm",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "calcSearchTerm"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              }
+            ],
+            "submit_buttons": []
+          }
+        ],
+        "media": [
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/calculator-white.svg",
+            "alt": "Calculator.net",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          }
+        ],
+        "content": [
+          {
+            "element_type": "heading",
+            "level": "h1",
+            "text": "Pregnancy Weight Gain Calculator",
+            "selector": {
+              "type": "xpath",
+              "value": "//h1"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Recommended weight gain during pregnancy",
+            "selector": {
+              "type": "xpath",
+              "value": "//h3"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Potential complications of suboptimal weight gain",
+            "selector": {
+              "type": "xpath",
+              "value": "//h3"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "What to eat during pregnancy?",
+            "selector": {
+              "type": "xpath",
+              "value": "//h3"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "element_type": "table",
+            "table_index": 0,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "calinputtable"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 1,
+            "headers": [],
+            "row_count": 4,
+            "selector": {
+              "type": "id",
+              "value": "standardheightweight"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 2,
+            "headers": [],
+            "row_count": 1,
+            "selector": {
+              "type": "xpath",
+              "value": "//table"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 3,
+            "headers": [],
+            "row_count": 3,
+            "selector": {
+              "type": "id",
+              "value": "metricheightweight"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 4,
+            "headers": [],
+            "row_count": 1,
+            "selector": {
+              "type": "xpath",
+              "value": "//table"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 5,
+            "headers": [],
+            "row_count": 5,
+            "selector": {
+              "type": "css",
+              "value": "table.cinfoT"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 6,
+            "headers": [],
+            "row_count": 7,
+            "selector": {
+              "type": "css",
+              "value": "table.cinfoT"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 7,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "searchbox"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://www.calculator.net/financial-calculator.html",
+      "title": "Financial Calculators",
+      "crawled_at": "2026-03-01T11:29:43.558858",
+      "page_type": "general",
+      "elements": {
+        "interactive": [],
+        "navigation": [
+          {
+            "element_type": "link",
+            "text": "",
+            "href": "https://www.calculator.net/",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a>",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sign in",
+            "href": "https://www.calculator.net/my-account/sign-in.php",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sign in'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "financial",
+            "href": "https://www.calculator.net/financial-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'financial'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Mortgage Calculator",
+            "href": "https://www.calculator.net/mortgage-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Mortgage Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Amortization Calculator",
+            "href": "https://www.calculator.net/amortization-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Amortization Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Mortgage Payoff Calculator",
+            "href": "https://www.calculator.net/mortgage-payoff-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Mortgage Payoff Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "House Affordability Calculator",
+            "href": "https://www.calculator.net/house-affordability-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'House Affordability Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Rent Calculator",
+            "href": "https://www.calculator.net/rent-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Rent Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Debt-to-Income Ratio Calculator",
+            "href": "https://www.calculator.net/debt-ratio-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Debt-to-Income Ratio Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Real Estate Calculator",
+            "href": "https://www.calculator.net/real-estate-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Real Estate Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Refinance Calculator",
+            "href": "https://www.calculator.net/refinance-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Refinance Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Rental Property Calculator",
+            "href": "https://www.calculator.net/rental-property-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Rental Property Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "APR Calculator",
+            "href": "https://www.calculator.net/apr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'APR Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "FHA Loan Calculator",
+            "href": "https://www.calculator.net/fha-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'FHA Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "VA Mortgage Calculator",
+            "href": "https://www.calculator.net/va-mortgage-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'VA Mortgage Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Home Equity Loan Calculator",
+            "href": "https://www.calculator.net/home-equity-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Home Equity Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "HELOC Calculator",
+            "href": "https://www.calculator.net/heloc-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'HELOC Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Down Payment Calculator",
+            "href": "https://www.calculator.net/down-payment-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Down Payment Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Rent vs. Buy Calculator",
+            "href": "https://www.calculator.net/rent-vs-buy-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Rent vs. Buy Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Auto Loan Calculator",
+            "href": "https://www.calculator.net/auto-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Auto Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Cash Back or Low Interest Calculator",
+            "href": "https://www.calculator.net/cash-back-or-low-interest-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Cash Back or Low Interest Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Auto Lease Calculator",
+            "href": "https://www.calculator.net/auto-lease-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Auto Lease Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Interest Calculator",
+            "href": "https://www.calculator.net/interest-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Interest Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Investment Calculator",
+            "href": "https://www.calculator.net/investment-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Investment Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Finance Calculator",
+            "href": "https://www.calculator.net/finance-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Finance Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Compound Interest Calculator",
+            "href": "https://www.calculator.net/compound-interest-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Compound Interest Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Interest Rate Calculator",
+            "href": "https://www.calculator.net/interest-rate-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Interest Rate Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Savings Calculator",
+            "href": "https://www.calculator.net/savings-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Savings Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Simple Interest Calculator",
+            "href": "https://www.calculator.net/simple-interest-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Simple Interest Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "CD Calculator",
+            "href": "https://www.calculator.net/cd-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'CD Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Bond Calculator",
+            "href": "https://www.calculator.net/bond-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Bond Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Mutual Fund Calculator",
+            "href": "https://www.calculator.net/mutual-fund-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Mutual Fund Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Average Return Calculator",
+            "href": "https://www.calculator.net/average-return-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Average Return Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "IRR Calculator",
+            "href": "https://www.calculator.net/irr-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'IRR Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "ROI Calculator",
+            "href": "https://www.calculator.net/roi-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'ROI Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Payback Period Calculator",
+            "href": "https://www.calculator.net/payback-period-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Payback Period Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Present Value Calculator",
+            "href": "https://www.calculator.net/present-value-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Present Value Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Future Value Calculator",
+            "href": "https://www.calculator.net/future-value-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Future Value Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Retirement Calculator",
+            "href": "https://www.calculator.net/retirement-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Retirement Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "401K Calculator",
+            "href": "https://www.calculator.net/401k-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> '401K Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Pension Calculator",
+            "href": "https://www.calculator.net/pension-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Pension Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Social Security Calculator",
+            "href": "https://www.calculator.net/social-security-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Social Security Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Annuity Calculator",
+            "href": "https://www.calculator.net/annuity-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Annuity Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Annuity Payout Calculator",
+            "href": "https://www.calculator.net/annuity-payout-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Annuity Payout Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Roth IRA Calculator",
+            "href": "https://www.calculator.net/roth-ira-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Roth IRA Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "IRA Calculator",
+            "href": "https://www.calculator.net/ira-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'IRA Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "RMD Calculator",
+            "href": "https://www.calculator.net/rmd-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'RMD Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Income Tax Calculator",
+            "href": "https://www.calculator.net/tax-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Income Tax Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Salary Calculator",
+            "href": "https://www.calculator.net/salary-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Salary Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Marriage Tax Calculator",
+            "href": "https://www.calculator.net/marriage-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Marriage Tax Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Estate Tax Calculator",
+            "href": "https://www.calculator.net/estate-tax-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Estate Tax Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Take-Home-Paycheck Calculator",
+            "href": "https://www.calculator.net/take-home-pay-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Take-Home-Paycheck Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Loan Calculator",
+            "href": "https://www.calculator.net/loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Payment Calculator",
+            "href": "https://www.calculator.net/payment-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Payment Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Currency Calculator",
+            "href": "https://www.calculator.net/currency-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Currency Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Inflation Calculator",
+            "href": "https://www.calculator.net/inflation-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Inflation Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Sales Tax Calculator",
+            "href": "https://www.calculator.net/sales-tax-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Sales Tax Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Credit Card Calculator",
+            "href": "https://www.calculator.net/credit-card-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Credit Card Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Credit Cards Payoff Calculator",
+            "href": "https://www.calculator.net/credit-card-payoff-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Credit Cards Payoff Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Debt Payoff Calculator",
+            "href": "https://www.calculator.net/debt-payoff-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Debt Payoff Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Debt Consolidation Calculator",
+            "href": "https://www.calculator.net/debt-consolidation-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Debt Consolidation Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Repayment Calculator",
+            "href": "https://www.calculator.net/repayment-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Repayment Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Student Loan Calculator",
+            "href": "https://www.calculator.net/student-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Student Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "College Cost Calculator",
+            "href": "https://www.calculator.net/college-cost-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'College Cost Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "VAT Calculator",
+            "href": "https://www.calculator.net/vat-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'VAT Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Depreciation Calculator",
+            "href": "https://www.calculator.net/depreciation-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Depreciation Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Margin Calculator",
+            "href": "https://www.calculator.net/margin-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Margin Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Discount Calculator",
+            "href": "https://www.calculator.net/discount-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Discount Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Business Loan Calculator",
+            "href": "https://www.calculator.net/business-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Business Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Personal Loan Calculator",
+            "href": "https://www.calculator.net/personal-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Personal Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Boat Loan Calculator",
+            "href": "https://www.calculator.net/boat-loan-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Boat Loan Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Lease Calculator",
+            "href": "https://www.calculator.net/lease-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Lease Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Budget Calculator",
+            "href": "https://www.calculator.net/budget-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Budget Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Commission Calculator",
+            "href": "https://www.calculator.net/commission-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Commission Calculator'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Fitness and Health",
+            "href": "https://www.calculator.net/fitness-and-health-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Fitness and Health'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Math",
+            "href": "https://www.calculator.net/math-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Math'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "Other",
+            "href": "https://www.calculator.net/other-calculator.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'Other'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "about us",
+            "href": "https://www.calculator.net/about-us.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'about us'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "sitemap",
+            "href": "https://www.calculator.net/sitemap.html",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'sitemap'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "terms of use",
+            "href": "https://www.calculator.net/about-us.html#terms",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'terms of use'",
+            "target": "",
+            "is_external": false
+          },
+          {
+            "element_type": "link",
+            "text": "privacy policy",
+            "href": "https://www.calculator.net/about-us.html#privacy",
+            "selector": {
+              "type": "xpath",
+              "value": "//a"
+            },
+            "description": "<a> 'privacy policy'",
+            "target": "",
+            "is_external": false
+          }
+        ],
+        "forms": [
+          {
+            "element_type": "form",
+            "form_index": 0,
+            "action": "https://www.calculator.net/financial-calculator.html",
+            "method": "get",
+            "selector": {
+              "type": "name",
+              "value": "calcSearchForm"
+            },
+            "fields": [
+              {
+                "element_type": "input_text",
+                "input_type": "text",
+                "name": "calcSearchTerm",
+                "id": "calcSearchTerm",
+                "placeholder": "",
+                "required": true,
+                "selector": {
+                  "type": "id",
+                  "value": "calcSearchTerm"
+                },
+                "label": "",
+                "description": "<input type='text'>",
+                "validation": {}
+              }
+            ],
+            "submit_buttons": []
+          }
+        ],
+        "media": [
+          {
+            "element_type": "image",
+            "src": "https://d26tpo4cm8sb6k.cloudfront.net/img/svg/calculator-white.svg",
+            "alt": "Calculator.net",
+            "has_alt": true,
+            "selector": {
+              "type": "xpath",
+              "value": "//img"
+            }
+          }
+        ],
+        "content": [
+          {
+            "element_type": "heading",
+            "level": "h1",
+            "text": "Financial Calculators",
+            "selector": {
+              "type": "xpath",
+              "value": "//h1"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Mortgage and Real Estate",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Auto",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Investment",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Retirement",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Tax and Salary",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          },
+          {
+            "element_type": "heading",
+            "level": "h3",
+            "text": "Other",
+            "selector": {
+              "type": "css",
+              "value": "h3.h3head"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "element_type": "table",
+            "table_index": 0,
+            "headers": [],
+            "row_count": 1,
+            "selector": {
+              "type": "css",
+              "value": "table.smtb"
+            }
+          },
+          {
+            "element_type": "table",
+            "table_index": 1,
+            "headers": [],
+            "row_count": 2,
+            "selector": {
+              "type": "id",
+              "value": "searchbox"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total_interactive": 4,
+    "total_forms": 7,
+    "total_links": 215,
+    "total_tables": 21,
+    "page_types": [
+      "general"
+    ]
+  }
+}

@@ -1,26 +1,22 @@
 {
   "generation_metadata": {
     "base_url": "https://www.calculator.net/",
-    "generated_at": "2026-02-28T19:05:42.913077",
-    "total_test_cases": 65,
+    "generated_at": "2026-03-01T11:50:18.948831",
+    "total_test_cases": 21,
     "rag_enabled": true
   },
   "statistics": {
     "by_category": {
-      "functional": 36,
-      "navigation": 21,
-      "ui": 1,
-      "form": 2,
-      "functional|navigation": 2,
-      "functional|form": 2,
-      "functional|ui": 1
+      "functional": 17,
+      "navigation": 3,
+      "ui": 1
     },
     "by_priority": {
-      "high": 56,
-      "medium": 7,
-      "low": 2
+      "high": 17,
+      "medium": 3,
+      "low": 1
     },
-    "total": 65
+    "total": 21
   },
   "test_cases": [
     {
@@ -40,7 +36,7 @@
             "element_type": "page",
             "selector_type": "css",
             "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
+            "description": "Navigate to the calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -65,38 +61,10 @@
     },
     {
       "id": "TC_002",
-      "name": "Search calculator functionality",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify search calculator functionality",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Search calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_003",
       "name": "Mortgage calculator functionality",
       "category": "functional",
       "priority": "high",
-      "description": "Verify mortgage calculator functionality",
+      "description": "Verify mortgage calculator works",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -108,7 +76,7 @@
             "element_type": "page",
             "selector_type": "css",
             "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
+            "description": "Navigate to the calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -120,13 +88,65 @@
             "element_type": "link",
             "selector_type": "link_text",
             "selector_value": "Mortgage Calculator",
-            "description": "Click on Mortgage Calculator link"
+            "description": "Mortgage calculator link"
           },
           "input_data": null,
-          "expected_result": "Mortgage calculator page loads"
+          "expected_result": "Mortgage calculator page loaded"
         }
       ],
-      "expected_outcome": "Mortgage calculator functionality works",
+      "expected_outcome": "Search results displayed",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_003",
+      "name": "Sign in functionality",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify sign in functionality works",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/",
+            "description": "Navigate to the calculator page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Sign in link"
+          },
+          "input_data": null,
+          "expected_result": "Sign in page loaded"
+        },
+        {
+          "step_number": 4,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
+            "selector_value": "sign in",
+            "description": "Sign in button"
+          },
+          "input_data": null,
+          "expected_result": "User logged in successfully"
+        }
+      ],
+      "expected_outcome": "User logged in successfully",
       "tags": [
         "smoke"
       ]
@@ -136,7 +156,7 @@
       "name": "Loan calculator functionality",
       "category": "functional",
       "priority": "high",
-      "description": "Verify loan calculator functionality",
+      "description": "Verify loan calculator works",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -148,7 +168,7 @@
             "element_type": "page",
             "selector_type": "css",
             "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
+            "description": "Navigate to the calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -160,23 +180,23 @@
             "element_type": "link",
             "selector_type": "link_text",
             "selector_value": "Loan Calculator",
-            "description": "Click on Loan Calculator link"
+            "description": "Loan calculator link"
           },
           "input_data": null,
-          "expected_result": "Loan calculator page loads"
+          "expected_result": "Loan calculator page loaded"
         }
       ],
-      "expected_outcome": "Loan calculator functionality works",
+      "expected_outcome": "Search results displayed",
       "tags": [
         "smoke"
       ]
     },
     {
       "id": "TC_005",
-      "name": "Auto loan calculator functionality",
-      "category": "functional",
+      "name": "Navigate to IP Subnet Calculator page",
+      "category": "navigation",
       "priority": "high",
-      "description": "Verify auto loan calculator functionality",
+      "description": "Verify that the IP Subnet Calculator page loads successfully",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -187,36 +207,24 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
+            "selector_value": "https://www.calculator.net/ip-subnet-calculator.html",
+            "description": "Navigate to the IP Subnet Calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Auto Loan Calculator",
-            "description": "Click on Auto Loan Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Auto loan calculator page loads"
         }
       ],
-      "expected_outcome": "Auto loan calculator functionality works",
+      "expected_outcome": "Page loads successfully",
       "tags": [
         "smoke"
       ]
     },
     {
       "id": "TC_006",
-      "name": "Interest calculator functionality",
+      "name": "Submit valid IP and subnet",
       "category": "functional",
       "priority": "high",
-      "description": "Verify interest calculator functionality",
+      "description": "Verify that submitting valid IP and subnet returns correct result",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -227,36 +235,58 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
+            "selector_value": "https://www.calculator.net/ip-subnet-calculator.html",
+            "description": "Navigate to the IP Subnet Calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
         },
         {
           "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "c6ip",
+            "description": "Enter IP address"
+          },
+          "input_data": "192.168.1.1",
+          "expected_result": "IP address entered successfully"
+        },
+        {
+          "step_number": 3,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "c6subnet",
+            "description": "Enter subnet mask"
+          },
+          "input_data": "255.255.255.0",
+          "expected_result": "Subnet mask entered successfully"
+        },
+        {
+          "step_number": 4,
           "action": "click",
           "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Interest Calculator",
-            "description": "Click on Interest Calculator link"
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
           },
           "input_data": null,
-          "expected_result": "Interest calculator page loads"
+          "expected_result": "Result displayed successfully"
         }
       ],
-      "expected_outcome": "Interest calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
+      "expected_outcome": "Result displayed successfully",
+      "tags": []
     },
     {
       "id": "TC_007",
-      "name": "Payment calculator functionality",
+      "name": "Submit empty IP and subnet",
       "category": "functional",
       "priority": "high",
-      "description": "Verify payment calculator functionality",
+      "description": "Verify that submitting empty IP and subnet returns error",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -267,449 +297,46 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
+            "selector_value": "https://www.calculator.net/ip-subnet-calculator.html",
+            "description": "Navigate to the IP Subnet Calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
         },
         {
           "step_number": 2,
-          "action": "click",
+          "action": "type",
           "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Payment Calculator",
-            "description": "Click on Payment Calculator link"
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "c6ip",
+            "description": "Enter IP address"
           },
-          "input_data": null,
-          "expected_result": "Payment calculator page loads"
+          "input_data": "",
+          "expected_result": "Error: IP address required"
+        },
+        {
+          "step_number": 3,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "c6subnet",
+            "description": "Enter subnet mask"
+          },
+          "input_data": "",
+          "expected_result": "Error: Subnet mask required"
         }
       ],
-      "expected_outcome": "Payment calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
+      "expected_outcome": "Error: IP address required and Error: Subnet mask required",
+      "tags": []
     },
     {
       "id": "TC_008",
-      "name": "Retirement calculator functionality",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify retirement calculator functionality",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Retirement Calculator",
-            "description": "Click on Retirement Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Retirement calculator page loads"
-        }
-      ],
-      "expected_outcome": "Retirement calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_009",
-      "name": "Amortization calculator functionality",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify amortization calculator functionality",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Amortization Calculator",
-            "description": "Click on Amortization Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Amortization calculator page loads"
-        }
-      ],
-      "expected_outcome": "Amortization calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_010",
-      "name": "Investment calculator functionality",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify investment calculator functionality",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Investment Calculator",
-            "description": "Click on Investment Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Investment calculator page loads"
-        }
-      ],
-      "expected_outcome": "Investment calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_011",
-      "name": "Inflation calculator functionality",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify inflation calculator functionality",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Inflation Calculator",
-            "description": "Click on Inflation Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Inflation calculator page loads"
-        }
-      ],
-      "expected_outcome": "Inflation calculator functionality works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_012",
-      "name": "Mortgage calculator functionality with valid input",
-      "category": "functional",
-      "priority": "medium",
-      "description": "Verify mortgage calculator functionality with valid input",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Mortgage Calculator",
-            "description": "Click on Mortgage Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Mortgage calculator page loads"
-        }
-      ],
-      "expected_outcome": "Mortgage calculator functionality works with valid input",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_013",
-      "name": "Loan calculator functionality with valid input",
-      "category": "functional",
-      "priority": "medium",
-      "description": "Verify loan calculator functionality with valid input",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Loan Calculator",
-            "description": "Click on Loan Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Loan calculator page loads"
-        }
-      ],
-      "expected_outcome": "Loan calculator functionality works with valid input",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_014",
-      "name": "Auto loan calculator functionality with valid input",
-      "category": "functional",
-      "priority": "medium",
-      "description": "Verify auto loan calculator functionality with valid input",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Auto Loan Calculator",
-            "description": "Click on Auto Loan Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Auto loan calculator page loads"
-        }
-      ],
-      "expected_outcome": "Test passes",
-      "tags": [
-        "general",
-        "auto-generated"
-      ]
-    },
-    {
-      "id": "TC_015",
-      "name": "Navigate to Loan Calculator Page",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the loan calculator page loads successfully",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html",
-            "description": "Navigate to the loan calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Loan calculator page loaded",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_016",
-      "name": "Submit Loan Calculator with Valid Inputs",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the loan calculator returns the correct result with valid inputs",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html",
-            "description": "Navigate to https://www.calculator.net/loan-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "rate",
-            "description": "Enter interest rate"
-          },
-          "input_data": "5",
-          "expected_result": "Interest rate entered successfully"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate loan"
-          },
-          "input_data": null,
-          "expected_result": "Loan calculation result displayed"
-        }
-      ],
-      "expected_outcome": "Loan calculation result displayed",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_017",
-      "name": "Submit Loan Calculator with Empty Required Fields",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the loan calculator displays validation errors for empty required fields",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html",
-            "description": "Navigate to https://www.calculator.net/loan-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "rate",
-            "description": "Leave interest rate field empty"
-          },
-          "input_data": "",
-          "expected_result": "Interest rate field is required"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate loan"
-          },
-          "input_data": null,
-          "expected_result": "Validation errors displayed"
-        }
-      ],
-      "expected_outcome": "Validation errors displayed",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_018",
-      "name": "Click on Sign In Link",
+      "name": "Click on sign in link",
       "category": "navigation",
       "priority": "medium",
-      "description": "Verify that the sign in link navigates to the correct page",
+      "description": "Verify that clicking on sign in link navigates to sign in page",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -720,8 +347,8 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html",
-            "description": "Navigate to https://www.calculator.net/loan-calculator.html"
+            "selector_value": "https://www.calculator.net/ip-subnet-calculator.html",
+            "description": "Navigate to the IP Subnet Calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -736,56 +363,18 @@
             "description": "Click on sign in link"
           },
           "input_data": null,
-          "expected_result": "Sign in page loaded"
+          "expected_result": "Navigated to sign in page"
         }
       ],
-      "expected_outcome": "Sign in page loaded",
+      "expected_outcome": "Navigated to sign in page",
       "tags": []
     },
     {
-      "id": "TC_019",
-      "name": "Verify Loan Calculator Heading",
-      "category": "ui",
-      "priority": "low",
-      "description": "Verify that the loan calculator heading is displayed correctly",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html",
-            "description": "Navigate to https://www.calculator.net/loan-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "verify",
-          "target": {
-            "element_type": "heading",
-            "selector_type": "xpath",
-            "selector_value": "//h1",
-            "description": "Verify loan calculator heading"
-          },
-          "input_data": null,
-          "expected_result": "Loan calculator heading displayed correctly"
-        }
-      ],
-      "expected_outcome": "Loan calculator heading displayed correctly",
-      "tags": []
-    },
-    {
-      "id": "TC_020",
-      "name": "Loan Calculator Page Loads Successfully",
+      "id": "TC_009",
+      "name": "Time Calculator Page Loads Successfully",
       "category": "functional",
       "priority": "high",
-      "description": "Verify the loan calculator page loads without errors",
+      "description": "Verify the Time Calculator page loads without errors",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -796,8 +385,8 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html#fixedend",
-            "description": "Navigate to the loan calculator page"
+            "selector_value": "https://www.calculator.net/time-calculator.html",
+            "description": "Navigate to the Time Calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -812,20 +401,20 @@
             "description": "Verify the page title"
           },
           "input_data": null,
-          "expected_result": "Loan Calculator"
+          "expected_result": "Time Calculator"
         }
       ],
-      "expected_outcome": "Page title is correct",
+      "expected_outcome": "Page title is displayed correctly",
       "tags": [
         "smoke"
       ]
     },
     {
-      "id": "TC_021",
-      "name": "Calculate Loan Payment with Valid Inputs",
+      "id": "TC_010",
+      "name": "Add Time to a Date",
       "category": "functional",
       "priority": "high",
-      "description": "Verify the loan calculator calculates the correct payment amount with valid inputs",
+      "description": "Verify adding time to a date works correctly",
       "preconditions": [
         "Navigate to page URL"
       ],
@@ -836,272 +425,74 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html#fixedend",
-            "description": "Navigate to the loan calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 5,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate loan payment"
-          },
-          "input_data": null,
-          "expected_result": "Loan payment is calculated"
-        },
-        {
-          "step_number": 6,
-          "action": "verify",
-          "target": {
-            "element_type": "heading",
-            "selector_type": "css",
-            "selector_value": "h2.h2result",
-            "description": "Verify the result"
-          },
-          "input_data": null,
-          "expected_result": "Results:"
-        }
-      ],
-      "expected_outcome": "Loan payment is calculated correctly",
-      "tags": []
-    },
-    {
-      "id": "TC_022",
-      "name": "Empty Required Fields Show Validation Errors",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that empty required fields show validation errors",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html#fixedend",
-            "description": "Navigate to the loan calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 5,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate loan payment"
-          },
-          "input_data": null,
-          "expected_result": "Validation errors are shown"
-        },
-        {
-          "step_number": 6,
-          "action": "verify",
-          "target": {
-            "element_type": "heading",
-            "selector_type": "css",
-            "selector_value": "h2.h2red",
-            "description": "Verify the error message"
-          },
-          "input_data": null,
-          "expected_result": "Error message is shown"
-        }
-      ],
-      "expected_outcome": "Validation errors are shown for empty required fields",
-      "tags": []
-    },
-    {
-      "id": "TC_023",
-      "name": "Invalid Inputs Show Error Messages",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that invalid inputs show error messages",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html#fixedend",
-            "description": "Navigate to the loan calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 5,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate loan payment"
-          },
-          "input_data": null,
-          "expected_result": "Error messages are shown"
-        },
-        {
-          "step_number": 6,
-          "action": "verify",
-          "target": {
-            "element_type": "heading",
-            "selector_type": "css",
-            "selector_value": "h2.h2red",
-            "description": "Verify the error message"
-          },
-          "input_data": null,
-          "expected_result": "Error message is shown"
-        }
-      ],
-      "expected_outcome": "Error messages are shown for invalid inputs",
-      "tags": []
-    },
-    {
-      "id": "TC_024",
-      "name": "Clear Button Resets All Fields",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the clear button resets all fields",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html#fixedend",
-            "description": "Navigate to the loan calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 5,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate loan payment"
-          },
-          "input_data": null,
-          "expected_result": "Loan payment is calculated"
-        },
-        {
-          "step_number": 6,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Clear button"
-          },
-          "input_data": null,
-          "expected_result": "All fields are reset"
-        },
-        {
-          "step_number": 7,
-          "action": "verify",
-          "target": {
-            "element_type": "heading",
-            "selector_type": "css",
-            "selector_value": "h2.h2result",
-            "description": "Verify the result"
-          },
-          "input_data": null,
-          "expected_result": "Results:"
-        }
-      ],
-      "expected_outcome": "All fields are reset correctly",
-      "tags": []
-    },
-    {
-      "id": "TC_025",
-      "name": "Navigation Links Work Correctly",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify that navigation links work correctly",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/loan-calculator.html#fixedend",
-            "description": "Navigate to the loan calculator page"
+            "selector_value": "https://www.calculator.net/time-calculator.html",
+            "description": "Navigate to the Time Calculator page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
         },
         {
           "step_number": 2,
-          "action": "click",
+          "action": "type",
           "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Sign in link"
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tcday1",
+            "description": "Enter date"
           },
-          "input_data": null,
-          "expected_result": "Sign in page is loaded"
+          "input_data": "2022-01-01",
+          "expected_result": "Date entered successfully"
         },
         {
           "step_number": 3,
-          "action": "click",
+          "action": "type",
           "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "financial",
-            "description": "Financial link"
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tchour1",
+            "description": "Enter hour"
           },
-          "input_data": null,
-          "expected_result": "Financial calculator page is loaded"
+          "input_data": "2",
+          "expected_result": "Hour entered successfully"
         },
         {
           "step_number": 4,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tcminute1",
+            "description": "Enter minute"
+          },
+          "input_data": "30",
+          "expected_result": "Minute entered successfully"
+        },
+        {
+          "step_number": 5,
           "action": "click",
           "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "loan calculator",
-            "description": "Loan calculator link"
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
           },
           "input_data": null,
-          "expected_result": "Loan calculator page is loaded"
+          "expected_result": "Result displayed correctly"
         }
       ],
-      "expected_outcome": "Navigation links work correctly",
-      "tags": []
+      "expected_outcome": "Result is displayed correctly",
+      "tags": [
+        "smoke"
+      ]
     },
     {
-      "id": "TC_026",
-      "name": "Navigate to Math Calculator Page",
-      "category": "navigation",
+      "id": "TC_011",
+      "name": "Subtract Time from a Date",
+      "category": "functional",
       "priority": "high",
-      "description": "Verify navigation to math calculator page",
+      "description": "Verify subtracting time from a date works correctly",
       "preconditions": [
-        "Page is open"
+        "Navigate to page URL"
       ],
       "steps": [
         {
@@ -1110,8 +501,176 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/math-calculator.html",
-            "description": "Navigate to math calculator page"
+            "selector_value": "https://www.calculator.net/time-calculator.html",
+            "description": "Navigate to the Time Calculator page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tcday1",
+            "description": "Enter date"
+          },
+          "input_data": "2022-01-01",
+          "expected_result": "Date entered successfully"
+        },
+        {
+          "step_number": 3,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tchour1",
+            "description": "Enter hour"
+          },
+          "input_data": "2",
+          "expected_result": "Hour entered successfully"
+        },
+        {
+          "step_number": 4,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tcminute1",
+            "description": "Enter minute"
+          },
+          "input_data": "30",
+          "expected_result": "Minute entered successfully"
+        },
+        {
+          "step_number": 5,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
+          },
+          "input_data": null,
+          "expected_result": "Result displayed correctly"
+        }
+      ],
+      "expected_outcome": "Result is displayed correctly",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_012",
+      "name": "Time Calculator in Expression",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify Time Calculator in Expression works correctly",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/time-calculator.html",
+            "description": "Navigate to the Time Calculator page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tcexpression",
+            "description": "Enter expression"
+          },
+          "input_data": "2 hours 30 minutes",
+          "expected_result": "Expression entered successfully"
+        },
+        {
+          "step_number": 3,
+          "action": "click",
+          "target": {
+            "element_type": "button",
+            "selector_type": "name",
+            "selector_value": "x",
+            "description": "Calculate"
+          },
+          "input_data": null,
+          "expected_result": "Result displayed correctly"
+        }
+      ],
+      "expected_outcome": "Result is displayed correctly",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_013",
+      "name": "Invalid Input",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify invalid input is handled correctly",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/time-calculator.html",
+            "description": "Navigate to the Time Calculator page"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "type",
+          "target": {
+            "element_type": "input",
+            "selector_type": "id",
+            "selector_value": "tcday1",
+            "description": "Enter date"
+          },
+          "input_data": "invalid",
+          "expected_result": "Invalid input handled correctly"
+        }
+      ],
+      "expected_outcome": "Invalid input is handled correctly",
+      "tags": [
+        "smoke"
+      ]
+    },
+    {
+      "id": "TC_014",
+      "name": "Sitemap Page Loads Successfully",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify the sitemap page loads without errors.",
+      "preconditions": [
+        "Navigate to page URL"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/sitemap.html",
+            "description": "Navigate to the sitemap page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -1123,93 +682,13 @@
       ]
     },
     {
-      "id": "TC_027",
-      "name": "Verify Calculator Form Fields",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify calculator form fields are present and enabled",
-      "preconditions": [
-        "Page is open"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/math-calculator.html",
-            "description": "Navigate to https://www.calculator.net/math-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "verify",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "calcSearchTerm",
-            "description": "Verify search term field is present"
-          },
-          "input_data": null,
-          "expected_result": "Search term field is present"
-        },
-        {
-          "step_number": 3,
-          "action": "verify",
-          "target": {
-            "element_type": "input",
-            "selector_type": "name",
-            "selector_value": "calcSearchTerm",
-            "description": "Verify search term field is enabled"
-          },
-          "input_data": null,
-          "expected_result": "Search term field is enabled"
-        }
-      ],
-      "expected_outcome": "Search term field is present and enabled",
-      "tags": [
-        "functional"
-      ]
-    },
-    {
-      "id": "TC_028",
-      "name": "Submit Calculator Form with Empty Required Fields",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify calculator form submission with empty required fields",
-      "preconditions": [
-        "Page is open"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/math-calculator.html",
-            "description": "Navigate to https://www.calculator.net/math-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Error message is displayed",
-      "tags": [
-        "functional"
-      ]
-    },
-    {
-      "id": "TC_029",
-      "name": "Verify Calculator Links",
+      "id": "TC_015",
+      "name": "Verify Financial Calculators Link",
       "category": "navigation",
-      "priority": "high",
-      "description": "Verify calculator links are present and functional",
+      "priority": "medium",
+      "description": "Verify the financial calculators link navigates to the correct page.",
       "preconditions": [
-        "Page is open"
+        "Navigate to page URL"
       ],
       "steps": [
         {
@@ -1218,50 +697,26 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/math-calculator.html",
-            "description": "Navigate to https://www.calculator.net/math-calculator.html"
+            "selector_value": "https://www.calculator.net/sitemap.html",
+            "description": "Navigate to the sitemap page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Click sign in link"
-          },
-          "input_data": null,
-          "expected_result": "Sign in page is displayed"
-        },
-        {
-          "step_number": 3,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Math",
-            "description": "Click math link"
-          },
-          "input_data": null,
-          "expected_result": "Math calculator page is displayed"
         }
       ],
-      "expected_outcome": "Sign in page and math calculator page are displayed",
+      "expected_outcome": "Navigates to financial calculators page",
       "tags": [
         "navigation"
       ]
     },
     {
-      "id": "TC_030",
-      "name": "Interest Rate Calculator Happy Path",
-      "category": "functional",
-      "priority": "high",
-      "description": "Test the calculator with valid inputs",
+      "id": "TC_016",
+      "name": "Verify Sitemap Heading",
+      "category": "ui",
+      "priority": "low",
+      "description": "Verify the sitemap heading is displayed correctly.",
       "preconditions": [
-        "Navigate to the interest rate calculator page"
+        "Navigate to page URL"
       ],
       "steps": [
         {
@@ -1270,74 +725,38 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/interest-rate-calculator.html",
-            "description": "Navigate to the interest rate calculator page"
+            "selector_value": "https://www.calculator.net/sitemap.html",
+            "description": "Navigate to the sitemap page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
         },
         {
           "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "cloanamount",
-            "description": "Enter loan amount"
-          },
-          "input_data": "10000",
-          "expected_result": "Loan amount field populated"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "cloanterm",
-            "description": "Enter loan term"
-          },
-          "input_data": "5",
-          "expected_result": "Loan term field populated"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Calculation result displayed"
-        },
-        {
-          "step_number": 5,
           "action": "verify",
           "target": {
             "element_type": "heading",
-            "selector_type": "css",
-            "selector_value": "h2.h2result",
-            "description": "Result heading"
+            "selector_type": "xpath",
+            "selector_value": "//h1",
+            "description": "Verify the sitemap heading"
           },
           "input_data": null,
-          "expected_result": "Result heading displayed"
+          "expected_result": "Sitemap heading is displayed correctly"
         }
       ],
-      "expected_outcome": "Calculation result displayed",
+      "expected_outcome": "Sitemap heading is displayed correctly",
       "tags": [
-        "smoke"
+        "ui"
       ]
     },
     {
-      "id": "TC_031",
-      "name": "Interest Rate Calculator Empty Fields",
+      "id": "TC_017",
+      "name": "Page Loads Successfully",
       "category": "functional",
       "priority": "high",
-      "description": "Test the calculator with empty fields",
+      "description": "Verify the page loads without errors",
       "preconditions": [
-        "Navigate to the interest rate calculator page"
+        "Navigate to page URL"
       ],
       "steps": [
         {
@@ -1346,50 +765,26 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/interest-rate-calculator.html",
-            "description": "Navigate to the interest rate calculator page"
+            "selector_value": "https://www.calculator.net/about-us.html#terms",
+            "description": "Navigate to the page"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "cloanamount",
-            "description": "Leave loan amount field empty"
-          },
-          "input_data": "",
-          "expected_result": "Error message displayed for loan amount field"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "cloanterm",
-            "description": "Leave loan term field empty"
-          },
-          "input_data": "",
-          "expected_result": "Error message displayed for loan term field"
         }
       ],
-      "expected_outcome": "Error messages displayed for empty fields",
+      "expected_outcome": "Page loaded without errors",
       "tags": [
         "smoke"
       ]
     },
     {
-      "id": "TC_032",
-      "name": "Interest Rate Calculator Invalid Inputs",
+      "id": "TC_018",
+      "name": "Page Title is Correct",
       "category": "functional",
       "priority": "high",
-      "description": "Test the calculator with invalid inputs",
+      "description": "Verify the page title is correct",
       "preconditions": [
-        "Navigate to the interest rate calculator page"
+        "Page loaded successfully"
       ],
       "steps": [
         {
@@ -1398,100 +793,8 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/interest-rate-calculator.html",
-            "description": "Navigate to the interest rate calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "cloanamount",
-            "description": "Enter invalid loan amount"
-          },
-          "input_data": "abc",
-          "expected_result": "Error message displayed for loan amount field"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "cloanterm",
-            "description": "Enter invalid loan term"
-          },
-          "input_data": "abc",
-          "expected_result": "Error message displayed for loan term field"
-        }
-      ],
-      "expected_outcome": "Error messages displayed for invalid inputs",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_033",
-      "name": "Interest Rate Calculator Navigation",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Test navigation links",
-      "preconditions": [
-        "Navigate to the interest rate calculator page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/interest-rate-calculator.html",
-            "description": "Navigate to the interest rate calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Sign in link"
-          },
-          "input_data": null,
-          "expected_result": "Sign in page loaded"
-        }
-      ],
-      "expected_outcome": "Sign in page loaded",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_034",
-      "name": "About Us Page Loads Successfully",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify the About Us page loads successfully",
-      "preconditions": [
-        "Navigate to the About Us page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/about-us.html",
-            "description": "Navigate to the About Us page"
+            "selector_value": "https://www.calculator.net/about-us.html#terms",
+            "description": "Navigate to https://www.calculator.net/about-us.html#terms"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -1509,19 +812,19 @@
           "expected_result": "About Us"
         }
       ],
-      "expected_outcome": "Page loads successfully with correct title",
+      "expected_outcome": "Page title is correct",
       "tags": [
         "smoke"
       ]
     },
     {
-      "id": "TC_035",
-      "name": "About Us Page Navigation Links Work",
-      "category": "navigation",
+      "id": "TC_019",
+      "name": "Navigation Links are Functional",
+      "category": "functional",
       "priority": "high",
-      "description": "Verify all navigation links on the About Us page work",
+      "description": "Verify all navigation links are functional",
       "preconditions": [
-        "Navigate to the About Us page"
+        "Page loaded successfully"
       ],
       "steps": [
         {
@@ -1530,8 +833,8 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/about-us.html",
-            "description": "Navigate to the About Us page"
+            "selector_value": "https://www.calculator.net/about-us.html#terms",
+            "description": "Navigate to https://www.calculator.net/about-us.html#terms"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -1542,26 +845,38 @@
           "target": {
             "element_type": "link",
             "selector_type": "link_text",
+            "selector_value": "about us",
+            "description": "Click on the About Us link"
+          },
+          "input_data": null,
+          "expected_result": "Navigated to the About Us page"
+        },
+        {
+          "step_number": 3,
+          "action": "click",
+          "target": {
+            "element_type": "link",
+            "selector_type": "link_text",
             "selector_value": "sign in",
             "description": "Click on the Sign In link"
           },
           "input_data": null,
-          "expected_result": "Redirects to the Sign In page"
+          "expected_result": "Navigated to the Sign In page"
         }
       ],
-      "expected_outcome": "All navigation links work",
+      "expected_outcome": "All navigation links are functional",
       "tags": [
         "smoke"
       ]
     },
     {
-      "id": "TC_036",
-      "name": "About Us Page Form Submission Works",
-      "category": "form",
-      "priority": "high",
-      "description": "Verify the form submission on the About Us page works",
+      "id": "TC_020",
+      "name": "Form Fields are Present",
+      "category": "functional",
+      "priority": "medium",
+      "description": "Verify all form fields are present",
       "preconditions": [
-        "Navigate to the About Us page"
+        "Page loaded successfully"
       ],
       "steps": [
         {
@@ -1570,8 +885,58 @@
           "target": {
             "element_type": "page",
             "selector_type": "css",
-            "selector_value": "https://www.calculator.net/about-us.html",
-            "description": "Navigate to the About Us page"
+            "selector_value": "https://www.calculator.net/about-us.html#terms",
+            "description": "Navigate to https://www.calculator.net/about-us.html#terms"
+          },
+          "input_data": null,
+          "expected_result": "Page loads successfully"
+        },
+        {
+          "step_number": 2,
+          "action": "verify",
+          "target": {
+            "element_type": "input",
+            "selector_type": "name",
+            "selector_value": "name1",
+            "description": "Verify the name field is present"
+          },
+          "input_data": null,
+          "expected_result": "Name field is present"
+        },
+        {
+          "step_number": 3,
+          "action": "verify",
+          "target": {
+            "element_type": "input",
+            "selector_type": "name",
+            "selector_value": "email1",
+            "description": "Verify the email field is present"
+          },
+          "input_data": null,
+          "expected_result": "Email field is present"
+        }
+      ],
+      "expected_outcome": "All form fields are present",
+      "tags": []
+    },
+    {
+      "id": "TC_021",
+      "name": "Form Submission is Successful",
+      "category": "functional",
+      "priority": "high",
+      "description": "Verify form submission is successful",
+      "preconditions": [
+        "Page loaded successfully"
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "navigate",
+          "target": {
+            "element_type": "page",
+            "selector_type": "css",
+            "selector_value": "https://www.calculator.net/about-us.html#terms",
+            "description": "Navigate to https://www.calculator.net/about-us.html#terms"
           },
           "input_data": null,
           "expected_result": "Page loads successfully"
@@ -1583,10 +948,10 @@
             "element_type": "input",
             "selector_type": "name",
             "selector_value": "name1",
-            "description": "Fill in the Name field"
+            "description": "Enter a name"
           },
           "input_data": "John Doe",
-          "expected_result": "Name field filled in"
+          "expected_result": "Name field populated"
         },
         {
           "step_number": 3,
@@ -1595,10 +960,10 @@
             "element_type": "input",
             "selector_type": "name",
             "selector_value": "email1",
-            "description": "Fill in the Email field"
+            "description": "Enter an email"
           },
           "input_data": "john.doe@example.com",
-          "expected_result": "Email field filled in"
+          "expected_result": "Email field populated"
         },
         {
           "step_number": 4,
@@ -1613,1359 +978,7 @@
           "expected_result": "Form submitted successfully"
         }
       ],
-      "expected_outcome": "Form submission works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_037",
-      "name": "About Us Page Form Validation Works",
-      "category": "form",
-      "priority": "high",
-      "description": "Verify the form validation on the About Us page works",
-      "preconditions": [
-        "Navigate to the About Us page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/about-us.html",
-            "description": "Navigate to the About Us page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "name",
-            "selector_value": "name1",
-            "description": "Fill in the Name field"
-          },
-          "input_data": "",
-          "expected_result": "Name field empty"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "name",
-            "selector_value": "email1",
-            "description": "Fill in the Email field"
-          },
-          "input_data": "",
-          "expected_result": "Email field empty"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "Submits",
-            "description": "Submit the form"
-          },
-          "input_data": null,
-          "expected_result": "Form validation error"
-        }
-      ],
-      "expected_outcome": "Form validation works",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_038",
-      "name": "Navigate to Sales Tax Calculator page",
-      "category": "functional|navigation",
-      "priority": "high",
-      "description": "Verify the Sales Tax Calculator page loads successfully",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/sales-tax-calculator.html",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Page loaded successfully",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_039",
-      "name": "Submit valid sales tax calculation",
-      "category": "functional|form",
-      "priority": "high",
-      "description": "Verify a valid sales tax calculation is returned",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/sales-tax-calculator.html",
-            "description": "Navigate to https://www.calculator.net/sales-tax-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "beforetax",
-            "description": "Enter before tax value"
-          },
-          "input_data": "1000",
-          "expected_result": "Before tax value entered successfully"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "name",
-            "selector_value": "taxrate",
-            "description": "Enter tax rate"
-          },
-          "input_data": "8",
-          "expected_result": "Tax rate entered successfully"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate sales tax"
-          },
-          "input_data": null,
-          "expected_result": "Sales tax calculation successful"
-        },
-        {
-          "step_number": 5,
-          "action": "verify",
-          "target": {
-            "element_type": "result",
-            "selector_type": "xpath",
-            "selector_value": "//h2",
-            "description": "Verify sales tax calculation result"
-          },
-          "input_data": null,
-          "expected_result": "Sales tax calculation result displayed"
-        }
-      ],
-      "expected_outcome": "Sales tax calculation result displayed",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_040",
-      "name": "Submit empty required fields",
-      "category": "functional|form",
-      "priority": "high",
-      "description": "Verify all required fields are validated",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/sales-tax-calculator.html",
-            "description": "Navigate to https://www.calculator.net/sales-tax-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "beforetax",
-            "description": "Enter before tax value"
-          },
-          "input_data": "",
-          "expected_result": "Before tax value entered successfully"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "name",
-            "selector_value": "taxrate",
-            "description": "Enter tax rate"
-          },
-          "input_data": "",
-          "expected_result": "Tax rate entered successfully"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Calculate sales tax"
-          },
-          "input_data": null,
-          "expected_result": "Validation error displayed for empty required fields"
-        },
-        {
-          "step_number": 5,
-          "action": "verify",
-          "target": {
-            "element_type": "error",
-            "selector_type": "xpath",
-            "selector_value": "//div[@class='error']",
-            "description": "Verify validation error message"
-          },
-          "input_data": null,
-          "expected_result": "Validation error message displayed"
-        }
-      ],
-      "expected_outcome": "Validation error message displayed",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_041",
-      "name": "Click on sign in link",
-      "category": "functional|navigation",
-      "priority": "medium",
-      "description": "Verify the sign in link navigates to the correct page",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/sales-tax-calculator.html",
-            "description": "Navigate to https://www.calculator.net/sales-tax-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Click on sign in link"
-          },
-          "input_data": null,
-          "expected_result": "Sign in page loaded successfully"
-        },
-        {
-          "step_number": 3,
-          "action": "verify",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/my-account/sign-in.php",
-            "description": "Verify sign in page URL"
-          },
-          "input_data": null,
-          "expected_result": "Sign in page URL verified"
-        }
-      ],
-      "expected_outcome": "Sign in page URL verified",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_042",
-      "name": "Verify page title",
-      "category": "functional|ui",
-      "priority": "low",
-      "description": "Verify the page title is correct",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/sales-tax-calculator.html",
-            "description": "Navigate to https://www.calculator.net/sales-tax-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "verify",
-          "target": {
-            "element_type": "title",
-            "selector_type": "xpath",
-            "selector_value": "//title",
-            "description": "Verify page title"
-          },
-          "input_data": null,
-          "expected_result": "Page title verified"
-        }
-      ],
-      "expected_outcome": "Page title verified",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_043",
-      "name": "Navigate to Salary Calculator Page",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify that the Salary Calculator page loads successfully",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/salary-calculator.html",
-            "description": "Navigate to the Salary Calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Page loads successfully",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_044",
-      "name": "Calculate Salary with Valid Inputs",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the Salary Calculator calculates correctly with valid inputs",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/salary-calculator.html",
-            "description": "Navigate to https://www.calculator.net/salary-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "camount",
-            "description": "Enter a valid amount"
-          },
-          "input_data": "10000",
-          "expected_result": "Amount field populated correctly"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "chours",
-            "description": "Enter a valid number of hours"
-          },
-          "input_data": "40",
-          "expected_result": "Hours field populated correctly"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click the Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Calculation result displayed"
-        }
-      ],
-      "expected_outcome": "Calculation result displayed",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_045",
-      "name": "Calculate Salary with Empty Required Fields",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the Salary Calculator displays errors for empty required fields",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/salary-calculator.html",
-            "description": "Navigate to https://www.calculator.net/salary-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "camount",
-            "description": "Leave the amount field empty"
-          },
-          "input_data": "",
-          "expected_result": "Amount field is highlighted as required"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "chours",
-            "description": "Leave the hours field empty"
-          },
-          "input_data": "",
-          "expected_result": "Hours field is highlighted as required"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click the Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Error messages displayed for empty fields"
-        }
-      ],
-      "expected_outcome": "Error messages displayed for empty fields",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_046",
-      "name": "Calculate Salary with Invalid Inputs",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify that the Salary Calculator displays errors for invalid inputs",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/salary-calculator.html",
-            "description": "Navigate to https://www.calculator.net/salary-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "camount",
-            "description": "Enter an invalid amount"
-          },
-          "input_data": "abc",
-          "expected_result": "Amount field is highlighted as invalid"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "chours",
-            "description": "Enter an invalid number of hours"
-          },
-          "input_data": "abc",
-          "expected_result": "Hours field is highlighted as invalid"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click the Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Error messages displayed for invalid fields"
-        }
-      ],
-      "expected_outcome": "Error messages displayed for invalid fields",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_047",
-      "name": "Sign In",
-      "category": "navigation",
-      "priority": "medium",
-      "description": "Verify that the Sign In link navigates to the correct page",
-      "preconditions": [
-        "Navigate to page URL"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/salary-calculator.html",
-            "description": "Navigate to https://www.calculator.net/salary-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Click the Sign In link"
-          },
-          "input_data": null,
-          "expected_result": "Navigated to Sign In page"
-        }
-      ],
-      "expected_outcome": "Navigated to Sign In page",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_048",
-      "name": "Navigate to Other Calculators page",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the page loads successfully",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to the page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Page loaded successfully",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_049",
-      "name": "Verify Search functionality",
-      "category": "functional",
-      "priority": "medium",
-      "description": "Verify the search functionality works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 3,
-          "action": "verify",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "//h1",
-            "description": "Search results heading"
-          },
-          "input_data": null,
-          "expected_result": "Search results heading appears"
-        }
-      ],
-      "expected_outcome": "Search results appear",
-      "tags": [
-        "functional"
-      ]
-    },
-    {
-      "id": "TC_050",
-      "name": "Verify Sign In link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Sign In link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Sign In link"
-          },
-          "input_data": null,
-          "expected_result": "Sign In page loads"
-        }
-      ],
-      "expected_outcome": "Sign In page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_051",
-      "name": "Verify Other link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Other link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "other",
-            "description": "Other link"
-          },
-          "input_data": null,
-          "expected_result": "Other Calculators page loads"
-        }
-      ],
-      "expected_outcome": "Other Calculators page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_052",
-      "name": "Verify Age Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Age Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Age Calculator",
-            "description": "Age Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Age Calculator page loads"
-        }
-      ],
-      "expected_outcome": "Age Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_053",
-      "name": "Verify Date Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Date Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Date Calculator",
-            "description": "Date Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Date Calculator page loads"
-        }
-      ],
-      "expected_outcome": "Date Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_054",
-      "name": "Verify Time Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Time Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Time Calculator",
-            "description": "Time Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Time Calculator page loads"
-        }
-      ],
-      "expected_outcome": "Time Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_055",
-      "name": "Verify Hours Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Hours Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "Hours Calculator",
-            "description": "Hours Calculator link"
-          },
-          "input_data": null,
-          "expected_result": "Hours Calculator page loads"
-        }
-      ],
-      "expected_outcome": "Hours Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_056",
-      "name": "Verify Time Card Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Time Card Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Time Card Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_057",
-      "name": "Verify Time Zone Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Time Zone Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Time Zone Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_058",
-      "name": "Verify Time Duration Calculator link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Time Duration Calculator link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Time Duration Calculator page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_059",
-      "name": "Verify Day Counter link functionality",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify the Day Counter link works as expected",
-      "preconditions": [
-        "Navigate to Other Calculators page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/other-calculator.html",
-            "description": "Navigate to https://www.calculator.net/other-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "Day Counter page loads",
-      "tags": [
-        "navigation"
-      ]
-    },
-    {
-      "id": "TC_060",
-      "name": "Navigate to Credit Card Calculator page",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify user can navigate to the credit card calculator page",
-      "preconditions": [
-        "User is on the homepage"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/credit-card-calculator.html",
-            "description": "Navigate to the credit card calculator page"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        }
-      ],
-      "expected_outcome": "User is on the credit card calculator page",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_061",
-      "name": "Submit valid data",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify user can submit valid data and get the correct result",
-      "preconditions": [
-        "User is on the credit card calculator page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/credit-card-calculator.html",
-            "description": "Navigate to https://www.calculator.net/credit-card-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "balance",
-            "description": "Enter balance"
-          },
-          "input_data": "10000",
-          "expected_result": "Balance field populated"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "rate",
-            "description": "Enter rate"
-          },
-          "input_data": "5",
-          "expected_result": "Rate field populated"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Result section appears"
-        }
-      ],
-      "expected_outcome": "User gets the correct result",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_062",
-      "name": "Submit empty required fields",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify user gets validation errors for empty required fields",
-      "preconditions": [
-        "User is on the credit card calculator page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/credit-card-calculator.html",
-            "description": "Navigate to https://www.calculator.net/credit-card-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "balance",
-            "description": "Leave balance field empty"
-          },
-          "input_data": "",
-          "expected_result": "Balance field is highlighted"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "rate",
-            "description": "Leave rate field empty"
-          },
-          "input_data": "",
-          "expected_result": "Rate field is highlighted"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Validation errors appear"
-        }
-      ],
-      "expected_outcome": "User gets validation errors",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_063",
-      "name": "Submit invalid data",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify user gets validation errors for invalid data",
-      "preconditions": [
-        "User is on the credit card calculator page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/credit-card-calculator.html",
-            "description": "Navigate to https://www.calculator.net/credit-card-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "balance",
-            "description": "Enter invalid balance"
-          },
-          "input_data": "abc",
-          "expected_result": "Balance field is highlighted"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "rate",
-            "description": "Enter invalid rate"
-          },
-          "input_data": "abc",
-          "expected_result": "Rate field is highlighted"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Validation errors appear"
-        }
-      ],
-      "expected_outcome": "User gets validation errors",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_064",
-      "name": "Clear button",
-      "category": "functional",
-      "priority": "high",
-      "description": "Verify clear button resets all fields",
-      "preconditions": [
-        "User is on the credit card calculator page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/credit-card-calculator.html",
-            "description": "Navigate to https://www.calculator.net/credit-card-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "balance",
-            "description": "Enter balance"
-          },
-          "input_data": "10000",
-          "expected_result": "Balance field populated"
-        },
-        {
-          "step_number": 3,
-          "action": "type",
-          "target": {
-            "element_type": "input",
-            "selector_type": "id",
-            "selector_value": "rate",
-            "description": "Enter rate"
-          },
-          "input_data": "5",
-          "expected_result": "Rate field populated"
-        },
-        {
-          "step_number": 4,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click Calculate button"
-          },
-          "input_data": null,
-          "expected_result": "Result section appears"
-        },
-        {
-          "step_number": 5,
-          "action": "click",
-          "target": {
-            "element_type": "button",
-            "selector_type": "name",
-            "selector_value": "x",
-            "description": "Click Clear button"
-          },
-          "input_data": null,
-          "expected_result": "All fields are empty"
-        }
-      ],
-      "expected_outcome": "All fields are empty",
-      "tags": [
-        "smoke"
-      ]
-    },
-    {
-      "id": "TC_065",
-      "name": "Sign in link",
-      "category": "navigation",
-      "priority": "high",
-      "description": "Verify sign in link navigates to the sign in page",
-      "preconditions": [
-        "User is on the credit card calculator page"
-      ],
-      "steps": [
-        {
-          "step_number": 1,
-          "action": "navigate",
-          "target": {
-            "element_type": "page",
-            "selector_type": "css",
-            "selector_value": "https://www.calculator.net/credit-card-calculator.html",
-            "description": "Navigate to https://www.calculator.net/credit-card-calculator.html"
-          },
-          "input_data": null,
-          "expected_result": "Page loads successfully"
-        },
-        {
-          "step_number": 2,
-          "action": "click",
-          "target": {
-            "element_type": "link",
-            "selector_type": "link_text",
-            "selector_value": "sign in",
-            "description": "Click sign in link"
-          },
-          "input_data": null,
-          "expected_result": "User is on the sign in page"
-        }
-      ],
-      "expected_outcome": "User is on the sign in page",
+      "expected_outcome": "Form submission is successful",
       "tags": [
         "smoke"
       ]
