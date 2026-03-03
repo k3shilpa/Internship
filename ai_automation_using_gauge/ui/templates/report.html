@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report – {{ report_id }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">🤖 AI Exploratory Tester</div>
+    <nav><a href="/">← Back</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Test Report</h1>
+      <p>{{ data.url }} &nbsp;·&nbsp; {{ data.timestamp }}</p>
+    </section>
+
+    <!-- Summary Stats -->
+    <section class="card">
+      <h2>Summary</h2>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value">{{ data.test_cases | length }}</div>
+          <div class="stat-label">Test Cases Generated</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value {{ 'pass' if results.get('passed', 0) > 0 else '' }}">
+            {{ results.get('passed', '–') }}
+          </div>
+          <div class="stat-label">Passed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value {{ 'fail' if results.get('failed', 0) > 0 else '' }}">
+            {{ results.get('failed', '–') }}
+          </div>
+          <div class="stat-label">Failed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{{ results.get('duration', '–') }}</div>
+          <div class="stat-label">Duration</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOM Summary -->
+    <section class="card">
+      <h2>DOM Analysis</h2>
+      <div class="dom-summary">
+        <span class="badge">Forms: {{ data.dom_data.get('forms', []) | length }}</span>
+        <span class="badge">Buttons: {{ data.dom_data.get('buttons', []) | length }}</span>
+        <span class="badge">Links: {{ data.dom_data.get('links', []) | length }}</span>
+        <span class="badge">Inputs: {{ data.dom_data.get('inputs', []) | length }}</span>
+      </div>
+      <pre class="code-block">{{ data.dom_data.get('summary', '') }}</pre>
+    </section>
+
+    <!-- Test Cases -->
+    <section class="card">
+      <h2>Generated Test Cases</h2>
+      {% for tc in data.test_cases %}
+      <div class="test-case
+        {{ 'tc-pass' if tc.get('status') == 'passed' else
+           'tc-fail' if tc.get('status') == 'failed' else '' }}">
+        <div class="tc-header">
+          <span class="tc-title">{{ tc.title }}</span>
+          <span class="tc-tag">{{ tc.get('category', 'exploratory') }}</span>
+          {% if tc.get('status') %}
+          <span class="tc-status {{ tc.status }}">{{ tc.status.upper() }}</span>
+          {% endif %}
+        </div>
+        <ol class="tc-steps">
+          {% for step in tc.steps %}
+          <li>{{ step }}</li>
+          {% endfor %}
+        </ol>
+        {% if tc.get('expected') %}
+        <div class="tc-expected">✓ Expected: {{ tc.expected }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+
+    <!-- Screenshots -->
+    {% if screenshots %}
+    <section class="card">
+      <h2>Screenshots</h2>
+      <div class="screenshot-grid">
+        {% for shot in screenshots %}
+        <div class="screenshot-item">
+          <img src="/reports/screenshots/{{ shot }}" alt="{{ shot }}"/>
+          <p>{{ shot }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Gauge Output -->
+    {% if results.get('raw_output') %}
+    <section class="card">
+      <h2>Gauge Output</h2>
+      <pre class="code-block">{{ results.raw_output }}</pre>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>

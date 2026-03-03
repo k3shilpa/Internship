@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Exploratory Tester</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">🤖 AI Exploratory Tester</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="#history">History</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Intelligent Exploratory Testing</h1>
+      <p>Powered by Groq LLaMA · RAG · Playwright · Gauge</p>
+    </section>
+
+    <section class="card run-card">
+      <h2>Start a Test Run</h2>
+      <form action="/run" method="POST" id="runForm">
+        <div class="field-group">
+          <label for="url">Target URL</label>
+          <input type="url" id="url" name="url"
+            placeholder="https://your-app.com"
+            value="{{ base_url }}" required/>
+        </div>
+        <button type="submit" class="btn-primary" id="runBtn">
+          <span class="btn-text">▶ Run Tests</span>
+          <span class="btn-loader hidden">⏳ Running…</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="card pipeline-card">
+      <h2>Pipeline Overview</h2>
+      <div class="pipeline">
+        <div class="step">
+          <div class="step-icon">🌐</div>
+          <div class="step-label">DOM Analysis</div>
+          <div class="step-desc">Playwright extracts page structure</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-icon">📚</div>
+          <div class="step-label">RAG Context</div>
+          <div class="step-desc">Testing patterns retrieved</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-icon">⚡</div>
+          <div class="step-label">Groq LLaMA</div>
+          <div class="step-desc">AI writes test cases</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-icon">🎯</div>
+          <div class="step-label">Gauge Execution</div>
+          <div class="step-desc">Specs run on real browser</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <div class="step-icon">📊</div>
+          <div class="step-label">Report</div>
+          <div class="step-desc">Results + screenshots</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="history">
+      <h2>Recent Runs</h2>
+      <div id="reportList"><p class="muted">Loading…</p></div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("runForm").addEventListener("submit", () => {
+      document.querySelector(".btn-text").classList.add("hidden");
+      document.querySelector(".btn-loader").classList.remove("hidden");
+      document.getElementById("runBtn").disabled = true;
+    });
+
+    async function loadReports() {
+      try {
+        const res = await fetch("/api/reports");
+        const reports = await res.json();
+        const el = document.getElementById("reportList");
+        if (!reports.length) {
+          el.innerHTML = '<p class="muted">No runs yet.</p>';
+          return;
+        }
+        el.innerHTML = reports.map(r => `
+          <div class="report-row">
+            <span class="report-url">${r.url}</span>
+            <span class="report-ts">${r.timestamp}</span>
+            <a href="/report/${r.report_id}" class="btn-sm">View Report</a>
+          </div>`).join("");
+      } catch (e) {
+        document.getElementById("reportList").innerHTML =
+          '<p class="muted">Could not load reports.</p>';
+      }
+    }
+    loadReports();
+  </script>
+</body>
+</html>
