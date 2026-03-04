@@ -49,6 +49,9 @@ from dotenv import load_dotenv
 # ── Project root on path ──────────────────────────────────────────────────────
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "intelligence_layer"))
+sys.path.insert(0, str(ROOT / "execution_layer"))
+sys.path.insert(0, str(ROOT / "ui"))
 
 load_dotenv(ROOT / ".env")
 
@@ -228,7 +231,7 @@ class Pipeline:
     def _step_dom_analysis(self):
         n = self.log.begin("DOM Analysis  (Playwright)")
         try:
-            from intelligence_layer.dom_analyzer import DOMAnalyzer
+            from intelligence_layer.dom_analyser import DOMAnalyzer
             analyzer     = DOMAnalyzer(self.url)
             self.dom_data = analyzer.extract()
             self.log.info(f"Page title : {self.dom_data.get('page_title', 'N/A')}")

@@ -1,0 +1,98 @@
+# Web Elements Testing Guide
+
+## Input Fields
+
+### Text Input
+- maxlength attribute enforced visually and on submit
+- Autocomplete behaviour
+- Copy-paste of formatted text
+- Drag-and-drop text into field
+
+### Password Fields
+- Characters masked by default
+- Show/hide toggle works
+- Browser autofill integration
+
+### Email Inputs
+- Valid: user@domain.com
+- Invalid: missing @, missing TLD, double dots
+- Plus-addressing: user+tag@domain.com
+
+### Number Inputs
+- Spinner arrows increment/decrement
+- Manual typing outside min/max
+- Decimal precision enforced
+- Negative numbers where not expected
+
+### Date/Time Pickers
+- Date in past when future required
+- Date beyond max allowed
+- Timezone awareness
+- Manual keyboard entry vs calendar picker
+
+### File Upload
+- Accepted MIME types enforced
+- Max file size limit
+- Multiple file selection
+- Drag-and-drop zone
+- Progress indicator for large files
+- Cancel mid-upload
+
+### Checkboxes and Radios
+- Default selection state
+- Tab focus and space-bar activation
+- Group validation (at least one required)
+
+### Dropdowns / Select
+- Default placeholder option
+- Long option lists (scrollable, searchable)
+- Keyboard navigation through options
+- Dynamic option loading
+
+## Buttons
+
+### Submit Buttons
+- Disabled after first click to prevent double submit
+- Visual loading state while processing
+- Re-enabled after error response
+- Keyboard activation with Enter or Space
+
+### Toggle Buttons
+- State reflected in aria-pressed
+- Colour change visible
+
+### Danger/Destructive Buttons
+- Confirmation dialog before action
+- Confirmation can be cancelled
+
+## Modals and Dialogs
+- Focus moves to modal on open
+- Focus trapped inside modal while open
+- Closed with Escape key
+- Background scroll locked while open
+- Screen reader announces modal role
+
+## Tables
+- Column headers have scope attribute
+- Sortable columns announce sort direction
+- Row selection highlights row
+- Responsive horizontal scroll at small widths
+
+## Navigation
+- Current page highlighted in nav
+- Skip-to-content link at top of page
+- Dropdown menus keyboard-operable
+- Mega-menus close on Escape
+
+## Notifications / Toasts
+- Auto-dismiss timing
+- Manual dismiss available
+- Multiple stacked notifications
+- Error notifications persist until dismissed
+- ARIA live region for screen readers
+
+## Infinite Scroll / Load More
+- Loads additional items on scroll or click
+- Loading spinner shows during fetch
+- End-of-list message when no more items
+- Focus management after new items loaded
