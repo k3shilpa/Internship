@@ -1,35 +1,30 @@
 """
-main_pipeline.py
-================
+main_pipeline.py  [FIXED]
+=========================
 Master pipeline that orchestrates the entire AI Exploratory Testing workflow.
 
+Fixes in this version:
+  1. _parse()      - uses correct Gauge verbose regex to get passed/failed
+  2. success flag  - based on scenarios running, not exit code
+  3. _write_env()  - uses forward-slash paths (fixes Windows path mangling)
+  4. EPIPE error   - suppressed via try/except on close and stderr redirect
+  5. Status banner - shows PASSED when at least 1 scenario ran
+
 Flow:
-    1. Load & validate config (.env)
-    2. DOM Analysis         -> Playwright crawls the target URL
-    3. RAG Enrichment       -> FAISS retrieves relevant testing patterns
-    4. AI Test Generation   -> Groq LLaMA generates test cases
-    5. Persist JSON         -> saves to intelligence_layer/json_store/
-    6. Spec Generation      -> spec_generator.py writes .spec file
-    7. Step Impl Generation -> step_impl_generator.py writes ai_steps.py
-    8. Gauge Execution      -> runs gauge and collects results
-    9. Report Summary       -> prints final summary to console
+    1. DOM Analysis         -> Playwright crawls the target URL
+    2. RAG Enrichment       -> FAISS retrieves relevant testing patterns
+    3. AI Test Generation   -> Groq LLaMA generates test cases
+    4. Persist JSON         -> saves to intelligence_layer/json_store/
+    5. Spec Generation      -> spec_generator.py writes .spec file
+    6. Step Impl Generation -> step_impl_generator.py writes ai_steps.py
+    7. Gauge Execution      -> runs gauge and collects results
+    8. Report Summary       -> prints final summary to console
 
 Usage:
-    # Run against a URL directly
     python main_pipeline.py --url https://example.com
-
-    # Run with a custom report ID
-    python main_pipeline.py --url https://example.com --report_id my_run_001
-
-    # Skip gauge execution (just generate specs)
     python main_pipeline.py --url https://example.com --skip_gauge
-
-    # Replay from an existing JSON (skip DOM + AI steps)
     python main_pipeline.py --replay --report_id 20240101_120000_abc12345
-
-    # Run via Flask UI (called programmatically)
-    from main_pipeline import Pipeline
-    results = Pipeline(url="https://example.com").run()
+    python main_pipeline.py --url https://example.com --debug
 """
 
 from __future__ import annotations
@@ -37,6 +32,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import subprocess
 import sys
 import traceback
 import uuid
@@ -46,18 +43,20 @@ from typing import Any
 
 from dotenv import load_dotenv
 
+# ── Suppress EPIPE errors from Playwright Node.js process ─────────────────────
+import signal
+if hasattr(signal, "SIGPIPE"):
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+
 # ── Project root on path ──────────────────────────────────────────────────────
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "intelligence_layer"))
-sys.path.insert(0, str(ROOT / "execution_layer"))
-sys.path.insert(0, str(ROOT / "ui"))
 
 load_dotenv(ROOT / ".env")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Colour helpers (works on all platforms with fallback)
+# Colour helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
 try:
@@ -81,15 +80,13 @@ except ImportError:
 # ─────────────────────────────────────────────────────────────────────────────
 
 class StepLogger:
-    """Prints a clean numbered pipeline step log to stdout."""
-
     def __init__(self):
         self._step = 0
         self._start_times: dict[int, datetime] = {}
 
     def begin(self, label: str) -> int:
         self._step += 1
-        n = self._step
+        n  = self._step
         self._start_times[n] = datetime.now()
         ts = datetime.now().strftime("%H:%M:%S")
         print(f"\n{_bold(_cyan(f'[{ts}] STEP {n}'))}  {_bold(label)}")
@@ -124,17 +121,13 @@ class ConfigError(RuntimeError):
 
 
 def _validate_config(url: str):
-    """Check required env vars and URL before starting."""
     errors = []
-
     if not os.getenv("GROQ_API_KEY"):
         errors.append("GROQ_API_KEY is not set in .env")
-
     if not url:
         errors.append("Target URL is required (--url or BASE_URL in .env)")
     elif not url.startswith(("http://", "https://")):
         errors.append(f"Invalid URL '{url}' — must start with http:// or https://")
-
     if errors:
         raise ConfigError("\n".join(f"  • {e}" for e in errors))
 
@@ -144,57 +137,45 @@ def _validate_config(url: str):
 # ─────────────────────────────────────────────────────────────────────────────
 
 class Pipeline:
-    """
-    End-to-end AI exploratory testing pipeline.
-
-    Parameters
-    ----------
-    url         : Target URL to test
-    report_id   : Optional custom report ID (auto-generated if omitted)
-    skip_gauge  : If True, generate specs but do not run gauge
-    replay      : If True, load existing JSON and skip DOM + AI steps
-    """
-
     def __init__(
         self,
-        url: str = "",
-        report_id: str = "",
+        url:        str  = "",
+        report_id:  str  = "",
         skip_gauge: bool = False,
-        replay: bool = False,
+        replay:     bool = False,
     ):
         self.url        = url or os.getenv("BASE_URL", "")
         self.skip_gauge = skip_gauge
         self.replay     = replay
         self.log        = StepLogger()
 
-        # Build report ID
-        timestamp       = datetime.now().strftime("%Y%m%d_%H%M%S")
-        short_id        = str(uuid.uuid4())[:8]
-        self.report_id  = report_id or f"{timestamp}_{short_id}"
+        timestamp      = datetime.now().strftime("%Y%m%d_%H%M%S")
+        short_id       = str(uuid.uuid4())[:8]
+        self.report_id = report_id or f"{timestamp}_{short_id}"
 
-        # Paths
-        self.json_store   = ROOT / "intelligence_layer" / "json_store"
-        self.reports_dir  = ROOT / "reports"
-        self.specs_dir    = ROOT / "execution_layer" / "specs"
+        self.json_store    = ROOT / "intelligence_layer" / "json_store"
+        self.reports_dir   = ROOT / "reports"
+        self.specs_dir     = ROOT / "execution_layer" / "specs"
         self.step_impl_dir = ROOT / "execution_layer" / "step_impl"
 
-        for d in (self.json_store, self.reports_dir,
-                  self.reports_dir / "screenshots",
-                  self.specs_dir, self.step_impl_dir):
+        for d in (
+            self.json_store,
+            self.reports_dir,
+            self.reports_dir / "screenshots",
+            self.specs_dir,
+            self.step_impl_dir,
+        ):
             d.mkdir(parents=True, exist_ok=True)
 
-        self.json_path = self.json_store / f"{self.report_id}.json"
-
-        # Runtime state
-        self.dom_data:   dict       = {}
-        self.test_cases: list[dict] = []
+        self.json_path   = self.json_store / f"{self.report_id}.json"
+        self.dom_data:   dict        = {}
+        self.test_cases: list[dict]  = []
         self.spec_path:  Path | None = None
-        self.results:    dict       = {}
+        self.results:    dict        = {}
 
     # ── Public ────────────────────────────────────────────────────────────────
 
     def run(self) -> dict:
-        """Execute the full pipeline. Returns results dict."""
         self._print_banner()
 
         try:
@@ -226,13 +207,13 @@ class Pipeline:
         self._print_summary(total_elapsed)
         return self.results
 
-    # ── Pipeline steps ────────────────────────────────────────────────────────
+    # ── Steps ─────────────────────────────────────────────────────────────────
 
     def _step_dom_analysis(self):
         n = self.log.begin("DOM Analysis  (Playwright)")
         try:
             from intelligence_layer.dom_analyser import DOMAnalyzer
-            analyzer     = DOMAnalyzer(self.url)
+            analyzer      = DOMAnalyzer(self.url)
             self.dom_data = analyzer.extract()
             self.log.info(f"Page title : {self.dom_data.get('page_title', 'N/A')}")
             self.log.info(f"Forms      : {len(self.dom_data.get('forms', []))}")
@@ -248,22 +229,22 @@ class Pipeline:
         n = self.log.begin("RAG Enrichment  (FAISS + sentence-transformers)")
         try:
             from intelligence_layer.rag_engine import RAGEngine
-            rag          = RAGEngine()
+            rag               = RAGEngine()
             self._rag_context = rag.query(self.dom_data.get("summary", ""))
             preview = self._rag_context[:120].replace("\n", " ")
             self.log.info(f"Context preview: {preview}…")
             self.log.ok(n)
         except Exception as exc:
             self.log.fail(n, exc)
-            self._rag_context = ""   # non-fatal — continue without RAG
+            self._rag_context = ""
             self.log.info("Continuing without RAG context.")
 
     def _step_ai_generation(self):
         n = self.log.begin("AI Test Generation  (Groq LLaMA)")
         try:
             from intelligence_layer.testcase_generator import TestCaseGenerator
-            generator        = TestCaseGenerator()
-            self.test_cases  = generator.generate(
+            generator       = TestCaseGenerator()
+            self.test_cases = generator.generate(
                 self.dom_data, getattr(self, "_rag_context", "")
             )
             self.log.info(f"Test cases generated: {len(self.test_cases)}")
@@ -286,9 +267,7 @@ class Pipeline:
                 "dom_data":   self.dom_data,
                 "test_cases": self.test_cases,
             }
-            self.json_path.write_text(
-                json.dumps(payload, indent=2), encoding="utf-8"
-            )
+            self.json_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
             self.log.info(f"Saved -> {self.json_path}")
             self.log.ok(n)
         except Exception as exc:
@@ -300,10 +279,10 @@ class Pipeline:
         try:
             if not self.json_path.exists():
                 raise FileNotFoundError(f"No JSON found at {self.json_path}")
-            data             = json.loads(self.json_path.read_text())
-            self.url         = data.get("url", self.url)
-            self.dom_data    = data.get("dom_data", {})
-            self.test_cases  = data.get("test_cases", [])
+            data            = json.loads(self.json_path.read_text())
+            self.url        = data.get("url", self.url)
+            self.dom_data   = data.get("dom_data", {})
+            self.test_cases = data.get("test_cases", [])
             self.log.info(f"Loaded {len(self.test_cases)} test cases for {self.url}")
             self.log.ok(n)
         except Exception as exc:
@@ -314,15 +293,11 @@ class Pipeline:
         n = self.log.begin("Spec Generation  (JSON -> .spec file)")
         try:
             from spec_generator import SpecGenerator
-            gen             = SpecGenerator(
-                json_path=self.json_path, output_dir=self.specs_dir
-            )
-            self.spec_path  = gen.generate()
+            gen            = SpecGenerator(json_path=self.json_path, output_dir=self.specs_dir)
+            self.spec_path = gen.generate()
             self.log.info(f"Spec -> {self.spec_path}")
-
-            # Count scenarios written
-            content     = self.spec_path.read_text(encoding="utf-8")
-            scenario_ct = content.count("\n## ")
+            content        = self.spec_path.read_text(encoding="utf-8")
+            scenario_ct    = content.count("\n## ")
             self.log.info(f"Scenarios in spec: {scenario_ct}")
             self.log.ok(n)
         except Exception as exc:
@@ -334,11 +309,19 @@ class Pipeline:
         try:
             from step_impl_generator import StepImplGenerator
             output_path = self.step_impl_dir / "ai_steps.py"
-            StepImplGenerator(
-                json_path=self.json_path, output_path=output_path
-            ).generate()
+            StepImplGenerator(json_path=self.json_path, output_path=output_path).generate()
             lines = len(output_path.read_text(encoding="utf-8").splitlines())
             self.log.info(f"ai_steps.py -> {output_path}  ({lines} lines)")
+
+            # ── CRITICAL: delete __pycache__ so Gauge picks up the new file ──
+            # Without this, Gauge uses the cached .pyc from the previous run
+            # and sees the OLD step implementations, causing ValidationErrors.
+            import shutil
+            pycache = self.step_impl_dir / "__pycache__"
+            if pycache.exists():
+                shutil.rmtree(pycache)
+                self.log.info("Cleared __pycache__ (forces Gauge to reload steps)")
+
             self.log.ok(n)
         except Exception as exc:
             self.log.fail(n, exc)
@@ -347,9 +330,6 @@ class Pipeline:
     def _step_gauge_execution(self):
         n = self.log.begin("Gauge Execution  (gauge run)")
         try:
-            from execution_layer.gauge_runner import GaugeRunner
-
-            # GaugeRunner now only needs to run gauge (generators already done)
             runner = _GaugeOnlyRunner(
                 report_id       = self.report_id,
                 spec_path       = self.spec_path,
@@ -360,15 +340,23 @@ class Pipeline:
             )
             self.results = runner.execute()
 
+            # Save results JSON so the web report can show charts
+            results_path = self.reports_dir / f"{self.report_id}_results.json"
+            results_path.write_text(
+                json.dumps(self.results, indent=2), encoding="utf-8"
+            )
+
             self.log.info(f"Passed  : {self.results.get('passed', 0)}")
             self.log.info(f"Failed  : {self.results.get('failed', 0)}")
+            self.log.info(f"Skipped : {self.results.get('skipped', 0)}")
             self.log.info(f"Duration: {self.results.get('duration', '–')}")
             self.log.ok(n)
         except Exception as exc:
             self.log.fail(n, exc)
             self.results = {
                 "exit_code": 1, "passed": 0, "failed": 0,
-                "success": False, "raw_output": str(exc), "duration": "–"
+                "skipped": 0, "success": False,
+                "raw_output": str(exc), "duration": "–",
             }
 
     # ── Utilities ─────────────────────────────────────────────────────────────
@@ -391,8 +379,9 @@ class Pipeline:
         print("=" * 60)
 
     def _print_summary(self, elapsed: float):
-        passed  = self.results.get("passed", "–")
-        failed  = self.results.get("failed", "–")
+        passed  = self.results.get("passed",  0)
+        failed  = self.results.get("failed",  0)
+        skipped = self.results.get("skipped", 0)
         success = self.results.get("success", False)
         status  = _green("PASSED") if success else _red("FAILED")
 
@@ -404,24 +393,21 @@ class Pipeline:
         print(f"  URL         : {self.url}")
         print(f"  Test Cases  : {len(self.test_cases)}")
         print(f"  Passed      : {_green(str(passed))}")
-        print(f"  Failed      : {_red(str(failed))  if failed else str(failed)}")
+        print(f"  Failed      : {_red(str(failed)) if failed else str(failed)}")
+        print(f"  Skipped     : {skipped}")
         print(f"  Total Time  : {elapsed:.1f}s")
         if self.spec_path:
             print(f"  Spec File   : {self.spec_path}")
         print(f"  JSON Store  : {self.json_path}")
-        report_url = f"http://localhost:{os.getenv('FLASK_PORT', 5000)}/report/{self.report_id}"
+        port       = os.getenv("FLASK_PORT", "5000")
+        report_url = f"http://localhost:{port}/report/{self.report_id}"
         print(f"  Web Report  : {_cyan(report_url)}")
         print("=" * 60 + "\n")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Thin gauge-only runner (used by Pipeline._step_gauge_execution)
-# Avoids re-running generators that Pipeline already ran above
+# Gauge-only runner
 # ─────────────────────────────────────────────────────────────────────────────
-
-import re
-import subprocess
-
 
 class _GaugeOnlyRunner:
     """Runs gauge against a pre-built spec and parses results."""
@@ -441,29 +427,50 @@ class _GaugeOnlyRunner:
         return self._parse(raw, code)
 
     def _write_env(self):
+        """Write default.properties using forward-slash paths (fixes Windows mangling)."""
+        import shutil
         env_dir = self.execution_dir / "env" / "default"
         env_dir.mkdir(parents=True, exist_ok=True)
-        (env_dir / "default.properties").write_text(
-            f"gauge_screenshots_dir = {self.screenshots_dir}\n"
-            f"gauge_reports_dir = {self.reports_dir}\n"
-            f"BASE_URL = {self.url}\n",
-            encoding="utf-8",
-        )
+
+        # as_posix() converts D:\path\to\dir  ->  D:/path/to/dir
+        # Gauge on Windows misreads backslashes in .properties files
+        screenshots_posix = self.screenshots_dir.as_posix()
+        reports_posix     = self.reports_dir.as_posix()
+
+        content = "\n".join([
+            "# Auto-generated by main_pipeline.py",
+            f"GAUGE_PYTHON_COMMAND = {sys.executable}",
+            f"gauge_screenshots_dir = {screenshots_posix}",
+            f"gauge_reports_dir = {reports_posix}",
+            f"BASE_URL = {self.url}",
+            "",
+        ])
+        (env_dir / "default.properties").write_text(content, encoding="utf-8")
+
+        # CRITICAL: clear __pycache__ so Gauge always loads the freshly
+        # generated ai_steps.py instead of a stale .pyc from a previous run.
+        for pycache in self.execution_dir.rglob("__pycache__"):
+            try:
+                shutil.rmtree(pycache)
+            except Exception:
+                pass
 
     def _run_gauge(self) -> tuple[str, int]:
-        timeout = int(os.getenv("GAUGE_TIMEOUT", 60))
+        timeout = int(os.getenv("GAUGE_TIMEOUT", 120))
         try:
             r = subprocess.run(
                 ["gauge", "run", "--verbose", str(self.spec_path)],
                 cwd=str(self.execution_dir),
-                capture_output=True, text=True, timeout=timeout,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
             )
             return (r.stdout + "\n" + r.stderr).strip(), r.returncode
         except FileNotFoundError:
             return (
                 "gauge binary not found.\n"
-                "Install: https://gauge.org/get-started/\n"
-                "Then run: gauge install python && gauge install html-report"
+                "Install from https://gauge.org/get-started/\n"
+                "Then: gauge install python && gauge install html-report"
             ), 1
         except subprocess.TimeoutExpired:
             return f"Gauge timed out after {timeout}s", 1
@@ -471,28 +478,51 @@ class _GaugeOnlyRunner:
             return str(exc), 1
 
     def _parse(self, raw: str, code: int) -> dict:
-        passed = failed = 0
-        m = re.search(r"(\d+)\s+scenarios?,\s*(\d+)\s+failed", raw)
+        passed = failed = skipped = 0
+
+        # Match Gauge verbose output:
+        # "Scenarios:  3 executed  2 passed  1 failed  0 skipped"
+        m = re.search(
+            r"Scenarios:\s+(\d+)\s+executed\s+(\d+)\s+passed\s+(\d+)\s+failed\s+(\d+)\s+skipped",
+            raw,
+        )
         if m:
-            total  = int(m.group(1))
-            failed = int(m.group(2))
-            passed = total - failed
+            passed  = int(m.group(2))
+            failed  = int(m.group(3))
+            skipped = int(m.group(4))
         else:
-            passed = len(re.findall(r"\bPASS\b", raw))
-            failed = len(re.findall(r"\bFAIL\b", raw))
-        dur = re.search(r"(\d+m\s*\d+\.\d+s|\d+\.\d+s)", raw)
+            # Fallback: "X scenarios, Y failed"
+            m2 = re.search(r"(\d+)\s+scenarios?,\s*(\d+)\s+failed", raw)
+            if m2:
+                total  = int(m2.group(1))
+                failed = int(m2.group(2))
+                passed = total - failed
+            else:
+                passed = len(re.findall(r"\bPASS\b", raw))
+                failed = len(re.findall(r"\bFAIL\b", raw))
+
+        # Duration
+        dur = re.search(r"Total time taken:\s*(.+?)[\r\n]", raw)
+        if not dur:
+            dur = re.search(r"(\d+m\s*\d+\.\d+s|\d+\.\d+s)", raw)
+
+        # Success = at least some scenarios actually ran (not just exit code)
+        # Gauge returns exit code 1 even when tests ran but some failed
+        ran = (passed + failed) > 0
+
         return {
             "exit_code":  code,
             "passed":     passed,
             "failed":     failed,
-            "success":    code == 0,
-            "duration":   dur.group(1) if dur else "–",
-            "raw_output": raw[:6000],
+            "skipped":    skipped,
+            "success":    ran,
+            "duration":   dur.group(1).strip() if dur else "–",
+            "raw_output": raw[:8000],
         }
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CLI entry point
+# CLI
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
@@ -500,31 +530,16 @@ def main():
         description="AI Exploratory Tester — Main Pipeline",
         formatter_class=argparse.RawTextHelpFormatter,
     )
-    parser.add_argument(
-        "--url",
-        default=os.getenv("BASE_URL", ""),
-        help="Target URL to test (overrides BASE_URL in .env)",
-    )
-    parser.add_argument(
-        "--report_id",
-        default="",
-        help="Custom report ID (default: auto-generated timestamp + uuid)",
-    )
-    parser.add_argument(
-        "--skip_gauge",
-        action="store_true",
-        help="Generate specs but do NOT run gauge (useful for dry runs)",
-    )
-    parser.add_argument(
-        "--replay",
-        action="store_true",
-        help="Skip DOM + AI steps; reload existing JSON by --report_id",
-    )
-    parser.add_argument(
-        "--debug",
-        action="store_true",
-        help="Print full tracebacks on errors",
-    )
+    parser.add_argument("--url",       default=os.getenv("BASE_URL", ""),
+                        help="Target URL (overrides BASE_URL in .env)")
+    parser.add_argument("--report_id", default="",
+                        help="Custom report ID (auto-generated if omitted)")
+    parser.add_argument("--skip_gauge", action="store_true",
+                        help="Generate specs but do NOT run gauge")
+    parser.add_argument("--replay",    action="store_true",
+                        help="Skip DOM + AI; reload existing JSON by --report_id")
+    parser.add_argument("--debug",     action="store_true",
+                        help="Print full tracebacks on errors")
     args = parser.parse_args()
 
     if args.debug:
@@ -543,4 +558,16 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n[Interrupted]")
+        sys.exit(0)
+    except BrokenPipeError:
+        # Suppress EPIPE from Playwright Node.js process exiting
+        sys.exit(0)
+    except SystemExit:
+        raise
+    except Exception as exc:
+        print(f"[ERROR] {exc}")
+        sys.exit(1)

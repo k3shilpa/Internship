@@ -19,7 +19,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 BASE_URL = "https://www.calculator.net"
 driver = None
-WAIT_TIMEOUT = 8   # seconds to wait for elements
+WAIT_TIMEOUT = 2   # seconds to wait for elements
 
 
 # ---------------------------------------------------------------------------

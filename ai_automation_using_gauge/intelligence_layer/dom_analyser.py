@@ -1,11 +1,21 @@
 """
-dom_analyzer.py  —  Multi-page DOM Analyzer (Playwright + BFS Crawler)
+dom_analyser.py  [FIXED - Timeout]
+===================================
+Multi-page DOM Analyzer using Playwright with robust timeout handling.
+
+Fix: Sites with heavy ads/trackers never reach 'networkidle'.
+     Now uses a waterfall of wait strategies:
+       1. networkidle  (ideal)
+       2. load         (fallback)
+       3. domcontentloaded (last resort)
+     Each with configurable timeout.
 
 Config (.env):
-    CRAWLER_MAX_PAGES   = 10     max total pages to visit
-    CRAWLER_MAX_DEPTH   = 3      max link-follow depth from start URL
-    CRAWLER_SAME_DOMAIN = true   only follow links on the same domain
-    CRAWLER_TIMEOUT     = 30000  per-page Playwright timeout in ms
+    CRAWLER_MAX_PAGES        = 5
+    CRAWLER_MAX_DEPTH        = 2
+    CRAWLER_SAME_DOMAIN      = true
+    CRAWLER_TIMEOUT          = 30000   per-page timeout ms
+    CRAWLER_WAIT_UNTIL       = load    wait strategy: networkidle|load|domcontentloaded
 """
 
 from __future__ import annotations
@@ -24,9 +34,10 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent.parent / ".env")
 
 MAX_PAGES    = int(os.getenv("CRAWLER_MAX_PAGES",   5))
-MAX_DEPTH    = int(os.getenv("CRAWLER_MAX_DEPTH",    2))
+MAX_DEPTH    = int(os.getenv("CRAWLER_MAX_DEPTH",   2))
 SAME_DOMAIN  = os.getenv("CRAWLER_SAME_DOMAIN", "true").lower() == "true"
 PAGE_TIMEOUT = int(os.getenv("CRAWLER_TIMEOUT",  30000))
+WAIT_UNTIL   = os.getenv("CRAWLER_WAIT_UNTIL", "load")   # changed default to "load"
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -42,7 +53,6 @@ def _get_driver():
 
 
 def _normalize(url: str) -> str:
-    """Remove fragment, trailing slash — used for dedup."""
     return urlparse(url)._replace(fragment="").geturl().rstrip("/")
 
 
@@ -51,13 +61,13 @@ def _same_domain(url: str, base: str) -> bool:
 
 
 def _crawlable(url: str, base: str) -> bool:
-    """Return True if the URL should be crawled."""
     parsed = urlparse(url)
     if parsed.scheme not in ("http", "https", ""):
         return False
     skip_exts = {
         ".pdf", ".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp",
-        ".mp4", ".mp3", ".zip", ".css", ".js", ".ico", ".woff", ".woff2", ".ttf"
+        ".mp4", ".mp3", ".zip", ".css", ".js", ".ico",
+        ".woff", ".woff2", ".ttf", ".exe", ".dmg",
     }
     if any(parsed.path.lower().endswith(e) for e in skip_exts):
         return False
@@ -68,9 +78,39 @@ def _crawlable(url: str, base: str) -> bool:
     return True
 
 
-# ─────────────────────────────────────────────────────────────────
-# Single-page extractor
-# ─────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Robust page loader — tries multiple wait strategies
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _load_page(page, url: str, timeout: int) -> bool:
+    """
+    Try loading a page with progressively more lenient wait strategies.
+    Returns True if page loaded successfully, False if all strategies failed.
+    """
+    strategies = ["load", "domcontentloaded"]
+
+    # If user configured networkidle, try it first
+    if WAIT_UNTIL == "networkidle":
+        strategies = ["networkidle", "load", "domcontentloaded"]
+
+    for strategy in strategies:
+        try:
+            page.goto(url, wait_until=strategy, timeout=timeout)
+            # Extra small wait for JS to render initial content
+            time.sleep(1.0)
+            print(f"[DOMAnalyzer] Loaded ({strategy}): {url}")
+            return True
+        except Exception as exc:
+            err = str(exc)[:80]
+            print(f"[DOMAnalyzer] '{strategy}' failed for {url}: {err}")
+            continue
+
+    return False
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Single-page DOM extractor
+# ─────────────────────────────────────────────────────────────────────────────
 
 class _PageExtractor:
     def __init__(self, url: str, soup: BeautifulSoup):
@@ -85,11 +125,14 @@ class _PageExtractor:
         headings = self._headings()
         title    = self.soup.title.get_text(strip=True) if self.soup.title else ""
         return {
-            "url": self.url, "title": title,
-            "forms": forms, "inputs": inputs,
-            "buttons": buttons, "links": links,
+            "url":      self.url,
+            "title":    title,
+            "forms":    forms,
+            "inputs":   inputs,
+            "buttons":  buttons,
+            "links":    links,
             "headings": headings,
-            "summary": self._summary(title, forms, inputs, buttons, links, headings),
+            "summary":  self._summary(title, forms, inputs, buttons, links, headings),
         }
 
     def _forms(self):
@@ -172,41 +215,31 @@ class _PageExtractor:
             lines.append("Headings: " + " | ".join(headings[:5]))
         if forms:
             for f in forms:
-                names = [fld["name"] or fld["id"] for fld in f["fields"]
-                         if fld["name"] or fld["id"]]
+                names = [
+                    fld["name"] or fld["id"]
+                    for fld in f["fields"]
+                    if fld["name"] or fld["id"]
+                ]
                 lines.append(f"  Form[{f['method']}] fields={names}")
         return "\n".join(lines)
 
 
-# ─────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
 # Multi-page BFS crawler
-# ─────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
 
 class DOMAnalyzer:
     """
-    Crawls a website using BFS up to a page limit and depth limit.
+    BFS crawler with configurable page limit, depth limit, and
+    robust timeout handling for ad-heavy / JS-heavy sites.
 
     Parameters
     ----------
-    url         : Entry-point URL to start crawling from
-    max_pages   : Max total pages to visit         (default: CRAWLER_MAX_PAGES)
-    max_depth   : Max link-follow depth            (default: CRAWLER_MAX_DEPTH)
-    same_domain : Restrict crawl to same domain    (default: CRAWLER_SAME_DOMAIN)
-    timeout     : Per-page Playwright timeout ms   (default: CRAWLER_TIMEOUT)
-
-    Example
-    -------
-    # Use .env defaults
-    analyzer = DOMAnalyzer("https://myapp.com")
-
-    # Override limits programmatically
-    analyzer = DOMAnalyzer("https://myapp.com", max_pages=5, max_depth=2)
-
-    result = analyzer.extract()
-    # result["pages_visited"]    -> number of pages crawled
-    # result["pages"]            -> per-page DOM data
-    # result["forms"]            -> all forms merged across pages
-    # result["summary"]          -> combined text summary for AI
+    url         : Entry-point URL
+    max_pages   : Max total pages   (default: CRAWLER_MAX_PAGES)
+    max_depth   : Max crawl depth   (default: CRAWLER_MAX_DEPTH)
+    same_domain : Same-domain only  (default: CRAWLER_SAME_DOMAIN)
+    timeout     : Per-page ms       (default: CRAWLER_TIMEOUT)
     """
 
     def __init__(
@@ -222,49 +255,48 @@ class DOMAnalyzer:
         self.max_depth   = max_depth
         self.same_domain = same_domain
         self.timeout     = timeout
+        self._visited:   set[str]   = set()
+        self._pages:     list[dict] = []
+        self._queue:     deque      = deque()
 
-        self._visited: set[str]   = set()
-        self._pages:   list[dict] = []
-        self._queue:   deque      = deque()   # (url, depth)
-
-    # ── Public ────────────────────────────────────────────────────
+    # ── Public ────────────────────────────────────────────────────────────────
 
     def extract(self) -> dict[str, Any]:
-        """Run the crawl and return merged DOM data."""
         print(f"\n[DOMAnalyzer] Start: {self.start_url}")
         print(f"[DOMAnalyzer] Limits -> max_pages={self.max_pages}  "
               f"max_depth={self.max_depth}  same_domain={self.same_domain}")
+        print(f"[DOMAnalyzer] Timeout: {self.timeout}ms  "
+              f"wait_until: {WAIT_UNTIL} (with fallback)")
 
         self._crawl()
 
         if not self._pages:
-            raise RuntimeError(f"No pages could be crawled from {self.start_url}")
+            raise RuntimeError(
+                f"No pages could be crawled from {self.start_url}\n"
+                "Try setting CRAWLER_WAIT_UNTIL=domcontentloaded in .env\n"
+                "or CRAWLER_TIMEOUT=60000 for slow sites"
+            )
 
         result = self._merge()
         print(f"[DOMAnalyzer] Complete -> {len(self._visited)} pages visited\n")
         return result
 
-    # ── BFS ───────────────────────────────────────────────────────
+    # ── BFS ───────────────────────────────────────────────────────────────────
 
     def _crawl(self):
         self._queue.append((_normalize(self.start_url), 0))
 
         while self._queue:
-            # ── Page limit check ──────────────────────────────────
             if len(self._visited) >= self.max_pages:
-                print(f"[DOMAnalyzer] Page limit reached "
-                      f"({self.max_pages}), stopping crawl.")
+                print(f"[DOMAnalyzer] Page limit ({self.max_pages}) reached.")
                 break
 
             url, depth = self._queue.popleft()
 
             if url in self._visited:
                 continue
-
-            # ── Depth limit check ─────────────────────────────────
             if depth > self.max_depth:
-                print(f"[DOMAnalyzer] Depth limit {self.max_depth} "
-                      f"exceeded for: {url}")
+                print(f"[DOMAnalyzer] Depth limit {self.max_depth} exceeded: {url}")
                 continue
 
             print(f"[DOMAnalyzer] [{len(self._visited)+1}/{self.max_pages}] "
@@ -277,12 +309,9 @@ class DOMAnalyzer:
             self._visited.add(url)
             self._pages.append(page_data)
 
-            # ── Enqueue child links ───────────────────────────────
             if depth < self.max_depth:
                 remaining = self.max_pages - len(self._visited)
-                if remaining <= 0:
-                    continue
-                added = 0
+                added     = 0
                 for link in page_data["links"]:
                     if added >= remaining:
                         break
@@ -300,18 +329,38 @@ class DOMAnalyzer:
                         added += 1
 
     def _visit(self, url: str) -> dict | None:
-        """Visit one URL with Playwright and extract its DOM."""
         try:
             page = _get_driver().page
-            page.goto(url, wait_until="networkidle", timeout=self.timeout)
-            time.sleep(0.5)  # settle dynamic content
+
+            # Abort unnecessary resource types to speed up loading
+            page.route(
+                "**/*",
+                lambda route: route.abort()
+                if route.request.resource_type in
+                   ("image", "media", "font", "stylesheet")
+                else route.continue_()
+            )
+
+            ok = _load_page(page, url, self.timeout)
+            if not ok:
+                print(f"[DOMAnalyzer] All load strategies failed: {url}")
+                return None
+
+            # Unregister route handlers for next page
+            page.unroute("**/*")
+
             soup = BeautifulSoup(page.content(), "lxml")
             return _PageExtractor(url, soup).extract()
+
         except Exception as exc:
             print(f"[DOMAnalyzer] SKIP {url}  reason: {exc}")
+            try:
+                page.unroute("**/*")
+            except Exception:
+                pass
             return None
 
-    # ── Merge all pages ───────────────────────────────────────────
+    # ── Merge ─────────────────────────────────────────────────────────────────
 
     def _merge(self) -> dict[str, Any]:
         first = self._pages[0]
@@ -326,7 +375,6 @@ class DOMAnalyzer:
             all_links.extend({**l, "_source_url": src}   for l in pg["links"])
             all_headings.extend(pg["headings"])
 
-        # De-duplicate links by href
         seen, unique_links = set(), []
         for lnk in all_links:
             if lnk["href"] not in seen:
@@ -350,6 +398,7 @@ class DOMAnalyzer:
                 "max_depth":   self.max_depth,
                 "same_domain": self.same_domain,
                 "timeout_ms":  self.timeout,
+                "wait_until":  WAIT_UNTIL,
             },
         }
 
@@ -376,11 +425,9 @@ class DOMAnalyzer:
                 f"inputs={len(pg['inputs'])} "
                 f"buttons={len(pg['buttons'])}]"
             )
-
         if first["headings"]:
             lines += ["", "Headings (first page):"]
             lines.extend(first["headings"][:6])
-
         if first["forms"]:
             lines += ["", "Forms (first page):"]
             for f in first["forms"]:
